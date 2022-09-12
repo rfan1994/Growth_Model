@@ -1,0 +1,1197 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{mathtools} 
+\usepackage{graphicx}
+\usepackage{geometry,lscape}
+\usepackage{longtable,multirow}
+\usepackage{booktabs}
+\usepackage{bbold}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{caption} 
+\captionsetup[table]{skip=10pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\geometry{a4paper}
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{proposition}{Proposition}
+
+
+\title{Growth Model with Automation and Endogenous Human Capital}
+\date{}
+\author{Rong Fan}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+How does automation affect the labor market and welfare inequality if human capital accumulation endogenously responds to technological change?I study the effects of increasing automation on labor share, wage premium, and inequality under the framework of the task model with heterogeneous workers and endogenous human capital.
+
+A reduction in automation cost increases the automation level, lowering labor share and raising wage inequality. Automation development complements the innovation sector, which increases the economy's growth rate. On the one hand, both skilled and unskilled workers will increase their human capital investment in response to the higher technology growth rate, which lowers the automation level and increases the labor share. On the other hand, skilled workers will respond more since skilled workers benefit more from the productivity gain while unskilled workers are affected more by the displacement effect, and skilled workers have more ability to adjust their skill level. Human capital growth lowers automation level and increases the labor share but amplifies inequality.
+
+I estimate the model by fitting the transition path to the data and discussing the optimal policy to optimize the transition. Empirical evidence is provided at both industry and occupation levels. Automation has a positive effect on labor composition and skill level. The responses of skilled and unskilled workers are significantly different.
+
+\end{abstract}
+
+\clearpage
+\section{Introduction}
+As has been argued in the literature, automation and artificial intelligence (AI) are essential in explaining the decrease in labor share (e.g., Autor and Salomons, 2018\cite{AutorSalomons2018}; Aghion et al., 2021\cite{Aghionetal2021}) accompanied by the increase in college premium (e.g., Acemoglu and Autor, 2011\cite{AcemogluAutor2011}; Acemoglu and Restrepo, 2020\cite{AcemogluRestrepo2020}). Automation allows the machine to replace unskilled workers (high school graduates), decreasing the labor share while it complements skilled workers (college graduates), increasing the college premium.
+
+Human capital accumulation is a vital response channel of workers to automation that has not been discussed much in the literature. The workers can respond to automation by increasing the supply of skilled workers (extensive margin). The share of employment with a Bachelor's degree and higher has increased from 26.98\% to 43.74\% from 1992 to 2021.\footnote{Data source: Federal Reserve Economic Data (FRED)} The workers can also increase their skill level through on-the-job training (intensive margin). The training and working hour ratio has increased from 0.244\% to 1.049\% for high school graduates and from 0.758\% to 1.212\% for college graduates from 1995 to 2005.\footnote{Data source: Adult Training and Education Survey (ATES)} Acquisition of new skills can help unskilled workers to relocate to less automated sectors and help skilled workers to stand out in a more competitive labor market environment. 
+
+Important questions are how the human capital of each skill group responds to automation and to what extent the response of human capital changes the effect of automation on the labor market (labor share and wage premium) and welfare inequality. Sachs and Kotlikoff(2012)\cite{SachsKotlikoff2012} provide an earlier related study, which shows that young, low-skill workers respond to automation by decreasing investment in education because the wage depreciation limits their ability to save. Prettner and Strulik(2020)\cite{PrettnerStrulik2020} show that automation increases the share of skilled workers because workers are motivated by higher wage premiums. In contrast to the existing studies on automation and human capital, I focus on after-school human capital accumulation. Athreya and Eberly(2015)\cite{AthreyaEberly2015} discusses the stagnated college attainment accompanied by a substantial increase in the college premium. Not everyone is able or willing to attend college due to the credit constraint or uncertainty, but most people spend a lot of time acquiring human capital throughout their life.
+
+To study the interaction between automation and human capital and their macroeconomic implication, I adopt the task model framework of Acemoglu and Restrepo(2018)\cite{AcemogluRestrepo2018}. I embed this framework in a dynamic environment where research and development (R\&D) is directed and endogenous, scientists can work in automation (automate old tasks favoring machine) or innovation (innovate new tasks favoring labor) sectors. At the same time, I extended their model and endogenize the human capital following Grossman et al.(2021)\cite{Grossmanetal2021}. Human capital is accumulated by learning at the opportunity cost of wage income, and increases the productivity of workers. The increase in automation is endogenous. After a decrease in automation cost, more scientists work in the automation sector, and the automation level rises. This automation level increase is followed by innovation rate and human capital investment increases. A higher automation level complements the innovation sector since it drives up the capital price, pushes down the wage level, and increases the innovation patent profit. The development of innovation patents complements human capital investment, favoring workers and increasing their future wage growth. 
+
+My research highlights the uneven impacts of automation on skilled and unskilled workers and the distinctive responses of skilled and unskilled workers to automation. Firstly, unskilled workers are directly replaced by machines through automation, but skilled workers are indirectly affected by the relocation effect (unskilled workers relocate). Secondly, skilled workers increase their human capital investment more than unskilled workers. Skilled workers are more incentivized to invest in their human capital to maximize the benefit of automation. Unskilled workers save more through physical capital and less through human capital to insure against the wage drop caused by automation. 
+
+My research delivers three key results. Firstly, innovation and human capital investment are complementary while automation and human capital are racing with each other. Human capital investment increases the return to innovation patent, more scientist will be allocated to innovation sector. With a high enough human capital growth rate, the human capital supply is abundant, the economy will never converge to a balanced growth path (BGP) where all the tasks are automated. Secondly, human capital accumulation decreases the overall automation level. Human capital investment increases the effective labor supply, slows capital deepening, and increases labor share. Thirdly, 35\% of the wage premium change can be explained by the direct effect of automation, the rest of the wage premium change is contributed by the human capital change. After automation, unskilled workers relocate to the tasks that skilled workers have more comparative advantages over, so they have to accept a lower wage to compete with skilled workers. Skilled workers who benefit more from automation are more incentivized to invest in their human capital. Automation increases the human capital gap between skilled and unskilled workers and the wage premium. 
+
+Empirical evidence is provided using in the industry and occupation level. By using EU KLEMS data, I find a positive response of education level to the development of automation, but with a four-year lag. By using Artificial Intelligence Occupational Exposure (AIOE) estimated by Felten et al. (2021)\cite{Feltenetal2021} and Occupational Information Network (O*NET), I find that the development of AI increases the demand for social and technical skills, and workers respond to the technology change by increasing their content, process, and social skills. 
+
+\clearpage
+\section{Related Literature}
+This paper makes four contributions to the literature. Firstly, this paper is closely related to the study of effects of automation on labor share, employment, wage and inequality. My contribution is to explore the human capital responses to automation, and the interaction of human capital with labor market and social welfare. Acemoglu and Autor(2011)\cite{AcemogluAutor2011} and Acemoglu and Restrepo(2018)\cite{AcemogluRestrepo2018} developed theoretical frameworks to explore the displacement effect of automation. Many empirical studies support the theoretical prediction and show that automation is important in explaining the on-going change on the US labor market. Autor and Salomons(2018)\cite{AutorSalomons2018} use industry data and Dinlersoz et al.(2018)\cite{Dinlersozetal2018} use plant based data to study the negative impact of automation on labor share. Aghioen et al.(2021)\cite{Aghioenetal2021} finds that robotization reduces aggregate employment at the employment zone level. Acemoglu and Restrepo(2020)\cite{AcemogluRestrepo2020} find that automation can explain between 50\% and 70\% of changes in the US wage structure. Automation also has important welfare implications. Moll et al.(2021)\cite{Molletal2021} show that automation increases the welfare inequality through return to wealth. 
+
+Secondly, my research contributes to the endogenous growth literature\footnote{Aghion et al.(2014)\cite{Aghionetal2014} survey Schumpeterian growth theory, in which new innovations replace older technologies, resulting in endogenous growth, individuals can choose to allocate the labor supply between production and research.} and technology adoption. The setup of research and development sector is similar to Acemoglu et al.(2013)\cite{Acemogluetal2013}, unskilled workers are used in the production, while skilled workers perform R\&D functions and operations. In contrast to the canonical growth model, the research and development in my paper is directed, resources can be assigned to automation or innovation. Benhabib et al.(2017)\cite{Benhabibetal2017} study how the adoption environment can change the innovation incentives and growth rate. In this paper, the willingness of adoption of producers affects both the automation level and the growth rate. 
+
+Thirdly, this paper contributes to the literature on human capital accumulation. I explore the heterogeneous human capital investment for different skill groups facing an increasing automation level. The accumulation of human capital takes two forms. Firstly, the knowledge will be passed across generations through education, labor can get their initial skill level by choosing the schooling investment. (Schultz, 2003\cite{Schultz2003}; Bohacek and Kapicka, 2008\cite{BohacekKapicka2008}) Secondly, the human can be increased during the life time through learning-by-doing (the experience will be accumulated by doing the job, e.g., Imai et al., 2004\cite{Imaietal2004}; Thompson, 2010\cite{Thompson2010}; Burdett et al., 2011\cite{Burdettetal2011}) or learning-or-doing (workers need to spend time to learn new skills with the opportunity cost of production, e.g., Frazis, 2007\cite{Frazis2007}). This paper focuses mainly on the after-school human capital acquisition following Stantcheva, 2015\cite{Stantcheva2015}, the agents choose optimal working and training time, and human capital evolves depending on the amount of training, and individuals are heterogeneous in terms of their ability. 
+
+Lastly, my paper explores the interaction between human capital and technology, but distinguishes automation (replaces labor) and innovation (complements labor) as two types of technology change. Technology and human capital can be twin engines of the growth, but can also be opponents racing each other. The dynamics between innovation and human capital in this paper is similar with Lloyd-Ellis and Roberts(2002)\cite{Lloyd-EllisRoberts2002}, skills are required to implement and invent new technology; Beaudry et al.(2006)\cite{Beaudryetal2006}, new technology is more productive and will be adopted only when used with a high fraction of skill workers; and Stokey(2014)\cite{Stokey2014} and Stokey(2020)\cite{Stokey2020}, the endogenous growth would happen only if both parts grow at the same time. However, the relationship between automation technology and human capital are competitive. Since workers and R\&D sectors are making decisions separately, the growth can be described as a strategic game between workers and entrepreneurs on decisions of human capital and R\&D investment as described in Redding(1996)\cite{Redding1996}.
+
+
+\section{Model with Automation}
+In this part of the paper, I develop a growth model with endogenous innovation, automation and human capital. This paper is an extension of task model developed by Acemoglu and Restrepo(2018)\cite{AcemogluRestrepo2018}. The growth is driven by the directed research in research and development (R\&D) sector, the human capital growth is endogenized following Grossman et al.(2021)\cite{Grossmanetal2021}.
+
+\subsection{Environment}
+The structure of the model is summarized in figure \ref{model}. The formal model of the economy has three sectors: household, production, and the R\&D sector. Households consume, save and invest in human capital. To produce tasks, task producers purchase patent intermediates (innovation or automation) from the R\&D sector combine them with production factors (capital, low-skill or high-skill labor). Final good producers produce consumption goods by combining intermediate goods produced by task producers. Skilled workers can work as scientists in the R\&D sector to develop innovation or automation patents and sell patent intermediates to task producers. 
+
+\begin{figure}[h!]
+\caption{Model Structure}
+\label{model}
+\includegraphics[width = \textwidth]{Model}
+\end{figure}
+
+The economy is populated by two types of representative households: skilled households and unskilled households. They share the same preference and discount rate, but supply different types of labor and have different ability of leaning. The households make two decisions simultaneously. Firstly, they make consumption-saving decisions to maximize lifetime utility. Secondly, they allocate their time between working and training to optimize their lifetime wage income. Unskilled households supply low-skill labor, and skilled household supply high-skill labor or work as scientists. Physical and human capital are two alternative ways for households to save for the future. If the return to physical capital (interest rate) is higher, households will prefer to save through physical capital; if the return to human capital (wage growth rate) is higher, they will favor human capital investment. 
+
+There are task and final good producers in the production sector, and all the producers are perfectly competitive. To produce tasks, task producers purchase patent intermediates from the R\&D sector and combine them with production factors. If the task has been automated, the producers of this task will purchase automation patent intermediates and choose between labor (low and high-skill) and machines to minimize the production cost. If the task hasn't been automated, the producers of this task will purchase innovation patent intermediates and can only choose between low and high-skill labor to produce the intermediate goods. The final good producers purchase the tasks from the task producers at competitive prices and use a CES production function to combine them into the consumption goods. 
+
+The skilled workers can work as scientists in the R\&D sector to develop new patents. There are two types of patents: innovation patents bring new tasks to the economy, which increases labor productivity and can only be produced by labor; automaton patents allow the firm to use capital instead of labor to produce the task. After developing the patent, the scientists hold the patent right and sell the task-specific patent intermediates to task producers at the price $\psi$. The growth of the economy is endogenous and Schumpeterian. The old tasks are destroyed when new ones are introduced, keeping the task measure constant.\footnote{The task productivity is increasing in the task index. If the variety growth is not excluded, the growth rate will increase over time and converge to infinity.} 
+
+\subsubsection*{Household}
+The economy is populated by two types of representative households: skilled households with measure $\epsilon_H$ and unskilled households with measure $\epsilon_L$. They share the same CRRA preference $\frac{C^{1-\theta}}{1-\theta}$ and discount rate $\rho$, but supply different types of labor and have different ability of leaning. Households maximize their lifetime utility by making consumption-saving and working-learning decisions. 
+
+Unskilled households can only work in production sector and supply low-skill labor. Each period, they receive return to capital $r$, wage income $W_L$ and transfer from government $T_L$. Given the current technological environment, they allocate their time $l_L$ to working and $1-l_L$ to training. The total low-skill labor supply is $\epsilon_Ll_L$. By allocating time to learning, they can increase the wage by increasing the human capital, at the opportunity cost of wage income. The accumulation of human capital is increasing in the time spent on training. 
+\begin{align*}
+\rho V_L(K_L,h_L) = \max_{C_L,L_L,1-l_L} \quad \frac{C_L^{1-\theta}}{1-\theta}+V_{LK}(K_L,h_L)\dot{K}_L+V_{Lh}(K_L,h_L)\dot{h}_L
+\end{align*}
+subject to the low of motion of physical and human capital: 
+\begin{align*}
+\dot{K}_L &=r K_L+\frac{W_LL_L}{\epsilon_L}-\tau_{hL}W_L(1-l_L)+T_L-C_L \\
+\dot{h}_L &= \frac{(1-l_L)^{\alpha_L}}{\mu_{hL}} \\
+L_L &=\epsilon_L l_L
+\end{align*}
+
+Skilled households also receive the return to capital $r$ and transfer from government $T_H$. They are different from unskilled workers in that they can work in the production sector by supplying high-skill labor $L_H$ or the R\&D sector by supplying research labor for automation ($\epsilon_I$) and innovation ($\epsilon_N$). When they work in the production sector, they receive a wage income $W_H$. When they work in the research sector, they hold the patent they develop and receive the patent profits $\Pi$ by selling patent intermediates to task producers.
+\begin{align*}
+\rho V_H(K_H,h_H) = \max_{C_H,L_H,1-l_H} \quad \frac{C_H^{1-\theta}}{1-\theta}+V_{HK}(K_H,h_H)\dot{K}_H+V_{Hh}(K_H,h_H)\dot{h}_H
+\end{align*}
+subject to the low of motion of physical and human capital: 
+\begin{align*}
+\dot{K}_H &= r_t K_H +\frac{W_H L_H+\Pi}{\epsilon_H}-\tau_{hH}W_H(1-l_H)+T_H-C_H \\
+\dot{h}_H &= \frac{(1-l_H)^{\alpha_H}}{\mu_{hH}} \\
+ L_H&=\epsilon_H l_H-\epsilon_N-\epsilon_I
+\end{align*}
+Government subsidizes training at rates $\tau_{hL}$ and $\tau_{hH}$. Training subsidy is linear in the opportunity cost of training. 
+
+The law of motion of human capital is a generalized form of Grossman et al.(2021)\cite{Grossmanetal2021}. $\mu_{hL}$ and $\mu_{hH}$ capture the training efficiency, and $\alpha_L$ and $\alpha_H$ represent the training style. The training efficiency is decreasing in $\mu_{hj}, j\in\{L,H\}$, and the human capital growth converges to 0 when $\mu_{hj}$ converges to infinity. When $\alpha_j \to 0$, the human capital is accumulated through learning-by-doing, and the human capital growth rate is constant, no matter how much time the workers spend on training. When $\alpha_j \to 1$, the human capital is accumulated through learning-or-doing, and the human capital accumulation rate is linear in the time spent on training.\footnote{Grossman et al.(2021) is a special case: $\mu = 1$ and $\alpha=1$}. Here I assume that $0\leq\alpha_L<\alpha_H\leq1$, skilled workers can adjust their human capital accumulation more easily through on-the-job training than unskilled workers, and unskilled workers mainly accumulate their human capital passively through working experience. 
+
+\subsubsection*{Production sector}
+
+The final good sector is perfectly competitive and produce the consumption good $Y$ by combining a unit measure of tasks $i\in [N-1,N]$, with an elasticity of substitution $\sigma \in (0,\infty)$. $y(i)$ is the output of each task $i$. The creation of newest tasks will destroy the oldest tasks, so the total measure of the task in this economy remains constant $1$. 
+\begin{align*}
+Y = \tilde{A}\Big(\int_{N-1}^{N}y(i)^{\frac{\sigma-1}{\sigma}}di\Big)^{\frac{\sigma}{\sigma-1}}
+\end{align*}
+The competitive final good producers purchase the task $i$ from task producer at price $p(i)$, and solve the following problem:
+\begin{align*}
+\max \quad & Y-\int_{N-1}^Np(i)y(i)di 
+\end{align*}
+
+The task sector is also competitive; task producers purchase task-specific intermediates $q(i)$ at price $\psi$ from patent holders, which embodies the technology. Then they combine the task-specific intermediates with production factors (capital or labor). Suppose the automation patent has not been developed for the task. In that case, the task producers can only purchase the innovation patent intermediates. They can only use labor (high-skill $h(i)$ or low-skill $l(i)$) to produce the intermediate goods $y(i)$. If the task has been automated, the task producer can choose between automation and innovation patent and combine capital $k(i)$ with automation patent or labor with innovation patent. The production function of task producers is Cobb-Douglass. 
+\begin{align*}
+y(i) &= 
+\begin{dcases}
+q(i)^{\eta}\Big(k(i) + \gamma_L(i,h_L)l(i)+\gamma_H(i,h_H)h(i)\Big)^{1-\eta} , &\quad \text{$i$ is automated}  \\
+q(i)^{\eta}\Big(\gamma_L(i,h_L)l(i)+\gamma_H(i,h_H)h(i)\Big)^{1-\eta} ,&\quad \text{$i$ is not automated}
+\end{dcases} 
+\end{align*}
+When the intermediate goods $y(i)$ are produced with machine, the productivity is normalized to 1. The productivity of the skilled worker $\gamma_H(i,h_H)$ and the unskilled worker $\gamma_L(i,h_L)$ is increasing in the task index $i$ and the worker's human capital level $h_H$ and $h_L$. 
+The task producers solve the following problem 
+\begin{align*}
+\max \quad  p(i)&y(i)-Rk(i)-W_Ll(i)-W_Hh(i)-\psi q(i) 
+\end{align*}
+
+\subsubsection*{Research sector}
+Some skilled workers will work as scientists in the R\&D sector to develop new automation and innovation patents. An innovation patent introduces a new task to the economy and increases the productivity of labor, automation patent allows the firm to produce the task using machines and improves the production factor allocation. After developing new patents, they sell task-specific intermediates to task producers at the price $\psi$ until the patent is outdated and destroyed. When the patent is destroyed, the patent will be forced to exit the market and get compensated by the new entry. \footnote{I borrow this structure of intellectual property rights from Acemoglu and Restrepo(2018)\cite{AcemogluRestrepo2018} to remove the creative destruction. They show that the structure with creative destruction has similar implications but introduces additional unstability to the model.} The values of automation and innovation patents are defined as the sum of discounted profit by selling patent intermediates, denoted by $P_N$ and $P_I$. The amount of automation and innovation patents introduced to the economy ($\kappa_I$ and $\kappa_N$) are functions of scientists hired in each sector ($\epsilon_I$ and $\epsilon_N$).
+Assume that the production functions of the R\&D sector take the form: 
+\begin{align*}
+\kappa_I(\epsilon_I) &= \frac{\epsilon_I^\lambda}{\mu_I} \\
+\kappa_N(\epsilon_N) &= \frac{\epsilon_N^\lambda}{\mu_N}, \quad 0<\lambda\leq 1
+\end{align*}
+
+The amount of new patents developed is increasing in the scientists working in the sector, with decreasing marginal productivity. Bloom et al.(2020)\cite{Bloometal2020} find empirical evidence showing that research effort is rising while research productivity is declining. $\mu_I$ and $\mu_N$ capture the research efficiency. The research is more efficient with smaller $\mu_I$ and $\mu_N$. 
+
+\subsection{Equilibrium in Static Model}
+In this subsection, I start with a static version of the model to characterize the impact of automation, innovation and human capital on allocation, factor prices and labor share. In the next subsection, I will bring the static framework to a dynamic environment, to understand the interaction between the change of technology and human capital. 
+
+By solving the final good producers' problem (see appendix), we can derive the demand function for task $i$ as a function of the task price.
+\begin{align*}
+y(i) = \tilde{A}^{\sigma-1}Yp(i)^{-\sigma}
+\end{align*}
+
+The task producers sell the tasks to final good producers. The task sector is perfectly competitive, so the price of the task $p(i)$ will equal the cost of production (see appendix). The effective cost depends on the ratio between the factor price and the factor productivity of the task. When the task has been automated, the task producers will choose between capital and labor to minimize the production cost; when the task is new and has not been automated, the task producers can only select between high-skill and low-skill labor. 
+\begin{align*}
+p(i) &= 
+\begin{dcases}
+\Psi \min\{R^{1-\eta},\Big(\frac{W_L}{\gamma_L(i,h_L)}\Big)^{1-\eta},\Big(\frac{W_H}{\gamma_L(i,h_H)}\Big)^{1-\eta}\} &\text{, if automated}  \\
+\Psi \min\{\Big(\frac{W_L}{\gamma_L(i,h_L)}\Big)^{1-\eta},\Big(\frac{W_H}{\gamma_L(i,h_H)}\Big)^{1-\eta}\} &\text{, if new}
+\end{dcases} \\
+\text{where } \Psi &= (\frac{\psi}{\eta})^{\eta}(\frac{1}{1-\eta})^{1-\eta}
+\end{align*}
+
+Plug the price $p(i)$ in the demand function derived from the final good sector above, the output of each task can be solved as (see Appendix): 
+\begin{align*}
+p(i)y(i) &= 
+\begin{dcases}
+Y\Big(\frac{R}{A}\Big)^{1-\hat{\sigma}}, &\quad  \text{, using capital}  \\
+Y\Big(\frac{W_L}{A\gamma_L(i,h_L)}\Big)^{1-\hat{\sigma}}, &\quad  \text{, using low-skill labor}    \\
+Y\Big(\frac{W_H}{A\gamma_H(i,h_H)}\Big)^{1-\hat{\sigma}}, &\quad  \text{, using high-skill labor} 
+\end{dcases}
+\end{align*}
+Where $\hat{\sigma} = 1-(1-\eta)(1-\sigma)$ and $A = \Big(\frac{\tilde{A}}{\Psi}\Big)^{\frac{\sigma-1}{\hat{\sigma}-1}}  = \Big(\frac{\tilde{A}}{\Psi}\Big)^{\frac{1}{1-\eta}}$.
+
+\begin{assumption}{\bf (Elasticity of substitution)}
+
+Assume that $\hat{\sigma}>1$
+\end{assumption}
+
+When $\hat{\sigma}>1$, the tasks are substitutes. The output of the task is increasing in the task productivity and decreasing in the factor price. The demands for factors are decreasing in the factor prices. More workers are hired when they have higher task productivity. 
+
+
+\begin{assumption}{\bf (Task productivity)}
+
+Assume that skilled workers have comparative advantage in high index tasks over machine and unskilled workers, all workers have absolute advantage over machine. The productivity of machine is constant over all tasks and is normalized to 1. 
+\begin{align*}
+\gamma_K &= 1 \\
+\gamma_H(i,h_H) &=e^{B(i)} e^{bh_H} \\
+\gamma_L(i,h_L) &= e^{B(N-1)+B_L(i-(N-1))} e^{bh_L}
+\end{align*}
+\end{assumption}
+
+The innovation patent is complementary to skill and directly increases the productivity of skilled workers at the rate $B$. The technology also has a spillover effect and increases the productivity of unskilled workers.\footnote{To assure the existence of a balanced growth path. Without the spillover effect, the wage premium $W_H/W_L$ converges to infinity in the long run.} The productivity of skilled and unskilled workers is always the same for the most outdated task ($N-1$), but skilled workers have a comparative advantage over unskilled workers for new tasks. The newer the tasks, the more comparative advantage the skilled workers have. Task productivity is also increasing in the human capital level. Human capital is general and increases workers' productivity for all tasks.  
+
+
+\begin{proposition}{\bf (Allocation)}
+
+Research sector always automate from the low index tasks, there exists automation level $I$, such that all the tasks between $N-1$ and $I$ are produced by machine, and all the tasks between $I$ and $N$ are produced by labor. Given automation level $I$, there exists cutoff point $S$, such that all the tasks between $I$ and $S$ are produced by high-skill labor, and all the tasks between $S$ and $N$ are produced by low-skill labor. 
+
+The task producers have incentive to adopt the newest automation patent when the following condition is satisfied:
+\begin{align*}
+R < \frac{W_L}{\gamma_L(I,h_L)}
+\end{align*}
+The task producers have incentive to adopt the newest innovation patent when the following condition is satisfied: 
+\begin{align*}
+R > \frac{W_H}{\gamma_H(N,h_H)}
+\end{align*}
+The allocation $S$ must satisfy the non-arbitrage condition (see Appendix): 
+\begin{align*}
+\frac{W_H}{\gamma_H(S,h_L)} = \frac{W_L}{\gamma_L(S,h_L)}
+\end{align*}
+\end{proposition}
+
+\begin{figure}
+\caption{Task Allocation}
+\label{allocation}
+\includegraphics[width=\textwidth]{allocation}
+\end{figure}
+Workers have comparative advantage over machine on more updated tasks. The R\&D sector will always automate the oldest tasks that have not been automated, because the automation patent can generate more profit in the more outdated tasks. The R\&D sector have incentive to develop the automation patent only if the firm is willing to purchase the automation patent once the patent is developed; so all the automated tasks are produced using machine. For the tasks that are not automated, skilled workers have more advantage in the high index tasks, so the newest tasks are taken by skilled workers, and the unskilled workers will take the less updated tasks. 
+
+
+\begin{proposition}{\bf (Equilibrium in the static model)}
+
+After solving the firm's optimization problem, and applying market clearing condition, the aggregate production function can be written as CES production function, where the productivity of each production factor is determined endogenously by allocation. 
+\begin{align}
+\label{output}
+Y = \frac{A}{1-\eta}\Big((\Gamma_KK)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}+(\Gamma_LL_L)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}+(\Gamma_HL_H)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}\Big)^{\frac{\hat{\sigma}}{\hat{\sigma}-1}}
+\end{align}
+The equilibrium price and factor share can be solved as
+\begin{align*}
+R &=A\Gamma_K\Big(\frac{(1-\eta)Y}{A\Gamma_KK}\Big)^{\frac{1}{\hat{\sigma}}},   \quad s_K= \frac{RK}{Y} \\
+W_H &=A\Gamma_H\Big(\frac{(1-\eta)Y}{A\Gamma_HL_H}\Big)^{\frac{1}{\hat{\sigma}}},  \quad s_H = \frac{W_HL_H}{Y} \\
+W_L &= A\Gamma_L\Big(\frac{(1-\eta)Y}{A\Gamma_LL_L}\Big)^{\frac{1}{\hat{\sigma}}},  \quad s_L = \frac{W_LL_L}{Y}  \\
+\omega &= \frac{W_H}{W_L} = \Big(\frac{\Gamma_H}{\Gamma_L} \Big)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}\Big(\frac{L_L}{L_H} \Big)^{\frac{1}{\hat{\sigma}}}
+\end{align*}
+Where $\Gamma_K$, $\Gamma_L$, and $\Gamma_H$ represent the productivity of capital, low-skill and high-skill labor, and are determined endogenously by allocation.
+\begin{align}
+\label{Gamma_K}
+\Gamma_K(\tilde{I}) &= \tilde{I}^{\frac{1}{\hat{\sigma}-1}} \\
+\label{Gamma_H}
+\begin{split}
+\Gamma_H(N,\tilde{I},\tilde{S},h_H)  &= \gamma_H(N,h_H)\Big(\frac{1-e^{-B(1-\tilde{S})(\hat{\sigma}-1)}}{B(\hat{\sigma}-1)}\Big)^{\frac{1}{\hat{\sigma}-1}} \\
+&= \underbrace{\gamma_H(N,h_H)}_{\text{Tech frontier}}\underbrace{\tilde{\Gamma}_H(\tilde{S})}_{\text{Allocation}}
+\end{split}
+\\
+\label{Gamma_L}
+\begin{split}
+\Gamma_L(N,\tilde{I},\tilde{S},h_L)  &= \gamma_L(N,h_L)\Big(\frac{e^{-B_L(1-\tilde{S})(\hat{\sigma}-1)}-e^{-B_L(1-\tilde{I})(\hat{\sigma}-1)}}{B_L(\hat{\sigma}-1)}\Big)^{\frac{1}{\hat{\sigma}-1}}\\
+ &=\frac{\gamma_H(N,h_H)}{\gamma_{HL}}\tilde{\Gamma}_L(\tilde{I},\tilde{S})
+ \end{split}
+\end{align}
+Where $\tilde{I} = I-(N-1)$ represents the automation level, and $\tilde{S} = S-(N-1)$ represents the labor allocation. $\gamma_{HL} = e^{(B-B_L)+bh_{HL}}$ represents the absolute advantage of skilled labor over unskilled labor on the frontier task $N$, $h_{HL} = h_H-h_L$ represents the human capital gap between skilled and unskilled workers.  
+\end{proposition}
+
+As shown in equation (\ref{Gamma_K}), capital productivity $\Gamma_K$ is a function of automation. When more tasks are automated, task producers use the machine to replace labor, $\Gamma_K$ will increase, but $\Gamma_L$ and $\Gamma_H$ will decrease. An increase in automation level increases the demand for capital but reduces the demand for both types of labor. As a result, the capital share will increase, and the labor share will decrease. Innovation does the opposite; it introduces new labor tasks, destroys old machine tasks, and increases labor productivity. 
+
+As shown in equation (\ref{Gamma_H}) and (\ref{Gamma_L}), labor productivity $\Gamma_H$ and $\Gamma_L$ depend on the allocation and human capital level. Human capital accumulation increases $\Gamma_L$ and $\Gamma_H$, which raises the wage level and labor share. $\Gamma_H$ and $\Gamma_L$ can be decomposed into two parts. The first part, $\gamma_H(N,h_H)$ or $\gamma_L(N,h_L)$, represents the technology frontier, the highest task productivity of each skill group. The second part, $\tilde{\Gamma}_H$ or $\tilde{\Gamma}_L$, captures the allocation. i.e., the range of tasks produced by this type of worker. The ratio between $\Gamma_H$ and $\Gamma_L$ is increasing in the comparative advantage of skilled workers $B-B_L$ and the human capital gap $h_{HL}$. More tasks will be produced by skilled workers when skilled workers have a higher comparative advantage and larger human capital gap than unskilled workers. The skill wage premium will increase when more tasks are assigned to skilled workers. 
+
+
+\begin{proposition}{\bf (Comparative statistics)}
+The change of labor share is given by equation (\ref{ds_L}). 
+\begin{align}
+\label{ds_L}
+\begin{split}
+d\ln(s_{L}+s_{H}) &= \frac{\hat{\sigma}-1}{\hat{\sigma}}\frac{s_K}{1-\eta}\underbrace{( \frac{s_L}{s_L+s_H}\frac{d\ln\tilde{\Gamma}_L}{d\tilde{I}}-\frac{d\ln H}{d\tilde{I}}}_{\text{Automation}})d\tilde{I}\\
+&-\frac{\hat{\sigma}-1}{\hat{\sigma}}\frac{s_K}{1-\eta}\underbrace{(d\ln K -BdN-bdh-d\ln L)}_{\text{Capital deepening}}
+ \end{split}
+\end{align}
+Where the average change of human capital and labor supply is defined as: 
+\begin{align*}
+d\ln h &= \frac{s_H}{s_H+s_L}d\ln h_H+\frac{s_L}{s_H+s_L}d\ln h_L\\
+d\ln L &= \frac{s_H}{s_H+s_L}d\ln L_L+\frac{s_L}{s_H+s_L}d\ln L_L
+\end{align*}
+The change of allocation $\tilde{S}$ and wage is given by equation (\ref{dS})-(\ref{dw}). 
+\begin{align}
+\label{dS}
+\underbrace{d\tilde{S}}_{\text{Allocation}} &= \frac{1}{\epsilon(\tilde{S})}\Big(\underbrace{\frac{1}{\hat{\sigma}}(d\ln L_L-d\ln L_H-bdh_{HL})}_{\text{Labor supply}}-\underbrace{\frac{\hat{\sigma}-1}{\hat{\sigma}}\frac{d\ln\tilde{\Gamma}_L}{d\tilde{I}}d\tilde{I}}_{\text{Automaton}}\Big) \\ 
+\label{dW_L}
+d \ln W_L &= \underbrace{d \ln Y}_{\text{Productivity}} + \underbrace{\frac{\hat{\sigma}-1}{\hat{\sigma}}\frac{d\ln\tilde{\Gamma}_L}{d\tilde{I}}d\tilde{I}}_{Displacement}+ \underbrace{\frac{\hat{\sigma}-1}{\hat{\sigma}}\frac{d\ln\tilde{\Gamma}_L}{d\tilde{S}}d\tilde{S}}_{\text{Relocate}}\\
+\label{dW_H}
+d \ln W_H &= \underbrace{d \ln Y}_{\text{Productivity}}  + \underbrace{\frac{\hat{\sigma}-1}{\hat{\sigma}}\frac{d\ln\tilde{\Gamma}_H}{d\tilde{S}}d\tilde{S}}_{\text{Relocate}} \\
+\label{dw}
+d \ln \omega &=(B-B_L)d\tilde{S}+bdh_{HL}
+\end{align}
+$\epsilon(\tilde{S})$ is the inverse of allocation elasticity. 
+\begin{align}
+\label{eS}
+\epsilon(\tilde{S})&= \underbrace{\frac{\hat{\sigma}-1}{\hat{\sigma}}(\frac{d\ln \tilde{\Gamma}_L}{d\tilde{S}}-\frac{d\ln \tilde{\Gamma}_H}{d\tilde{S}})}_{\text{Wage elasticity}}
+								 +\underbrace{(B-B_L)}_{\text{Comparative advantage}}
+\end{align}
+\end{proposition}
+
+As shown in equation (\ref{dS}), right after an increase in automation, the wage of unskilled workers will decrease through the displacement effect shown in equation  (\ref{dW_L}). At the original cutoff point $S$, the unit cost of using unskilled workers will be lower than using skilled workers. The unskilled workers then will relocate and take on some tasks that used to be performed by skilled workers until the non-arbitrage condition is satisfied again. The shift of allocation $S$ depends on the allocation elasticity derived in equation (\ref{eS}). The labor allocation change is decreasing in the wage elasticity and comparative advantage of skilled workers. When the wage is elastic to the allocation, the non-arbitrage condition will be satisfied with a slight allocation change. With a high comparative advantage of skilled workers, the allocation will be sticky since it's difficult to use unskilled workers to substitute the skilled workers. 
+
+Equation (\ref{ds_L}) shows how the labor share responds to the change in automation and human capital. An increase in automation decreases the labor share since it displaces unskilled workers directly. Human capital accumulation increases the labor share by increasing the effective labor supply. 
+
+The responses of wage level are calculated in equation (\ref{dW_L}) and (\ref{dW_H}). Since automation improves the allocation, it increases the wage for all the workers through the productivity effect. However, it decreases the wage of unskilled workers directly through the displacement effect and the wage of skilled workers through relocation. 
+
+After an increase in automation, the wage premium, as shown in equation (\ref{dw}), will always increase. Automation pushes unskilled workers to tasks where they have a disadvantage compared to skilled workers. The change in wage premium is increasing in the comparative advantage and decreasing in the wage elasticity. When the comparative advantage is higher, the unskilled workers will absorb more impact from automation since the cost of relocation for unskilled workers is high. Unskilled workers will have to accept a lower wage to compete with skilled workers because their productivity is much lower at those tasks. When the wage elasticity is higher, the unskilled workers can pass more effects of automation to skilled workers since they can benefit more from the relocation.
+
+Automation and human capital are two opposite forces determining labor share. An increase in automation decreases the labor share, while an increase in human capital does the opposite. Although unskilled workers can relocate after an increase in automation, an increase in automation always raise the wage premium. The wage premium increases more when the comparative advantage of skilled workers is high, and the wage is inelastic to the allocation. The total change of wage premium after an increase in automation also depends on the human capital response. If the human capital gap is enlarged after an increase in automation, the effect of automation on inequality will be amplified. In order to understand the full effect of automation, I need to bring the static frame into a dynamic environment. 
+
+
+\section{Dynamics and Balanced Growth Path}
+In this section, I bring the static framework above into a dynamic environment. Firstly, capital accumulation is endogenous. The capital accumulation responds to the change of technology and human capital growth. Secondly, the human capital growth is endogenous, depending on the time spent on training. Thirdly, the R\&D is endogenous and directed, the automation level and technology growth rate is a result of R\&D investment.
+
+\subsection{Balanced Growth Path}
+\subsubsection*{Household}
+Given the interest rate $r(t)$, wage $W_H(h_H,t)$ and $W_L(h_L,t)$, technology growth rate $g_N(t)$ and $g_I(t)$, and human capital growth rate $g_{hH}(t)$ and  $g_{hL}(t)$, households maximize their lifetime utility. By solving the households' problem, I can solve the intertemporal Euler equation, which characterizes the consumption-saving decision: 
+\begin{align}
+\frac{\dot{C}_H}{C_H} &= \frac{\dot{C}_L}{C_L}  = \frac{r-\rho}{\theta} 
+\end{align}
+
+The intratemporal Euler equation characterizes the optimal training decision for unskilled and skilled workers $j\in\{L,H\}$
+\begin{align}
+&\underbrace{\frac{\delta \log W_j(h_j)l_j}{\delta h_j}\frac{\delta \dot{h}_j}{\delta (1-l_j)}}_{\text{Direct wage gain}}+\underbrace{\frac{\delta \log W_j(h_j)}{\delta h_j}\dot{h}_j+\frac{\delta \log W_j(h_j)}{\delta t}}_{\text{Return to human capital}}= r(1+\tau_{hj})
+\end{align}
+The physical capital and the human capital are two ways for the workers to save for the future. The training incentive is decreasing in interest rate $r$, high interest rate increases the opportunity cost of training. The training incentive is increasing in the return to human capital. Higher wage growth makes the household more willing to put effort into the training.
+
+By plugging in the production function, marginal return rate of training is constant $b$, since the human capital is general and the growth rate of wage is linear in the human capital increase. 
+\begin{align*}
+\frac{d\log W_H(h_H,t)}{dh_H} = \frac{d\log W_L(h_L,t)}{dh_L} = b
+\end{align*}
+Wage growth rate depends on the technology growth rate and the aggregate human capital growth rate: 
+\begin{align}
+\label{gW_H}
+\frac{dW_H(h_H,t)}{dt} &= g_{WN}+g_{WI}+\frac{s_L}{s_H+s_L}g_{WS}\\
+\label{gW_L}
+\frac{dW_L(h_L,t)}{dt}  &= g_{WN}+g_{WI}-\frac{s_H}{s_H+s_L}g_{WS}
+\end{align}
+$g_{WN}$ and $g_{WI}$ are common effect of innovation and automation on wage growth for both skilled and unskilled workers.The difference between the skilled and unskilled workers' wage growth is contributed mainly by the shift of allocation $g_{WS}$. 
+\begin{align}
+\label{g_WN}
+g_{WN} &= \underbrace{Bg_N}_{\text{Productivity}}+\underbrace{a(\tilde{I})(g_K-g_L-Bg_N-bg_h)}_{\text{Capital deepening}} \\
+\label{g_WI}
+g_{WI} &= \underbrace{a(\tilde{I})\frac{d\ln H}{d\tilde{I}}(g_I-g_N)}_{\text{Productivity}}+\underbrace{\frac{s_L}{s_H+s_L}(1-a(\tilde{I}))\frac{d\ln \tilde{\Gamma}_L}{d\tilde{I}}(g_I-g_N)}_{\text{Displacement}} \\
+\label{g_WS}
+g_{WS}&= \frac{B-B_L}{\epsilon(\tilde{S})}(\underbrace{\frac{1}{\hat{\sigma}}(g_{LL}-g_{LH}+b(g_{hL}-g_{hH}))}_{\text{Labor supply}}-\underbrace{\frac{\hat{\sigma}-1}{\hat{\sigma}}\frac{d\ln \tilde{\Gamma}_L}{d\tilde{I}}(g_I-g_N)}_{\text{Relocation}}) 
+\end{align}
+Where $a(\tilde{I})$ is defined as the importance of capital:
+\begin{align*}
+a(\tilde{I}) &= \frac{1}{\hat{\sigma}}\frac{s_K}{1-\eta} 
+\end{align*}
+$g_{WN}$ (equation \ref{g_WN}) is composed of the two standard growth component: increase of technology frontier and capital accumulation. An increase of innovation always increases the wage for all the workers since it pushed the technology frontier and increases the productivity of all the workers. $g_{WI}$ (equation \ref{g_WI}) is the common effect of automation on all the skill groups. Automation improves allocation and increases the overall productivity, but it could decrease the wage growth through displacement effect. $g_{WS}$ (equation \ref{g_WS}) captures the uneven wage growth as a result of change in allocation. Automation always decreases the wage of unskilled workers more than that of skilled workers. The human capital investment of different skill groups are complementary, skilled workers have more incentive to invest in human capital if unskilled workers increase their time spent on training, and vice versa. 
+Where $g_{LH}$ and $g_{LL}$ are growth rate of labor supply, and $g_K$ is growth rate of capital supply. 
+\begin{align*}
+g_h &= \frac{s_H}{s_H+s_L}g_{hH}+\frac{s_L}{s_H+s_L}g_{hH} \\
+g_L &= \frac{s_H}{s_H+s_L}g_{LH}+\frac{s_L}{s_H+s_L}g_{LH}
+\end{align*}
+
+\subsubsection*{R\&D sector}
+After developing new tasks, the R\&D sector produces task-specific intermediates and sells them to task producers. The production function of task producers is assumed to be Cobb-Douglas, the patent profit is a constant share $\eta$ of the output. 
+\begin{align*}
+\text{Automation: } \pi_I(t)& =\eta y(i) = \eta(\frac{R(t)}{A})^{1-\hat{\sigma}}Y(t)\\
+\text{Innovation: } \pi_N(i,t)&= \eta y(i) = 
+\begin{dcases}
+\eta(\frac{W_H(t)}{A\gamma_H(i,h_H(t))})^{1-\hat{\sigma}}Y(t),  \quad & i>S(t)  \\
+\eta(\frac{W_L(t)}{A\gamma_L(i,h_L(t))})^{1-\hat{\sigma}}Y(t),  \quad & i \leq S(t)
+\end{dcases}
+\end{align*}
+
+Similar to the task output, the patent profit is decreasing in the factor price but increasing in the task productivity. The increase of automation increases the demand for capital and decreases the demand for labor. With a higher capital price and lower wage level, the automation patent value will rise, and the innovation patent value will fall. The development of innovation patents does the opposite. When $\hat{\sigma}>1$, the innovation patent profit is increasing in the human capital. 
+
+Accumulating human capital increases task productivity more than the wage level, increasing the output and patent profit. The human capital and innovation R\&D investment are complementary. Human capital increases the profit of innovation patents and the incentive of R\&D sector to innovate new tasks. 
+
+The patent value can be derived as the net gain of the new patent. When new task producers enter the market, they need to compensate the incumbent firms, who are forced to exit the market. Government imposes taxes on patent profit, $\tau_I$ for automation patents, and $\tau_N$ for innovation patents. The value of automation patent $P_I$ and innovation patent $P_N$ are derived in equation ($\ref{P_N}$) and ($\ref{P_I}$).
+\begin{align}
+\label{P_N}
+P_N(t) &= (1-\tau_N)V_N(N(t),t)-(1-\tau_I)V_I(t) \\
+\label{P_I}
+P_I(t) &= (1-\tau_I)V_I(t)-(1-\tau_N)V_N(I(t),t) 
+\end{align}
+The value of innovation patent $P_N$ (automation patent $P_I$) is the total future profit generated by the innovation patent of task $N(t)$ (the automation patent of task $I(t)$), subtracted by the compensation paid to the incumbent—automation patent holder of task $N(t)-1$ (innovation patent holder of task $I(t)$). $V_I(t)$ and $V_N(i,t)$ are the discounted value of future profit by holding an automation patent and an innovation patent for task $i$ at time $t$ if the tasks are never destroyed.
+\begin{align}
+\label{V_N}
+V_N(i,t) &= \int_{t}^{\infty} e^{-\int_{t}^{\tau}r(s)ds}\pi_N(i,\tau)d\tau \\
+\label{V_I}
+V_I(t)&= \int_{t}^{\infty} e^{-\int_{t}^{\tau}r(s)ds}\pi_I(\tau)d\tau 
+\end{align} 
+
+It's straightforward to solve the expected profit of automation patent $V_I$ and the most outdated innovation patent $V_N(I(t),t)$. The value of $V_I$ and $V_N(I(t),t)$ are stated in equation (\ref{V_I}) and (\ref{V_NI}). Automation patents will always be produced by capital, and the most outdated innovation patent will always be produced by unskilled workers. The profitability of automation patents stays constant since the task productivity of capital is constant and normalized to 1. The profitability of innovation patents is decreasing over time because the comparative productivity of the task is decreasing as it's further to the technology frontier. 
+ \begin{align}
+ \label{V_I}
+&V_I(t)= \eta\int_t^{\infty} e^{-\int_{t}^{\tau}r(s)ds}(\frac{R}{A})^{1-\hat{\sigma}}Y(\tau)d\tau \\
+\label{V_NI}
+\begin{split}
+&V_N(I(t),t) =\eta \int_t^{\infty} e^{-\int_{t}^{\tau}r(s)ds}(\frac{W_L(\tau)}{A\gamma(I(t),h_L(\tau))})^{1-\hat{\sigma}}Y(\tau)d\tau \\
+&= \eta e^{(\hat{\sigma}-1)B_L\tilde{I}(t)}\int_t^{\infty} e^{-\int_{t}^{\tau}(r(s)+(\hat{\sigma}-1)B_Lg_N(s))ds}(\frac{W_L(\tau)}{A\gamma(N(\tau),h_L(\tau))})^{1-\hat{\sigma}}Y(\tau)d\tau
+\end{split}				
+ \end{align}
+
+The newest task introduced by innovation patent $V_N(N(t),t)$ will firstly be produced by skilled workers, then by unskilled workers when it gets more outdated. In order to solve the value of newest innovation patent, define the value of newest patent $N(t)$ at time $t$ be $V_{NH}(t)$ if the task is produced by skilled workers and $V_{NL}(t)$ if it's produced by unskilled workers. The values of $V_{NH}(t)$ and $V_{NL}(t)$ are derived in equation (\ref{V_NH}) and (\ref{V_NL}). 
+\begin{align}
+\label{V_NH}
+\begin{split}
+V_{NH}(t) &= \eta\int_t^{\infty} e^{-\int_{t}^{\tau}r(s)ds}(\frac{W_H(\tau)}{A\gamma(N(t),h_H(\tau))})^{1-\hat{\sigma}}Y(\tau)d\tau \\
+								&= \eta\int_t^{\infty} e^{-\int_{t}^{\tau}(r(s)+(\hat{\sigma}-1)Bg_N)ds}(\frac{W_H(\tau)}{A\gamma(N(\tau),h_H(\tau))})^{1-\hat{\sigma}}Y(\tau)d\tau
+\end{split} \\
+\label{V_NL}
+\begin{split}
+V_{NL}(t) &=\eta \int_t^{\infty} e^{-\int_{t}^{\tau}r(s)ds}(\frac{W_L(\tau)}{A\gamma(N(t),h_L(\tau))})^{1-\hat{\sigma}}Y(\tau)d\tau \\
+								&= \eta \int_t^{\infty} e^{-\int_{t}^{\tau}(r(s)+(\hat{\sigma}-1)B_Lg_N)ds}(\frac{W_L(\tau)}{A\gamma(N(\tau),h_L(\tau))})^{1-\hat{\sigma}}Y(\tau)d\tau
+\end{split}
+\end{align}
+Define $\tilde{\tau}(t)$ as the stopping time when the task $N(t)$ is switched from skilled workers to unskilled worker, i.e., $S(\tilde{\tau}(t)) = N(t)$. The expected profit of innovation patent can be solved explicitly in equation (\ref{V_NN})
+\begin{align}
+\label{V_NN}
+\begin{split}
+ V_N(N(t),t) = V_{NH}(t)-e^{-\int_{t}^{\tilde{\tau}(t)}(r(s)+(\hat{\sigma}-1)Bg_N))ds}V_{NH}(\tilde{\tau}(t)) \\
+ +e^{-\int_{t}^{\tilde{\tau}(t)}(r(s)+(\hat{\sigma}-1)B_Lg_N))ds}V_{NL}(\tilde{\tau}(t)) 
+ \end{split}
+\end{align}
+
+The non-arbitrage condition needs to be satisfied between the production and R\&D sector, so the number of scientists working in each research sector must satisfy
+\begin{align*}
+\frac{\lambda\epsilon_N(t)^{\lambda-1}}{\mu_N}P_N(t)= \frac{\lambda\epsilon_I(t)^{\lambda-1}}{\mu_I}P_I(t) = W_H(t)
+\end{align*}
+
+\subsubsection*{Market clear and Consistency}
+The human capital and technology growth rate chosen by the households and R\&D sector need to be consistent with the given aggregate growth rate:
+\begin{align*}
+g_{hH} = \frac{(1-l_H)^{\alpha_H}}{\mu_{hH}}, \quad g_{hL} = \frac{(1-l_L)^{\alpha_L}}{\mu_{hL}}, \quad g_N = \frac{\epsilon_N^{\lambda}}{\mu_N}, \quad g_I = \frac{\epsilon_I^{\lambda}}{\mu_I} 
+\end{align*}
+The capital and labor market need to be clear: 
+\begin{align*}
+\int_{N-1}^N k(i) di &= K = \epsilon_H K_H + \epsilon_L K_L \\\
+\int_{N-1}^N l(i) di &= L_L = \epsilon_L l_L \\
+\int_{N-1}^N h(i) di &= L_H = \epsilon_H l_H-\epsilon_N-\epsilon_I
+\end{align*}
+
+\subsubsection*{BGP}
+After solving the dynamic problem of the households and R\&D sector, I can characterize the Balanced Growth Path (BGP). Define normalized variables $x$ as the original variables $X$ normalized by economic growth $e^{-\int_0^{t}g(\tau)d\tau}$ or technology frontier $\gamma_H(N,h_H)$. The economy's growth rate is defined as the total growth of technology and human capital $g = Bg_N+bg_{hH}$. A balanced growth path (BGP) is defined as a transition path on which the growth rates $\{g_N, g_I, g_{hH},g_{hL}\}$, the automation level and the labor allocation $\{\tilde{I},\tilde{S}\}$, the factor shares $\{s_K,s_L, s_H\}$, the rental rate of capital $\{r\}$ and the labor supply $\{L_H, L_L\}$ are constant over time. The normalized factor productivity $\{\tilde{\Gamma}_H, \tilde{\Gamma}_L, \gamma_{HL}\}$, capital, output and consumption $\{k, y, c_H, c_L\}$, labor wages $\{\omega_H, \omega_L\}$, expected patent profit $\{v_N,v_I,v_{NH},v_{NL}\}$ and patent value $\{p_N, p_I\}$ are also constant on BGP.
+
+The euler equation with normalized variables can be written as: 
+\begin{align*}
+\frac{\dot{c_H}}{c_H} = \frac{\dot{c_L}}{c_L} = \frac{r-\rho}{\theta}-g = 0 
+\end{align*}
+On the balanced growth path, the interest rate needs to satisfy: 
+\begin{align}
+\label{LRR}
+r = \rho+\theta g = \rho+\theta(Bg_N+bg_{hH})
+\end{align}
+
+With constant growth rate, interest rate and wages, the value of automation and innovation patents are constant. 
+\begin{align*}
+p_N &= (1-\tau_N)v_N(N)-(1-\tau_I)v_I\\
+p_I &= (1-\tau_I)v_I-(1-\tau_N)v_N(I) 
+\end{align*}
+Where $v_N(N)$, $v_N(I)$ and $v_I$ can be solved explicitly, with $\tilde{t}-t =\frac{1-\tilde{S}}{g_N}$.
+\begin{align}
+\label{V_NN1}
+\begin{split}
+v_N(N) &= v_{NH}+e^{-(r-g+(\hat{\sigma}-1)B_Lg_N)(\tilde{t}-t)}v_{NL} \\
+&\quad \quad \quad -e^{-(r-g+(\hat{\sigma}-1)Bg_N)(\tilde{t}-t)}v_{NH} 
+\end{split} \\
+\label{V_NI1} 
+v_N(I) &=e^{-(\hat{\sigma}-1)B_L(1-\tilde{I})}v_{NL} \\
+\label{V_I1}
+v_I &= \eta\frac{1}{r-g}(\frac{R}{A})^{1-\hat{\sigma}}y
+\end{align}
+$v_{NH}$ and $v_{NL}$ are also constant on the BGP. 
+\begin{align}
+\label{V_NH1} 
+v_{NH} &= \eta\frac{1}{r-g+(\hat{\sigma}-1)Bg_N}(\frac{\omega_H}{A})^{1-\hat{\sigma}}y \\
+\label{V_NL1} 
+v_{NL} &=\eta \frac{1}{r-g+(\hat{\sigma}-1)B_Lg_N}(\frac{\gamma_{HL}\omega_L}{A})^{1-\hat{\sigma}}y 
+\end{align}
+The value of patents depends mainly on the automation level. Suppose the long-run interest rate is not too low. In that case, we can see from equations (\ref{V_I1}), (\ref{V_NH1}), and (\ref{V_NL1}) that an increase in automation decreases the wage level, decreases the patent value of automation, and increases the patent value of innovation.\footnote{See Acemoglu and Restrepo (2018)\cite{AcemogluRestrepo2018} for more details.} Also, with a higher automation level, as shown by equation (\ref{V_NI1}), unskilled workers are performing the tasks they have more comparative advantages over the machine, lowering further the value of the automation patent. Higher technology growth rate $g_N$ has an ambiguous effect on the patent value. It decreases automation patents' profit by driving up the interest rate. At the same time, it decreases innovation patents' expected profit by accelerating innovation patents' value depreciation. A higher human capital growth rate always decreases the profit of automation patents by increasing the interest rate. 
+
+The automation level needs to converge to the level where the innovation and automation grow at the same rate
+\begin{align}
+\label{g_NI}
+g_N = g_I 
+\end{align}
+The value of automation and innovation patent needs to satisfy
+\begin{align}
+\label{p_NI}
+\frac{p_N}{p_I} = (\frac{\mu_N}{\mu_I})^{\frac{1}{\lambda}}
+\end{align}
+\begin{proposition}{\bf (Human capital growth and automation level)}
+
+Automation level on the BGP is decreasing in the human capital growth rate. There exits human capital growth rate $g_{hH}^*$, such that the economy will never be fully automated if the human capital growth rate $g_{hH}>g_{hH}^*$. 
+\end{proposition}
+
+Human capital complements innovation patents but decreases the value of automation patents. Higher human capital growth rate increases the demand for capital and drives up the long run capital rental rate. The automaton level will be lowered in order to have the equilibrium condition (\ref{p_NI}) satisfied.
+
+The allocation between working and training for unskilled and skilled workers $j\in\{L,H\}$ need to satisfy
+\begin{align*}
+\frac{b}{\mu_{hj}}(1-(1-\alpha_j)l_j)(1-l_j)^{\alpha_j-1}+Bg_N&= r(1+\tau_{hj}) 
+\end{align*}
+The time spent on training is decreasing in the interest rate and increasing in the technology growth rate. The interaction between human capital and technology rate is shown in equation (\ref{g_hg_N}) by plugging in the long-run interest rate equation (\ref{LRR}). 
+\begin{align} 
+\label{g_hg_N}
+(1-\theta)\frac{b}{\mu_hj}(1-l_j)^{\alpha_j}+\alpha\frac{b}{\mu_hj}l_j(1-l_j)^{\alpha_j-1} = \rho+(\theta-1)Bg_N
+\end{align}
+
+\begin{proposition}{\bf (Human capital and technology growth rate)}
+
+If the intertemporal elasticity of substitution $\theta>1$, the human capital and technology growth are substitutes; if $\theta<1$, the human capital and technology growth are complements. (See Appendix for proof)
+\end{proposition}
+
+When the intertemporal elasticity of substitution $\theta$ is greater than 1, the capital stock response to the technology change is small. The long-run interest rate increases more than the economic growth rate, and the return to physical capital dominates the return to human capital. As a result, workers prefer saving through physical capital to human capital, working more and training less. On the contrary, when $\theta$ is smaller than 1, the benefit of human capital dominates, and the workers spend more time on training. 
+
+The human capital growth needs to converge to the same growth rate. 
+\begin{align}
+\label{g_HL}
+g_{hH} = g_{hL}
+\end{align}
+
+\begin{assumption}{\bf (Cost of training)}
+
+In order to have balanced growth path exist, assume that the cost of training for skilled workers is increasing in the human capital gap between skilled and unskilled workers. 
+\begin{align}
+\label{mu_HL}
+\frac{\mu_{hH}}{\mu_{hL}} = e^{\lambda_h(h_{HL}-h_{HL}^*)}
+\end{align}
+\end{assumption}
+
+This assumption is necessary to guarantee the existence of a balanced growth path. Without the assumption, equation (\ref{g_HL}) and (\ref{mu_HL}) can't be satisfied simultaneously. To maintain a higher human capital gap, skilled workers face a higher cost of training. College costs have increased by 169\% since 1980, while the college premium has increased only by 14\%.\cite{Sourse: CNBC}
+
+
+\subsection{Long-Run Comparative Statics}
+In this subsection, I discuss the long-run implications of an unanticipated and permanent decline in $\mu_I$. The development of new technology increases the R\&D sector efficiency; the automation tasks are now easier to develop. In this subsection, I focus on the case where human capital and technology growth are complementary, i.e. $\theta<1$. 
+
+\begin{proposition}{\bf (Long-run comparative statics)} 
+
+A decrease in automation cost increases the automation level $\tilde{I}$, technology growth rate $g_N$ and human capital growth rate $g_{hL}$ and $g_{hH}$. Higher human capital growth rate increases the human capital gap. Human capital accumulation slows down the capital deepening, but amplifies the wage inequality. The change of human capital gap will depend on the human capital accumulation parameters $\alpha_H$ and $\alpha_L$ and the elasticity of human capital investment cost to human capital gap $\lambda_h$. 
+\begin{align*}
+dh_{HL} = \frac{1}{\lambda_h}\frac{(\alpha_H-\alpha_L)l_L}{(1-l_L)\alpha_H+l_L\alpha_L}d\log g_h
+\end{align*}
+\end{proposition}
+
+A reduction in automation cost immediately increases the automation level. Since the automation patents are now easier to develop, the measure of tasks that are automated will increase. The value of innovation patent increases as the automation level increases, which increases the innovation rate of the economy. Human capital growth increases in respond to the increase of innovation rate. Higher human capital growth complements the innovation patent, slows down the capital deepening, and decreases the long-run automation level. 
+
+Although both of the skill groups respond to the technology change, their responses are uneven. Both skilled and unskilled worker benefit from productivity effect of automation and the higher economic growth rate, but the wage growth rate of skilled workers is higher than that of unskilled workers. Skilled workers will then invest more in human capital than unskilled workers, until the human capital gap converges to a higher level. 
+
+To summarize the main result of this section, human capital accumulation lowers the automation level and increases the labor share after a reduction of the automation level. The increase in the human capital gap amplifies the effect of technology change on wage inequality. 
+
+\section{Social Planner's Problem }
+In the next section, I will solve the transition path computationally and implement counterfactual experiments. Before that, I first solve the SPP in this section to discuss the inefficiency of the decentralized economy. The social planner's problem is subject to the same aggregate production function as in the decentralized economy. The social planner maximize the total social welfare by allocating the final good between consumption and saving, allocating time between working and training, and allocating skilled workers between production and R\&D sector. 
+\subsection{Solution of SPP}
+The social planner solves the following problem:
+\begin{align*}
+&\rho V_{SPP}(K,N,I,h_H,h_L)  \\
+&= \max_{C_H, C_L,L_H,L_L,\epsilon_N, \epsilon_I} \quad \{\epsilon_H u(C_H)+\epsilon_L u(C_L)+V_K\dot{K}+V_N\dot{N}+V_I\dot{I}+V_{h_H}\dot{h}_H+V_{h_L}\dot{h}_L\}
+\end{align*}
+subject to
+\begin{align*}
+\dot{K} &= Y-\delta K-\epsilon_H C_H-\epsilon_L C_L \\
+\dot{N} &= \frac{1}{\mu_N}\epsilon_N^{\lambda} \\
+\dot{I} &= \frac{1}{\mu_I}\epsilon_I^{\lambda} \\
+\dot{h}_H &= \frac{1}{\mu_{hH}} (1-\frac{L_H+\epsilon_N+\epsilon_I}{\epsilon_H})^{\alpha_H} \\
+\dot{h}_L &= \frac{1}{\mu_{hL}} (1-\frac{L_L}{\epsilon_L})^{\alpha_L} \\
+Y &= \frac{A}{1-\eta}\Big((\Gamma_KK)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}+(\Gamma_LL_L)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}+(\Gamma_HL_H)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}\Big)^{\frac{\hat{\sigma}}{\hat{\sigma}-1}}
+\end{align*}
+Euler equation can be written as 
+\begin{align*}
+\frac{\dot{C_H}}{C_H} = \frac{\dot{C_L}}{C_L} = \frac{Y_K-\delta-\rho}{\theta}
+\end{align*}
+Human capital investment needs to satisfy: 
+\begin{align*}
+-\frac{\delta \dot{h}_H}{\delta L_H}\frac{Y_{h_H}}{Y_{L_H}}+\frac{\dot{Y}_{L_H}}{Y_{L_H}} = \frac{L_H}{\epsilon_H}\frac{b \delta \dot{h}_H}{\delta(1-l_H)}+\frac{\dot{Y}_{L_H}}{Y_{L_H}} &= Y_K-\delta \\
+-\frac{\delta \dot{h}_L}{\delta L_L}\frac{Y_{h_L}}{Y_{L_L}}+\frac{\dot{Y}_{L_L}}{Y_{L_L}} = \frac{L_L}{\epsilon_L}\frac{b \delta \dot{h}_L}{\delta(1-l_L)}+\frac{\dot{Y}_{L_L}}{Y_{L_L}} &= Y_K-\delta 
+\end{align*}
+
+Optimal investment in R\&D sector can be characterized as:
+\begin{align*}
+\frac{\delta \dot{N}}{\delta \epsilon_N}\frac{Y_N}{Y_{L_H}}+\frac{\dot{Y}_{L_H}}{Y_{L_H}} &= Y_K-\delta \\
+\frac{\delta \dot{I}}{\delta \epsilon_I}\frac{Y_I}{Y_{L_H}}+\frac{\dot{Y}_{L_H}}{Y_{L_H}} &= Y_K-\delta  
+\end{align*}
+The equations above can be rewritten as: 
+\begin{align*}
+\frac{\lambda\epsilon_N^{\lambda-1}}{\mu_N}\frac{\frac{Y_N}{Y}}{Y_K-\delta-\frac{\dot{Y}_{L_H}}{Y_{L_H}}} &= \frac{\lambda\epsilon_I^{\lambda-1}}{\mu_I}\frac{\frac{Y_I}{Y}}{Y_K-\delta-\frac{\dot{Y}_{L_H}}{Y_{L_H}}} = \frac{Y_{L_H}}{Y} \\
+\end{align*}
+
+\subsection{Externality}
+In order to compare the Balanced growth path of SPP and CE, use the price in CE to substitute derivatives in SPP: 
+\begin{align*}
+Y_K &= \frac{R}{1-\eta}, \quad Y_{L_H}= \frac{W_H}{1-\eta}, \quad Y_{L_L}= \frac{W_L}{1-\eta} \\
+\frac{Y_{N}}{Y} &=\frac{s_L}{1-\eta}(B-B_L)+\frac{1}{\hat{\sigma}-1}(\frac{\omega_H}{A})^{1-\hat{\sigma}}-\frac{1}{\hat{\sigma}-1}(\frac{R}{A})^{1-\hat{\sigma}} \\
+\frac{Y_{I}}{Y} &=\frac{1}{\hat{\sigma}-1}(\frac{R}{A})^{1-\hat{\sigma}}-\frac{1}{\hat{\sigma}-1}e^{B_L(1-\tilde{I})(1-\hat{\sigma})}(\frac{\omega_Lh_{HL}}{A})^{1-\hat{\sigma}} \\
+\frac{\dot{Y}_{L_H}}{Y_{L_H}} &= g_{WH} = g_{WN}+g_{WI}+\frac{s_L}{s_H+s_L}g_{WS} +bg_{hH}\\
+\frac{\dot{Y}_{L_L}}{Y_{L_L}} &= g_{WL} = g_{WN}+g_{WI}-\frac{s_H}{s_H+s_L}g_{WS} +bg_{hL}
+\end{align*}
+
+\begin{table}[h!]
+\center
+\caption{Comparison Between SPP and CE}
+\label{SPP_CE}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{l|ll}
+\hline \hline
+\multirow{2}{*}{Euler equation} & SPP  &  
+$\frac{\dot{C_H}}{C_H} = \frac{\dot{C_L}}{C_L} = \frac{\frac{R}{1-\eta}-\delta-\rho}{\theta}$ \\
+& CE &$\frac{\dot{C_H}}{C_H} = \frac{\dot{C_L}}{C_L} = \frac{r-\rho}{\theta}$ \\\hline
+\multirow{2}{*}{Innovation rate} & SPP  &  
+$\frac{\lambda\epsilon_N^{\lambda-1}}{\mu_N}\frac{(1-\eta)P_N^{SPP}}{Y} = \frac{W_H}{Y} $  \\ 
+& CE &$\frac{\lambda\epsilon_N^{\lambda-1}}{\mu_N}\frac{P_N}{Y}  = \frac{W_H}{Y}$ \\\hline
+\multirow{2}{*}{Automation rate}  & SPP  &  
+$ \frac{\lambda\epsilon_I^{\lambda-1}}{\mu_I}\frac{(1-\eta)P_I^{SPP}}{Y}  = \frac{W_H}{Y}$  \\
+& CE &$ \frac{\lambda\epsilon_I^{\lambda-1}}{\mu_I}\frac{P_I}{Y}  = \frac{W_H}{Y}$ \\\hline
+\multirow{2}{*}{Innovation patent} & SPP  &  
+$\frac{P_N^{SPP}}{Y} = \frac{\frac{Y_N}{Y}}{\frac{R}{1-\eta}-\delta-g_{WH}}$  \\
+& CE &$\frac{P_N}{Y} =(1-\tau_N)\frac{V_N(N)}{Y}-(1-\tau_I)\frac{V_I}{Y}$ \\\hline
+\multirow{2}{*}{Automation patent} & SPP  &  
+$\frac{P_I^{SPP}}{Y}= \frac{\frac{Y_I}{Y}}{\frac{R}{1-\eta}-\delta-g_{WH}}$  \\
+& CE &$\frac{P_I}{Y}  =  (1-\tau_I)\frac{V_I}{Y}-(1-\tau_N)\frac{V_N(I)}{Y}$ \\\hline
+\multirow{2}{*}{Skilled training} & SPP  &  
+$\frac{L_H}{\epsilon_H}\frac{b\delta \dot{h}_H}{\delta(1-l_H)}+g_{WH} = \frac{R}{1-\eta}-\delta$  \\ 
+& CE &$l_H\frac{b\delta \dot{h}_H}{\delta(1-l_H)}+g_{WH} =  r(1+\tau_{hH})$ \\\hline
+\multirow{2}{*}{Unskilled training} & SPP  &  
+$l_L\frac{b\delta \dot{h}_L}{\delta(1-l_L)}+g_{WL}= \frac{R}{1-\eta}-\delta$  \\ 
+& CE &$l_L\frac{b\delta \dot{h}_L}{\delta(1-l_L)}+g_{WL}=  r(1+\tau_{hL})$ \\\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{table}
+
+Firstly, the production externality of production and R\&D sectors is common in endogenous growth literature. The production sector does not internalize the
+patent profit, and the R\&D sector does not internalize the productivity gain of the production sector. The socially-planned economy will always invest more capital and grow faster than the decentralized economy. I will focus mainly on the second and third externalities.
+
+Secondly, the skilled workers overinvest in human capital. When workers invest in human capital, they increase their productivity in the production sector. Comparing the skilled workers' human capital policy function of SPP and CE, we can find that skilled workers fail to internalize their negative effect on the R\&D sector. Higher labor productivity increases the opportunity cost of research and development; fewer scientists will work in the R\&D sector. The number of scientists hired in the research sector is decreasing in the wage premium.
+
+Thirdly, the R\&D sector automates too many tasks. The innovation patent value of SPP is higher than that of CE. When an innovation task is developed, the patent holder only benefits from the productivity gain of the single task. However, the new task complements other tasks and increases the return to all the production factor providers and patent holders. At the same time, the new task pushes the technology frontier and increases the productivity of all the unskilled workers. Based on the social planner's problem, I will focus on the human capital tax, automation tax, and innovation subsidy in the counterfactual experiment of the next section.
+
+\section{Transition path}
+In this section, I use the data from 1980 to 2005 to calibrate the model parameters and the size of the automation cost reduction. Then I solve the transition path between two BGP computationally and implement some counterfactual experiments. 
+
+The transition path between two balanced growth path before and after political or technological shock is consist of growth rates of the economy $\{g_N(t), g_I(t), g_{hH}(t),g_{hL(t)}\}$, capital stock $\{k(t)\}$, automation level $\{\tilde{I}(t)\}$, absolute advantage $\{\gamma_{HL}(t)\}$, price functions $\{r(t), \omega_H(t), \omega_L(t)\}$, policy functions $\{f_{Hk}(t), f_{Lk}(t), f_{Hc}(t), f_{Lc}(t)\}$ and $\{f_{Hl}(t), f_{Ll}(t)\}$ for households, $\{f_{K}(t), f_{LH}(t), f_{LL}(t)\}$ for firms, $\{f_{\epsilon_N}(t), f_{\epsilon_I}(t)\}$ for R\&D sector, and allocation $\{\tilde{S}(t)\}$, such that: 
+\begin{enumerate}
+\item Given the state variables and price function, household policy functions solve household's problem
+\item Given the state variables and price function, firm policy functions solve firm's problem
+\item Given the state variables and price function, R\&D sector policy functions solve  R\&D sector's problem
+\item Consistency and market clearing conditions are satisfied. 
+\end{enumerate}
+
+\subsection{Calibration}
+The parameters in table \ref{calibration1} are calibrated externally. $\epsilon_H$ and $\epsilon_L$ are set to match the share of workers with college degree or higher, and workers with high school diploma or lower. Comparative advantage of unskilled workers and return to human capital are normalized to 1. 
+\begin{table}[h!]
+\center
+\caption{External Calibration}
+\label{calibration1}
+\begin{tabular}{clc}
+\hline \hline
+Parameter & Description      & Value   \\ \hline 
+$\theta$    & Intertemporal elasticity of substitution        &  0.9    \\
+$\sigma$    & Factor elasticity of substitution        &  2    \\
+$\delta$    & Depreciation rate       &  0.1    \\
+$B_L$ & Comparative advantage of unskilled workers   &     1  \\
+$b$ & Return to human capital   &     1  \\
+$\epsilon_H$    & high-skill workers share   &  0.3    \\
+$\epsilon_L$     & Low skill workers share     &  0.7  \\
+\hline
+\end{tabular}
+\end{table}
+
+The remaining parameters in table \ref{calibration2} are calibrated using the Simulated Method of Moments (SMM), which aims at finding a value $\theta^*$ maximizing the likelihood function. 
+\begin{align*}
+L(\theta) = -(\hat{m}_S(\theta)-\hat{m}_M)^T(\hat{m}_S(\theta)-\hat{m}_M)
+\end{align*}
+where $\hat{m}_S$ is the moment simulated by model given $\theta$ as the parameter of the model; $\hat{m}_M$ is the moment observed in the data.
+
+\begin{table}[h!]
+\center
+\caption{Internal Calibration}
+\label{calibration2}
+\begin{tabular}{cll|ll}
+\hline \hline
+Param & Description                      & Value & Targeted moment           & Value  \\ \hline
+$\rho$    & Discount rate         &  0.0196    &  Long run interest rate & 4\%   \\
+$\eta$    & Patent share                  &  0.173    & RD and GDP ratio & 2.8\% \\
+$A$       & Capital productivity               &     0.1503   & Short run interest rate      & 4\%   \\
+$B_H$     & Skill comparative advantage  &  3.0082     & Wage premium (1980)      & 1.4    \\
+$\mu_N$ & Cost of innovation   &   3.1356     & RD growth rate  & 2.8\%   \\
+$\mu_I$ & Cost of automation   &  4.9231     & Labor share (1980)         & 0.625   \\
+$\mu_h$ & Cost of $h_L$ accumulation   &   164.3819     & Human capital growth rate & 0.3\% \\
+$\alpha_H$     & $h_H$ accumulation function   &   0.9239     & Change of training time  (H)  & 0.0339 \\
+$\alpha_L$     &  $h_L$ accumulation function   &   0.1783  & Change of training time  (L) & 0.0625 \\
+$\lambda$ & RD Decreasing return  &   	0.4693   & Wage premium (2005)   & 1.6 \\
+$z$      & Technology wave       &    0.8076   &  Labor share (2005)        & 0.605    \\\hline
+\end{tabular}
+{\scriptsize Data source: FRED and NHES}
+\end{table}
+
+\begin{table}
+\center
+\caption{Calibration result}
+\begin{tabular}{l|c|cc}
+\hline \hline
+Moment & 1980 &  \multicolumn{2}{c}{2005} \\ 
+&  & With $h$ &  Without $h$ \\ \hline
+Automation level & 0.6243 & 0.6791 & 0.6991 \\
+Interest rate & 0.0422 & 0.0465 & 0.0490\\
+Wage premium   & 1.4628 &1.5906  &1.5075\\
+Technology growth rate  &3.3479\% & 3.8138\% & 4.1047\%\\
+Human capital growth rate  & 0.3805\% & & 0.3805\%\\
+Change of social welfare  & & &\\
+Welfare inequality  & 0.9238 & 0.9343 & 0.9992\\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Transition path}
+
+A reduction of automation cost increases automation, lowers labor share, and raises wage inequality in the short run by direct productivity effect. R\&D investment is directed more the automation since the automation department is more efficient. However, the technology change increases the demand for capital but decrease the demand for both skilled and unskilled workers. As a result, capital rental rate will increase and wage will decrease. This price effect increases the innovation patent value while decreases the automation patent value. The innovation rate will start to raise and catch up with the automation rate. These two effects work in opposite directions, and the new equilibrium automation level depends on the magnificence of the price effect. 
+
+The presence of human capital amplifies the effect of the technology wave and accelerates the transition. Different skill groups respond to the technology wave differently. At the early stage of the transition, the human capital investment will drop since automation decreases the wage growth, and the unskilled workers will decrease it more since they are more affected by automation. Later on, automation slows down, and the technology wave benefits the workers. The human capital investment will increase, and the unskilled workers will increase it more since their acquisition is comparatively less costly. The technology wave is amplified mainly by the fluctuation of human capital and labor supply; unskilled workers respond to the wave more than skilled workers. The human capital investment increases the effective labor supply, brings down the automation patent value more quickly, and accelerates the transition. 
+
+
+\subsection{Role of human capital}
+
+\begin{proposition}{\bf (Automation and human capital gap)} 
+
+If automation increases $g_I>g_N$, then then human capital of skilled workers will grow faster than unskilled workers $g_{hH}>g_{hL}$, and human capital gap $h_{HL}$ will increase. 
+\end{proposition}
+
+ 
+The change of training time for skilled and unskilled workers can be derived as: 
+\begin{align*}
+d\log(1-l_H) &= \frac{1}{\alpha_H}(d\log g_h+d\log\mu_{hH})= \frac{1}{(1-l_L)\alpha_H+l_L\alpha_L}d\log g_h \\
+d\log(1-l_L) &= \frac{1}{\alpha_L}d\log g_h
+\end{align*}
+
+
+\subsection{Optimal policy}
+
+\section{Empirical Evidence}
+\subsection{Industry Level}
+In this subsection, I use EU KLEMS September 2017 release, an industry level panel dataset covering all individual EU-28 countries and the United States from 1995 to 2015. The dataset contains statistical data on the economic growth (value added, compensation to capital and labor, etc.) and labor market composition (compensation and employment share for high/median/low educated workers), and analytical data on the growth factors (TFP, capital services, hours worked, labor composition, etc.). 
+
+Based on the prediction of model, in the short run, automation increases the output but decreases the labor share; while in the long run, workers would respond to the change of technology by investing more in their human capital, so we should observe an increase of human capital or an improvement of the labor composition (higher ratio of high-skill workers). If the TFP growth comes only from the innovation, then the TFP growth should have no impact or even a positive effect on the labor share; if automation also contributes to the TFP growth, then we can observe a negative correlation between TPF growth and labor share. In the long run, TFP growth should have a impact on the human capital investment, so we should observe a positive correlation between TFP growth and the labor composition change, but with time lags.
+
+Table \ref{Industry_trend} summarizes the trends in shared of skilled workers by aggregate industry. Between 1995 and 2015, the share of skilled workers have increased in all the industries. The change is most rapid in the 2000s, and slows down after 2010. There are big variations between industries, routine jobs like agriculture and manufacturing experienced more labor composition change, while non routine jobs like education and health experienced less change. 
+\begin{table}[h!]
+\center
+\scriptsize
+\caption{Trends in Share of Skilled Workers by Industry}
+\label{Industry_trend}
+\begin{tabular}{l|ccccc} 
+\hline \hline
+& \multicolumn{5}{c}{$100 \times$Annualized log change} \\
+Industry & 1995 & 2000 & 2005 & 2010 & 2015 \\ \hline
+Accommodation and food service activities & -4.621 & 5.880 & 3.514 & 6.990 & -1.023 \\
+Agriculture, forestry and fishing & 7.564 & 8.061 & 5.722 & 2.950 & 0.340 \\
+Arts, entertainment and recreation & 5.433 & 4.225 & 3.221 & 2.307 & -0.167 \\
+Construction & 2.375 & 2.481 & 2.821 & 3.721 & 0.0502 \\
+Education & 0.836 & 0.263 & 1.071 & 1.127 & -0.353 \\
+Electricity, gas, steam and air conditioning supply & -0.389 & 1.290 & 3.568 & 3.925 & -0.759 \\
+Financial and insurance activities & 2.248 & 1.412 & 1.669 & 3.753 & -1.044 \\
+Health and social work & 2.564 & 0.822 & 1.937 & 2.432 & -0.0371 \\
+Information and communication & 3.194 & 1.934 & 3.660 & 2.844 & -0.677 \\
+Mining and quarrying & 6.689 & 3.550 & 4.495 & 6.311 & -1.161 \\
+Other service activities & 3.793 & 4.261 & 3.511 & 3.300 & -0.337 \\
+Professional, scientific, technical, administrative and support service activities & 1.491 & 1.358 & 1.335 & 2.495 & -0.769 \\
+Public administration and defence; compulsory social security & 2.186 & 2.553 & 2.808 & 2.806 & -0.692 \\
+Real estate activities & 3.613 & 2.000 & 3.091 & 2.656 & 0.0196 \\
+Total manufacturing & 3.884 & 2.619 & 4.248 & 3.707 & -0.738 \\
+Transportation and storage & 2.991 & 2.305 & 6.175 & 4.027 & -1.114 \\
+Water supply; sewerage; waste management and remediation activities & 3.532 & 2.446 & 1.437 & 4.999 & -0.926 \\
+Wholesale and retail trade; repair of motor vehicles and motorcycles & 3.984 & 2.603 & 2.770 & 4.607 & -1.292 \\ 
+Total & 2.854  & 2.781 & 3.172  & 3.609 & -0.594 \\ \hline
+\end{tabular}
+\end{table}
+
+To test the correlation between automation and human capital growth, I regress outcome variable $\Delta \ln Y_{i c, t-1}$ on the TFP growth rate $\Delta \ln TFP_{i, c \neq c(i), t-k}$ with time leg $k \in \{1,2,3,4\}$ while controlling the lagged values of both TFP growth $\Delta \ln TFP_{i, c \neq c(i), t-k-1}$ and of outcome variable growth $\Delta \ln Y_{ic, t-2}$. I also control the fixed effect of country $\alpha_{c}$ and year $\gamma_{t}$. In order to overcome the endogeneity between TFP and labor composition, I follow Autor and Salomons (2018)\cite{AutorSalomons2018}, and construct industry-level TFP growth for each industry-country pair as the leave-out mean of industry-level TFP growth in all other countries, then rescaled it to have a unit standard deviation
+ \begin{align*}
+ \Delta \ln Y_{i c, t-1} &=\beta_{0}+\beta_{1} \Delta \ln TFP_{i, c \neq c(i), t-k} +\beta_{2} \Delta \ln TFP_{i, c \neq c(i), t-k-1}+\beta_{3} \Delta \ln Y_{i c, t-2}\\
+ &+\alpha_{c}+\gamma_{t}+\epsilon_{ict}
+\end{align*}
+To measure the human capital growth, I use two related variables: the change of share of skilled (high educated) workers and the growth rate contributed by labor composition change. The estimation result is reported in table \ref{estimation1} and \ref{estimation2}. The TFP growth does not impact the labor composition immediately, but does have a positive impact on the human capital with a four-year lag. 
+\begin{table}[h!]
+\center
+\scriptsize
+\caption{TFP Effect on High Educated Labor Share}
+\label{estimation1}
+\begin{tabular}{lcccccc} \hline \hline
+ & (1) & (2) & (3) & (4) & (5) & (6)\\
+VARIABLES & \multicolumn{6}{c}{$100 \times$Annualized log change in share of skilled workers} \\ \hline
+ &  &  &  &  &  &  \\
+TFP Growth & -0.0311 &  &  &  &  &  \\
+ & (0.263) &  &  &  &  &  \\
+TFP Growth (lag 1) &  & 0.339 &  &  &  &  \\
+ &  & (0.252) &  &  &  &  \\
+TFP Growth (lag 2) &  &  & 0.310 &  &  &  \\
+ &  &  & (0.251) &  &  &  \\
+TFP Growth (lag 3) &  &  &  & -0.253 &  &  \\
+ &  &  &  & (0.257) &  &  \\
+TFP Growth (lag 4) &  &  &  &  & \color{red} 0.550** &  \\
+ &  &  &  &  & \color{red} (0.271) &  \\
+TFP Growth (lag 5) &  &  &  &  &  & -0.412 \\
+ &  &  &  &  &  & (0.282) \\
+Constant & 7.501*** & 4.655** & 5.924*** & 7.012*** & 7.012*** & 9.188*** \\
+ & (2.629) & (1.971) & (1.963) & (1.987) & (2.033) & (2.090) \\
+ &  &  &  &  &  &  \\
+Observations & 2,674 & 2,657 & 2,325 & 1,993 & 1,661 & 1,330 \\
+ R-squared & 0.122 & 0.123 & 0.135 & 0.151 & 0.178 & 0.223 \\ \hline
+\multicolumn{7}{c}{ Standard errors in parentheses} \\
+\multicolumn{7}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+\end{table}
+
+\begin{table}
+\center
+\scriptsize
+\caption{TFP Effect on Labor Composition Growth}
+\label{estimation2}
+\begin{tabular}{lcccccc} \hline \hline
+ & (1) & (2) & (3) & (4) & (5) & (6)\\
+VARIABLES & \multicolumn{6}{c}{Labor composition growth} \\ \hline
+ &  &  &  &  &  &  \\
+TFP Growth & -0.0475 &  &  &  &  &  \\
+ & (0.0624) &  &  &  &  &  \\
+TFP Growth (lag 1) &  & 0.0818 &  &  &  &  \\
+ &  & (0.0673) &  &  &  &  \\
+TFP Growth (lag 2) &  &  & 0.154** &  &  &  \\
+ &  &  & (0.0720) &  &  &  \\
+TFP Growth (lag 3) &  &  &  & 0.0974 &  &  \\
+ &  &  &  & (0.0781) &  &  \\
+TFP Growth (lag 4) &  &  &  &  & \color{red} 0.242*** &  \\
+ &  &  &  &  & \color{red} (0.0889) &  \\
+TFP Growth (lag 5) &  &  &  &  &  & 0.0672 \\
+ &  &  &  &  &  & (0.0971) \\
+Constant & -0.531 & -0.604 & -0.737 & -0.801 & -0.925 & -1.108 \\
+ & (0.506) & (0.526) & (0.561) & (0.601) & (0.664) & (0.719) \\
+ &  &  &  &  &  &  \\
+Observations & 2,989 & 2,657 & 2,325 & 1,993 & 1,661 & 1,330 \\
+ R-squared & 0.193 & 0.189 & 0.195 & 0.219 & 0.224 & 0.284 \\ \hline
+\multicolumn{7}{c}{ Standard errors in parentheses} \\
+\multicolumn{7}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+\end{table}
+
+To estimate the effect of automation on labor composition in a more structural way, I adopt simple local projection models in Autor and Salomons (2018)\cite{AutorSalomons2018}. They documented well in their paper the impact of automation on employment, hours worked, wage bill, and labor share. I adopt their estimation method while the outcome of interest is the labor composition. 
+\begin{align*}
+\ln Y_{i c, t+K}-\ln Y_{i c, t-1}&=\beta_{0}+\beta_{1} \Delta \ln TFP_{i, c \neq c(i), t-1}+\sum_{k=0}^{K} \beta_{2}^{k} \Delta \ln TFP_{i, c \neq c(i), k} \\
+&+\beta_{3} \Delta \ln T F P_{i, c \neq c(i), t-2}+\beta_{4} \Delta \ln Y_{i c, t-2}+\alpha_{c}+\gamma_{t}+\epsilon_{ict}
+\end{align*}
+where $\ln Y_{i c, t+K}-\ln Y_{i c, t-1}$ represents the log change in share of high educated labor in industry $i$ and country $c$, from year $t-1$ to year $t+K$. The impulse variable is the log change in other-country-industry TFP between years $t-2$ and $t-1$, $\Delta \ln TFP_{i, c \neq c(i), t-1}$. I estimate the effects while controlling for lagged values of both TFP growth $\Delta \ln TFP_{i, c \neq c(i), t-2}$ and of outcome variable growth $\Delta \ln Y_{ic, t-2}$, and subsequent TFP innovations occurring between $t=0$ and $t=K$. I also control the fixed effect of country $\alpha_{c}$ and year $\gamma_{t}$. 
+
+The estimation result is plotted in figure \ref{LP}. Coefficients plotted in the figure are the response of outcomes to the TFP shock in $t = 0$. The trend is consistent with the result above, the TFP shock does not affect the labor composition immediately, but has long run effect on the human capital growth. The effect of TFP on human capital peaks at five years after the shock. 
+
+\begin{figure}
+\caption{Local Projection Estimates of the Relationship Between TFP Growth and Human Capital}
+\label{LP}
+\includegraphics[width = 0.5\textwidth]{dH_shares1_LP}
+\includegraphics[width = 0.5\textwidth]{VAConLC_LP}
+{\scriptsize Coefficients are for observed TFP shocks in $t = 0$, rescaled to have a unit standard deviation. Bands are 95\% and 70\% CI.}
+\end{figure}
+
+
+\subsection{Occupation level}
+
+In this subsection, I use Artificial Intelligence Occupational Exposure (AIOE) measured by Felten et al.(2021)\cite{Feltenetal2021} and Occupational Information Network (O*NET). Felten et al.(2019)\cite{Feltenetal2019} use Electronic Frontier Foundation (EFF) AI Progress Measurement to track the progress made on AI, and use survey date to measure impact of AI across all abilities. The AIOE then can be measure by using the occupation ability descriptions in O*NET.
+
+In O*NET dataset, abilities are descried as enduring attributes of the individual that influence performance, while skills are descried as developed capacities that facilitate learning or the more rapid acquisition of knowledge. While abilities take years to require, skills are easier to adjust in the short run. For each occupation, O*NET measures the importance and level of different skills, and update the date almost twice a year. To measure the response of worker's skill to the automation, I merge the date released by O*NET each year and construct a panel data. 
+
+Table \ref{LV_trend} and \ref{IM_trend} summarize the trends in skill level and importance. Between 2000 and 2020, the level and importance of content technical skill have decreased, while social skill is significantly more required and supplied than before. 
+
+\begin{table}
+\center
+\scriptsize
+\caption{Trends in Skill Level}
+\label{LV_trend}
+\begin{tabular}{lccccc} \hline \hline
+Skill\_Name & 2000 & 2005 & 2010 & 2015 & 2020 \\ \hline
+Content & 3.000 & 3.521 & 2.872 & 2.874 & 2.878 \\
+Process & 2.970 & 3.833 & 3.128 & 3.140 & 3.140 \\
+Social & 2.216 & 3.288 & 2.828 & 2.812 & 2.807 \\
+Complex Problem Solving & 2.797 & 3.375 & 3.035 & 3.039 & 3.043 \\
+Technical & 1.819 & 2.313 & 1.343 & 1.331 & 1.329 \\
+Systems & 2.441 & 2.728 & 2.644 & 2.666 & 2.680 \\
+Resource Management & 1.818 & 2.575 & 2.035 & 2.033 & 2.026 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\center
+\scriptsize
+\caption{Trends in Skill Importance}
+\label{IM_trend}
+\begin{tabular}{lccccc} \hline \hline
+Skill\_Name & 2000 & 2005 & 2010 & 2015 & 2020 \\ \hline
+Content & 3.016 & 3.312 & 2.980 & 2.975 & 2.974 \\
+Process & 2.840 & 3.341 & 3.100 & 3.111 & 3.113 \\
+Social & 2.320 & 2.958 & 2.874 & 2.863 & 2.858 \\
+Complex Problem Solving & 2.825 & 3.107 & 3.142 & 3.123 & 3.125 \\
+Technical & 2.186 & 2.417 & 1.890 & 1.896 & 1.904 \\
+Systems & 2.515 & 2.648 & 2.740 & 2.759 & 2.768 \\
+Resource Management & 2.119 & 2.602 & 2.351 & 2.355 & 2.348 \\ \hline
+\end{tabular}
+\end{table}
+
+To test the correlation between the skill level/importance and the development of AI. I estimate the following regression: 
+\begin{align*}
+y_{ijt} = t + t \times AIOE_{i} + t \times j + \gamma_j + \epsilon_{ijt}
+\end{align*}
+$y_{ijt}$ represents the change of level/importance of a skill $j$ for occupation $i$ at time $t$. $t$ capture the time trend and $t\times AIOE_{i}$ represents how $AIOE$ affects the change of skill level or importance. The effects is estimated while controlling the common time trend and fixed effect for each skill $j$.
+
+The estimation result is reported in table \ref{estimation3} and \ref{estimation4}. Development of AI increases firm's demand for social, technical and management skills, and the workers respond to the technological change by increasing their contend, process and social skills. 
+
+\begin{table}
+\center
+\scriptsize
+\caption{Effect of AIOE on Skill Level}
+\label{estimation3}
+\begin{tabular}{lccccccc} \hline \hline
+ & (1) & (2) & (3) & (4) & (5) & (6) & (7) \\
+Skill & Content & Process & Social & Problem& Technical & Systems & Resource\\ 
+ & &  & & Solving &  & & Management \\ \hline
+ &  &  &  &  &  &  &  \\
+T$\times$AIOE & 0.0141** & 0.0165** & 0.0148** & -0.0274*** & -4.43e-05 & 0.00850 & 0.00643 \\
+ & (0.00694) & (0.00686) & (0.00657) & (0.00923) & (0.00667) & (0.00637) & (0.00779) \\
+Constant & 5.005*** & 5.288*** & 4.887*** & 5.268*** & 2.185*** & 6.169*** & 6.065*** \\
+ & (0.0888) & (0.0875) & (0.0840) & (0.118) & (0.0856) & (0.0813) & (0.0995) \\
+ &  &  &  &  &  &  &  \\
+Observations & 174,720 & 116,480 & 174,720 & 29,120 & 320,320 & 87,360 & 116,480 \\
+ R-squared & 0.760 & 0.724 & 0.631 & 0.842 & 0.584 & 0.819 & 0.754 \\ \hline
+\multicolumn{8}{c}{ Standard errors in parentheses} \\
+\multicolumn{8}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+
+\caption{Effect of AIOE on Skill Importance}
+\label{estimation4}
+\begin{tabular}{lccccccc} \hline \hline
+ & (1) & (2) & (3) & (4) & (5) & (6) & (7) \\
+Skill & Content & Process & Social & Problem& Technical & Systems & Resource\\ 
+ & &  & & Solving &  & & Management \\ \hline
+ &  &  &  &  &  &  &  \\
+T$\times$AIOE & 0.00782 & -0.000723 & 0.0212*** & 0.000478 & 0.00744* & -0.00428 & 0.0112** \\
+ & (0.00527) & (0.00482) & (0.00465) & (0.00563) & (0.00451) & (0.00446) & (0.00525) \\
+Constant & 4.216*** & 4.240*** & 3.754*** & 4.166*** & 1.954*** & 4.791*** & 4.649*** \\
+ & (0.0673) & (0.0615) & (0.0594) & (0.0718) & (0.0579) & (0.0569) & (0.0670) \\
+ &  &  &  &  &  &  &  \\
+Observations & 174,720 & 116,480 & 174,720 & 29,120 & 320,320 & 87,360 & 116,480 \\
+ R-squared & 0.723 & 0.706 & 0.627 & 0.869 & 0.581 & 0.818 & 0.741 \\ \hline
+\multicolumn{8}{c}{ Standard errors in parentheses} \\
+\multicolumn{8}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+\end{table}
+
+
+\section{Conclusion}
+
+When the technology wave lowers the cost of automation, it increases automation, lowers labor share, and raises wage inequality in the short run by direct productivity effect. However, the technology wave changes the demand for production factors and factor prices; automation could decrease if the price effect dominates. The magnitude of the price effect depends on the substitutability between production factors and the comparative advantage of labor over the machine on newer tasks. When the the substitutability between production factors is high and comparative advantage of labor is low, the prices are less sticky and the price effect will dominate the productivity effect, the lower automation cost decreases the automation level in the new balanced growth path. 
+
+The presence of human capital amplifies the technology wave but accelerates the transition. Different skill group responds to the technology wage differently. The response of unskilled workers to the technology wave is more volatile, which increases the inequality during the transition. 
+
+Empirical evidence is provided using Artificial Intelligence Occupational Exposure (AIOE), estimated by Felten et al. (2021) and Occupational Information Network (O*NET). The development of AI increases the demand for social and technical skills, and workers respond to the technology change by increasing their content, process, and social skills. 
+
+The biggest limit of the model is the constant elasticity of substitution between different production factors. The skilled workers are complements to capital, while unskilled workers should be substituted by machine more easily. 
+
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{Growth}
+
+\section*{Appendix}
+
+\subsection*{Firm problem}
+
+\subsubsection*{Final good producer}
+The competitive final good producers solve the following problem 
+\begin{align*}
+\max \quad & Y-\int_{N-1}^Np(i)y(i)di \\
+&Y = \tilde{A}\Big(\int_{N-1}^{N}y(i)^{\frac{\sigma-1}{\sigma}}di\Big)^{\frac{\sigma}{\sigma-1}}
+\end{align*}
+
+Take first order condition with respect to $y(i)$
+\begin{align*}
+\tilde{A}\Big(\int_{N-1}^{N}y(i)^{\frac{\sigma-1}{\sigma}}di\Big)^{\frac{1}{\sigma-1}}y(i)^{-\frac{1}{\sigma}}-p(i) = 0
+\end{align*}
+Then the demand function of each task can be written as 
+\begin{align*}
+y(i) = \tilde{A}^{\sigma-1}Yp(i)^{-\sigma}
+\end{align*}
+
+\subsubsection*{Task producer}
+The task producers who have adopted machine solves the following problem 
+\begin{align*}
+\max \quad  p(i)&y(i)-Rk(i)-\psi q(i) \\
+&y(i) = q(i)^{\eta}k(i)^{1-\eta}
+\end{align*}
+Take first order condition with respect to $k(i)$ and $q(i)$
+\begin{align*}
+q(i)\psi &= \eta p(i)y(i) \\
+k(i)R &= (1-\eta)p(i)y(i) 
+\end{align*}
+The unit cost of production can be written as 
+\begin{align*}
+y(i) &= (\frac{\eta p(i)y(i)}{\psi})^{\eta}(\frac{(1-\eta)p(i)y(i)}{R})^{1-\eta} \\
+p(i) &= (\frac{\psi}{\eta})^{\eta} (\frac{R}{1-\eta})^{1-\eta} \\
+ 	  &= \Psi R^{1-\eta}, \quad \Psi =  (\frac{\psi}{\eta})^{\eta} (\frac{1}{1-\eta})^{1-\eta}
+\end{align*}
+Plug in the demand function solved from final good producer problem, the output of the task $p(i)y(i)$ can then be solved 
+\begin{align*}
+p(i)y(i) = (\frac{\tilde{A}}{\Psi})^{\sigma-1}YR^{(1-\eta)(1-\sigma)} = Y(\frac{R}{A})^{1-\hat{\sigma}}
+\end{align*}
+Where $\hat{\sigma} = 1-(1-\eta)(1-\sigma)$ and $A = \Big(\frac{\tilde{A}}{\Psi}\Big)^{\frac{\sigma-1}{\hat{\sigma}-1}}  = \Big(\frac{\tilde{A}}{\Psi}\Big)^{\frac{1}{1-\eta}}$. 
+The demand of capital for task $i$ is 
+\begin{align*}
+k(i) = (1-\eta)A^{\hat{\sigma}-1}YR^{-\hat{\sigma}}
+\end{align*}
+Similarly, the unit cost of task if the producers use unskilled or skilled workers can be solved as 
+\begin{align*}
+p(i) =
+\begin{dcases}
+\Psi(\frac{W_L}{\gamma_L(i,h_L)})^{1-\eta}, \quad \text{unskilled worker}  \\
+\Psi(\frac{W_H}{\gamma_H(i,h_H)})^{1-\eta}, \quad \text{skilled worker}
+\end{dcases}
+\end{align*}
+The output of the tasks $p(i)y(i)$ are
+\begin{align*}
+p(i)y(i) =
+\begin{dcases}
+Y(\frac{W_L}{A\gamma_L(i,h_L)})^{1-\hat{\sigma}}, \quad \text{unskilled worker}  \\
+Y(\frac{W_H}{A\gamma_H(i,h_H)})^{1-\hat{\sigma}}, \quad \text{skilled worker}
+\end{dcases}
+\end{align*}
+And the demand of unskilled and skilled workers can be solved as 
+\begin{align*}
+l(i) &= (1-\eta)A^{\hat{\sigma}-1}\frac{Y}{\gamma_L(i,h_L)}(\frac{W_L}{\gamma_L(i,h_L)})^{-\hat{\sigma}} \\
+h(i) &= (1-\eta)A^{\hat{\sigma}-1}\frac{Y}{\gamma_H(i,h_H)}(\frac{W_H}{\gamma_H(i,h_H)})^{-\hat{\sigma}} 
+\end{align*}
+
+\subsubsection*{Factor allocation}
+The research sector will always automate the least updated tasks since they are the tasks where machine have less disadvantage. The research sector will develop the patent only if the firm can make more profit by adopting machine and is willing to purchase the patent. As a result, for all the task that are automated ($N-1 \le i \le I$), it must be true that 
+\begin{align*}
+R^{1-\eta} < \min \{(\frac{W_L}{\gamma_L(i,h_L)})^{1-\eta},(\frac{W_H}{\gamma_H(i,h_H)})^{1-\eta}\}
+\end{align*}
+And all the firms who have access to automation patent will choose to produce the task using machine. 
+
+For the tasks that are not automated, skilled workers always have advantage over more updated tasks. $\frac{W_H}{W_L}$ is increasing in $S$, when $S\to I$, $\frac{W_H}{W_L}\to 0$, when $S\to N$, $\frac{W_H}{W_L}\to \infty$. $ \frac{\gamma_H(S,h_L)}{\gamma_L(S,h_L)}$ is increasing in $S$. There exists a unique cutoff point $S$ such that 
+\begin{align*}
+\frac{W_H}{W_L} = \frac{\gamma_H(S,h_L)}{\gamma_L(S,h_L)}
+\end{align*}
+Then, for other tasks that are not automated, we get 
+\begin{align*}
+\frac{W_H}{\gamma_H(i,h_L)}\frac{\gamma_L(i,h_L)}{W_L} = e^{(B-B_N)(S-i)}\frac{W_H}{\gamma_H(S,h_L)}\frac{\gamma_L(S,h_L)}{W_L} =  e^{(B-B_N)(S-i)}
+\end{align*}
+
+If $i<S$, then $\frac{W_H}{\gamma_H(i,h_L)}\frac{\gamma_L(i,h_L)}{W_L}>1$, the firm will choose to produce the task using unskilled workers. If $i>S$ then $\frac{W_H}{\gamma_H(i,h_L)}\frac{\gamma_L(i,h_L)}{W_L}<1$, the firm will choose to produce the task using skilled workers.
+
+\subsubsection*{Aggregate production function}
+At equilibrium, the market clearing condition needs to be satisfied
+\begin{align*}
+K &= \int_{N-1}^I k(i)di=  \int_{N-1}^I(1-\eta)A^{\hat{\sigma}-1}YR^{-\hat{\sigma}}di \\
+L_L &= \int_{I}^S l_L(i)di=  \int_{N-1}^I (1-\eta)A^{\hat{\sigma}-1}\frac{Y}{\gamma_L(i,h_L)}(\frac{W_L}{\gamma_L(i,h_L)})^{-\hat{\sigma}}di \\
+L_H &=\int_{S}^N l_H(i)di=  \int_{N-1}^I (1-\eta)A^{\hat{\sigma}-1}\frac{Y}{\gamma_H(i,h_H)}(\frac{W_H}{\gamma_H(i,h_H)})^{-\hat{\sigma}} di
+\end{align*}
+Then the factor prices could be solved using market clearing condition 
+\begin{align*}
+R &=A\Gamma_K \Big(\frac{(1-\eta)Y}{A\Gamma_K K}\Big)^{\frac{1}{\hat{\sigma}}}, \quad \Gamma_K= (I-N+1)^{\frac{1}{\hat{\sigma}-1}}  \\
+W_L &= A\Gamma_L\Big(\frac{(1-\eta)Y}{A\Gamma_LL_L}\Big)^{\frac{1}{\hat{\sigma}}}, \quad \Gamma_L=\Big(\frac{\gamma_L(S,h_L)^{\hat{\sigma}-1}-\gamma_L(I,h_L)^{\hat{\sigma}-1}}{B_L(\hat{\sigma}-1)}\Big)^{\frac{1}{\hat{\sigma}-1}}  \\
+W_H &=A\Gamma_H\Big(\frac{(1-\eta)Y}{A\Gamma_HL_H}\Big)^{\frac{1}{\hat{\sigma}}}, \quad \Gamma_H = \Big(\frac{\gamma_H(N,h_H)^{\hat{\sigma}-1}-\gamma_H(S,h_H)^{\hat{\sigma}-1}}{B(\hat{\sigma}-1)}\Big)^{\frac{1}{\hat{\sigma}-1}} 
+\end{align*}
+
+Plug in the factor price and output for each task 
+\begin{align*}
+Y &= \int_{N-1}^N p(i)y(i) di \\
+	&= \int_{N-1}^I Y(\frac{R}{A})^{1-\hat{\sigma}} di + \int_I^S Y(\frac{W_L}{A\gamma_L(i,h_L)})^{1-\hat{\sigma}} di  + \int_S^N Y(\frac{W_H}{A\gamma_H(i,h_H)})^{1-\hat{\sigma}} di \\
+\Big(\frac{(1-\eta)Y}{A} \Big)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}} &= \int_{N-1}^I \frac{(\Gamma_K K)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}}{\Gamma_K^{\hat{\sigma}-1}} di + \int_I^S \frac{(\Gamma_LL_L \gamma_L(i,h_L))^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}}{\Gamma_L^{\hat{\sigma}-1}} di  + \int_S^N \frac{(\Gamma_HL_H \gamma_H(i,h_H))^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}}{\Gamma_H^{\hat{\sigma}-1}} di 
+ \end{align*}
+The final good could be written as 
+\begin{align*}
+Y = \frac{A}{1-\eta}\Big((\Gamma_K K)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}+(\Gamma_LL_L)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}+(\Gamma_HL_H)^{\frac{\hat{\sigma}-1}{\hat{\sigma}}}\Big)^{\frac{\hat{\sigma}}{\hat{\sigma}-1}}
+ \end{align*}
+ 
+\subsubsection*{Human capital and technology growth rate}
+On the balanced growth path, the human capital investment needs to satisfy the following equation: 
+\begin{align*}
+(1-\theta)\frac{b}{\mu_hj}(1-l_j)^{\alpha_j}+\alpha\frac{b}{\mu_hj}l_j(1-l_j)^{\alpha_j-1} = \rho+(\theta-1)Bg_N
+\end{align*}
+Define $f(l)$ as the left hand side of the equation. 
+\begin{align*}
+f'(l) = \alpha_j\frac{b}{\mu_hj}(1-l_j)^{\alpha_j-1}\big(\theta+(1-\alpha_j)\frac{l_j}{1-l_j}\big)>0
+\end{align*}
+If $\theta-1>0$, the labor supply is increasing in $g_N$; If $\theta-1<0$, the labor supply is decreasing in $g_N$. 
+
+\subsubsection*{Long-run comparative statistics}
+On the balanced growth path, the human capital of skilled and unskilled workers need to grow at the same rate $g_{hH} = g_{hL} = g_h$. Using the policy function for human capital investment, we can get
+\begin{align*}
+\alpha_H((\mu_{hH}g_{hH})^{-\frac{1}{\alpha_H}}-1) = \alpha_L((\mu_{hL}g_{hL})^{-\frac{1}{\alpha_L}}-1)
+\end{align*}
+
+Then we can derive the ratio of human capital investment cost and human capital gap as
+\begin{align*}
+\log(\frac{\mu_{hH}}{\mu_{hL}}) &= (\frac{\alpha_H}{\alpha_L}-1)\log(\mu_{hL}g_h)-\alpha_H\log((\frac{\alpha_H}{\alpha_L}-1)(\mu_{hL}g_h)^{\frac{1}{\alpha_L}}+1)-\log(\frac{\alpha_H}{\alpha_L}) \\
+h_{HL}-h_{HL}^*&= -\frac{\alpha_H}{\lambda_h}\log \Big(\frac{\alpha_L(\mu_{hL}g_h)^{-\frac{1}{\alpha_L}}+\alpha_H-\alpha_L}{\alpha_H(\mu_{hL}g_h)^{-\frac{1}{\alpha_H}}}\Big)
+\end{align*}
+
+\subsection*{Calibration}
+To calibrate the parameters internally, I need to find the relevant moments. 
+Discount rate $\rho$ can calibrated using the long-run interest rate and growth rate. 
+\begin{align*}
+r = \rho+\theta g
+\end{align*}
+Patent share $\eta$ is calibrated using the ratio of R\&D investment and GDP. 
+\begin{align*}
+\frac{W_H(\epsilon_N+\epsilon_I)}{Y} = (\frac{W_H}{Y})^{\frac{\lambda}{\lambda-1}}\Big((\frac{1}{\lambda}\frac{\mu_N}{p_N})^{\frac{1}{\lambda-1}}+(\frac{1}{\lambda}\frac{\mu_I}{p_I})^{\frac{1}{\lambda-1}}\Big) \propto \eta^{\frac{1}{1-\lambda}}
+\end{align*}
+Cost of innovation needs to set to match the innovation growth rate: 
+\begin{align*}
+g_N = (\frac{1}{\mu_N})^{\frac{1}{1-\lambda}}(\frac{\lambda P_N}{W_H})^{\frac{\lambda}{1-\lambda}} \propto (\frac{1}{\mu_N})^{\frac{1}{1-\lambda}}
+\end{align*}
+Capital productivity $A$ and cost of automation are calibrated using short run interest rate and capital share.  
+\begin{align*}
+R &= AH\Big(\frac{s_K}{1-\eta}\Big)^{\frac{1}{1-\hat{\sigma}}} \propto A \\
+\frac{P_I}{P_N} &=(\frac{\mu_I}{\mu_N})^{\frac{1}{\lambda}} \propto \mu_I^{\frac{1}{\lambda}}
+\end{align*}
+
+Skill comparative advantage $B_H$ and training cost elasticity $\lambda_h$ is calibrated using wage premium in 1980 and 2005. 
+\begin{align*}
+\omega &= (\frac{\Gamma_H}{\Gamma_L})^{\frac{{\hat{\sigma}}-1}{\hat{\sigma}}} \\
+d \ln \omega &=(B-B_L)d\tilde{S}+bdh_{HL}  \\
+dh_{HL} &= \frac{1}{\lambda_h}\frac{(1-\frac{\alpha_L}{\alpha_H})l_L}{1-(1-\frac{\alpha_L}{\alpha_H})l_L}d\log(g_h) \propto \frac{1}{\lambda_h}
+\end{align*}
+
+Training law of motion $\alpha_H$ and $\alpha_L$ are calibrated using the change of training time. 
+\begin{align*}
+d\log(1-l_H) &= \frac{1}{(1-l_L)\alpha_H+l_L\alpha_L}d\log(g_h) \\
+d\log(1-l_L) &= \frac{1}{\alpha_L}d\log(g_h) 
+\end{align*}
+
+Size of technology wave is calibrated to match the change of labor share. 
+\begin{align*}
+\frac{P_I}{P_N} =(\frac{\mu_I}{\mu_N})^{\frac{1}{\lambda}} \propto \mu_I^{\frac{1}{\lambda}}
+\end{align*}
+
+
+
+
+\subsection*{Transition path algorithm}
+
+To solve the transition path numerically between two balanced growth path. I firstly solve the BGP before and after political or technological shock, and use them as the starting and end point. 
+
+\begin{itemize}
+\item[(1)] Start with the initial guess of capital stock $\{k_0(t)\}$, labor supply $\{L_{H0}(t), L_{L0}(t)\}$, automation level $\{\tilde{I}_0(t)\}$, human capital gap $\{h_{HL0}(t)\}$ and growth rates $\{g_{N0}(t),g_{hH0}(t),g_{hL0}(t)\}$. 
+
+
+\item[(2)] By solving firm's problem, I can get prices $\{r(t),\omega_H(t),\omega_L(t)\}$, capital and labor share $\{s_K(t),s_H(t),s_L(t)\}$
+\begin{align*}
+r &= A \Gamma_K(\frac{(1-\eta)y}{A\Gamma_Kk})^{\frac{1}{\hat{\sigma}}}-\delta \\
+\omega_H &= A \tilde{\Gamma}_H(\frac{(1-\eta)y}{A\tilde{\Gamma}_HL_H})^{\frac{1}{\hat{\sigma}}} \\
+\omega_L &= A \frac{\tilde{\Gamma}_L}{\gamma_{HL}}(\frac{(1-\eta)y}{A\frac{\tilde{\Gamma}_L}{\gamma_{HL}}L_L})^{\frac{1}{\hat{\sigma}}} \\
+s_K &= (1-\eta)(\frac{R}{A\Gamma_K})^{1-\hat{\sigma}} \\
+s_H &= (1-\eta)(\frac{\omega_H}{A \tilde{\Gamma}_H})^{1-\hat{\sigma}} \\
+s_L &= (1-\eta)(\frac{\omega_L}{A \frac{\tilde{\Gamma}_L}{\gamma_{HL}}})^{1-\hat{\sigma}} 
+\end{align*}
+and task allocation $\{\tilde{S}(t)\}$: 
+\begin{align*}
+\frac{\omega_H}{\gamma_H(h_L,S)} &= \frac{\omega_L}{\gamma_L(h_L,S)}
+\end{align*}
+
+\item[(3)] Given factor prices $\{r(t),\omega_H(t),\omega_L(t)\}$ and growth rates $\{g_{N0}(t),g_{hH0}(t),g_{hL0}(t)\}$, I can solve consumption $\{c_H(t),c_L(t)\}$ and capital $\{k_H(t),k_L(t)\}$ by solving household's problem
+\begin{align*}
+g &= B_Hg_{N0}+bg_{hH0} \\
+\frac{\dot{c}_H}{c_H} &= \frac{\dot{c}_L}{c_L} = \frac{r-\rho}{\theta}-g \\
+\dot{k}_H &= (r-g)k_H+\omega_HL_H+\pi-c_H \\
+\dot{k}_L &=  (r-g)k_L+\omega_L L_L-c_L
+\end{align*}
+then solve the new capital stock $\{k_1(t)\}$:
+\begin{align*}
+\dot{k} &= \dot{k}_H+ \dot{k}_L
+\end{align*}
+
+\item[(4)] Given factor prices $\{r(t),\omega_H(t),\omega_L(t)\}$ and growth rates $\{g_{N0}(t),g_{hH0}(t),g_{hL0}(t)\}$, I can solve the patent value of R\&D sector. 
+\begin{align*}
+p_N &= (1-\tau_N)v_N(N)-(1-\tau_I)v_I\\
+p_I &= (1-\tau_I)v_I-(1-\tau_N)v_N(I) 
+\end{align*}
+Where $V_{NH}$, $V_{NL}$ and $V_I$ can be solved recursively given factor prices and growth rates. 
+
+
+\item[(5)] Given factor prices $\{r(t),\omega_H(t),\omega_L(t)\}$, patent value $\{p_N(t),p_I(t)\}$ I can solve human capital investment $\{g_{hH}(t), g_{hL}(t)\}$ using HH's problem
+\begin{align*}
+\frac{b}{\mu_{hH}}\alpha_Hl_H(1-l_H)^{\alpha_H-1}+bg_{hH}+g_{WH} &= (1+\tau_{hH})r\\
+\frac{b}{\mu_{hL}}\alpha_Ll_L(1-l_L)^{\alpha_L-1}+bg_{hL}+g_{WL} &= (1+\tau_{hL})r
+\end{align*}
+
+and growth rates $\{g_{N1}(t), g_{I1}(t)\}$ and labor supply $\{L_{H1}(t), L_{L1}(t)\}$ using research sector's problem: 
+\begin{align*}
+\frac{p_N}{\mu_N} &= \frac{\omega_H}{y}  \\
+\frac{p_I}{\mu_I} &= \frac{\omega_H}{y}  \\
+L_H &=\epsilon_H l_H-\mu_Ng_N-\mu_Ig_I \\
+L_L &=\epsilon_L l_L
+\end{align*}
+
+\item[(6)] Given growth rate $\{g_{N1}(t),g_I(t),g_{hH1}(t),g_{hL1}(t)\}$, I can solve the new automation level $\{\tilde{I}_1(t)\}$ and human capital gap $\{h_{HL1}(t)\}$ using the law of motion: 
+\begin{align*}
+\dot{\tilde{I}} &= g_I- g_N \\
+\dot{h}_{HL} &= b (g_{hH}-g_{hL})
+\end{align*}
+
+\item[(7)] Update capital stock $\{k_0(t)\}$, labor supply $\{L_{H0}(t), L_{L0}(t)\}$, automation level $\{\tilde{I}_0(t)\}$, human capital gap $\{h_{HL0}(t)\}$ and growth rates $\{g_{N0}(t),g_{hH0}(t),g_{hL0}(t)\}$, and go back to 2 until converges. 
+
+\end{itemize}
+
+\end{document}

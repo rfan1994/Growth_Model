@@ -1,0 +1,156 @@
+#!/bin/bash
+# bash ~/thindrives/Desktop/Growth_Model/Fortran/Pre_Job_RED
+# mv ~/Documents/* /N/slate/fanrong
+
+export model=4
+
+
+
+if [ $model -eq 1 ]
+then
+    # ===============================================================================================
+    # No_Automation: Compile
+    
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents
+    mkdir -p Growth
+    cd Growth
+    rm -r No_Automation
+    mkdir No_Automation
+    
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/*.f90 ~/Documents/Growth/No_Automation
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/No_Automation/* ~/Documents/Growth/No_Automation
+    
+    cd ~/Documents/Growth/No_Automation
+    make -f Makefile
+    
+    
+    # ===============================================================================================
+    # No_Automation: Mkdir
+    
+    cd ~/Documents
+    mkdir -p $(date +%Y%m%d_%H%M)
+    cd $(date +%Y%m%d_%H%M)
+    mkdir -p No_Automation
+    
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d_%H%M)
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/BGP ~/Documents/$(date +%Y%m%d_%H%M)/No_Automation
+
+
+
+
+
+
+
+
+elif [ $model -eq 2 ]
+then
+    # ===============================================================================================
+    # No_HumanCapital: Compile
+
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents
+    mkdir -p Growth
+    cd Growth
+    rm -r No_HumanCapital
+    mkdir No_HumanCapital
+
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/*.f90 ~/Documents/Growth/No_HumanCapital
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/No_HumanCapital/* ~/Documents/Growth/No_HumanCapital
+
+    cd ~/Documents/Growth/No_HumanCapital
+    make -f Makefile
+
+
+    # ===============================================================================================
+    # No_HumanCapital: Mkdir
+
+    cd ~/Documents
+    mkdir -p $(date +%Y%m%d_%H%M)
+    cd $(date +%Y%m%d_%H%M)
+    mkdir -p No_HumanCapital
+
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d_%H%M)
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/BGP ~/Documents/$(date +%Y%m%d_%H%M)/No_HumanCapital
+
+
+
+
+
+
+
+
+elif [ $model -eq 3 ]
+then
+    # ===============================================================================================
+    # One_Group: Compile
+
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents
+    mkdir -p Growth
+    cd Growth
+    rm -r One_Group
+    mkdir One_Group
+
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/*.f90 ~/Documents/Growth/One_Group
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/One_Group/* ~/Documents/Growth/One_Group
+
+    cd ~/Documents/Growth/One_Group
+    make -f Makefile
+
+
+    # ===============================================================================================
+    # One_Group: Mkdir
+
+    cd ~/Documents
+    mkdir -p $(date +%Y%m%d_%H%M)
+    cd $(date +%Y%m%d_%H%M)
+    mkdir -p One_Group
+
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d_%H%M)
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/BGP ~/Documents/$(date +%Y%m%d_%H%M)/One_Group
+
+
+
+
+
+
+
+
+elif [ $model -eq 4 ]
+then
+    # ===============================================================================================
+    # Two_Group: Compile
+
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents
+    mkdir -p Growth
+    cd Growth
+    rm -r Two_Group
+    mkdir Two_Group
+
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/*.f90 ~/Documents/Growth/Two_Group
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Model/Two_Group/* ~/Documents/Growth/Two_Group
+
+    cd ~/Documents/Growth/Two_Group
+    make -f Makefile
+
+
+    # ===============================================================================================
+    # Two_Group: Mkdir
+
+    cd ~/Documents
+    mkdir -p $(date +%Y%m%d_%H%M)
+    cd $(date +%Y%m%d_%H%M)
+    mkdir -p Two_Group
+
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d_%H%M)
+    cp -f ~/thindrives/Desktop/Growth_Model/Fortran/BGP ~/Documents/$(date +%Y%m%d_%H%M)/Two_Group
+
+fi
+
+
+
+
+
+  bash ~/Documents/$(date +%Y%m%d_%H%M)/Run_Job_RED

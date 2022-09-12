@@ -1,0 +1,5 @@
+#!/bin/bash
+# bash ~/thindrives/Desktop/Growth_Model/Fortran/Move_File
+# mv ~/Documents/* /N/slate/fanrong
+
+cp -r ~/Documents/20220505_1001/Two_Group ~/thindrives/Desktop
