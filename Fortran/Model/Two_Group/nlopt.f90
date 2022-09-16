@@ -60,11 +60,11 @@ end interface
         algorithm=NLOPT_LN_BOBYQA
     end select
 
-    fgoodenough = 1d-4
-    ftolerabs = 1d-4
-    ftolerrel = 1d-4              ! any negative value means no stopping
-    xtolerrel = 1d-4
-    xtolerabs = 1d-4
+    fgoodenough = TOL
+    ftolerabs = TOL
+    ftolerrel = TOL              ! any negative value means no stopping
+    xtolerrel = TOL
+    xtolerabs = TOL
     maxeval = 1d5 
 
     ! Initialize nlopt

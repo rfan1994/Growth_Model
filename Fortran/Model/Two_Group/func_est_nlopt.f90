@@ -113,7 +113,7 @@ elseif (calibration == 0) then
         epsilon_I = (g_I*mu_I)**(1d0/lambda)
         mu_hH = mu_hH_h(h_HL)
         ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-        L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+        L_H = epsilon_H*ll_H
         mu_HL = mu_h
         ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
         L_L = epsilon_L*ll_L
@@ -126,15 +126,16 @@ elseif (calibration == 0) then
 
         g_wN = B_NH*g_N+s_LL/(s_LL+s_LH)*d_I*b_h*(g_hH-g_hL)+d_I*(g_k-g_L)
         g_wI = (d_I*d_Eta_I+s_LL/(s_LL+s_LH)*(1d0-d_I)*d_Gamma_I)*(g_I-g_N)
-        g_wS = (B_NH-B_NL)/a_S*((g_LL-g_LH+b_h*(g_hL-g_hH))/sigma-(sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
+        ! g_wS = (B_NH-B_NL)/a_S*((g_LL-g_LH+b_h*(g_hL-g_hH))/sigma-(sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
+        g_wS = -(B_NH-B_NL)/a_S*((sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
 
         if (SPP == 0) then       
             ! V_NH0 = (p*(w_H/A)**(1d0-sigma)*y*dt+V_NH1)/((rr-g+(sigma-1d0)*B_NH*g_N)*dt+1d0)
             ! V_NL0 = (p*(w_L/A*gamma_HL)**(1d0-sigma)*y*dt+V_NL1)/((rr-g+(sigma-1d0)*B_NL*g_N)*dt+1d0)
             ! V_II0 = (p*(R/A)**(1d0-sigma)*y*dt+V_II1)/((rr-g)*dt+1d0)
-            V_NH0 = p*(w_H/A)**(1d0-sigma)*y/(rr-g+(sigma-1d0)*B_NH*g_N)
-            V_NL0 = p*(w_L/A*gamma_HL)**(1d0-sigma)*y/(rr-g+(sigma-1d0)*B_NL*g_N)
-            V_II0 = p*(R/A)**(1d0-sigma)*y/(rr-g)
+            V_NH0 = p*(w_H/A)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NH*g_N)
+            V_NL0 = p*(w_L/A*gamma_HL)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NL*g_N)
+            V_II0 = p*(R/A)**(1d0-sigma)/(rr-g)
             gamma_IL = exp(B_NL*(1d0-I_tilde)*(1d0-sigma))
             gamma_SH = exp(B_NH*(1d0-S_tilde)*(1d0-sigma))
             gamma_SL = exp(B_NL*(1d0-S_tilde)*(1d0-sigma))
@@ -160,34 +161,31 @@ elseif (calibration == 0) then
 
     select case (Model)
         case (1)          
-            L_N = (lambda*p_N*epsilon_N**(lambda-1d0)/mu_N-w_H)**2d0                        &
-                + (lambda*p_I*epsilon_I**(lambda-1d0)/mu_I-w_H)**2d0
+            L_N = (lambda*p_N*epsilon_N**(lambda-1d0)/mu_N-s_LH/L_H)**2d0                   &
+                + (lambda*p_I*epsilon_I**(lambda-1d0)/mu_I-s_LH/L_H)**2d0
         case (2)
             if (SPP == 0) then
-                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-w_H)**2d0                    &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-w_H)**2d0                    &
+                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
                     + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H                     &
-                    + b_h/mu_hH*(1d0-ll_H)**alpha_H                                         &
-                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS)**2d0 
+                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0 
             elseif (SPP == 1) then 
-                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-w_H)**2d0                    &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-w_H)**2d0                    &
+                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
                     + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H            &
                     - R/(1d0-p)-delta+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0 
             endif 
         case (3) 
             if (SPP == 0) then
-                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-w_H)**2d0                    &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-w_H)**2d0                    &
+                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
                     + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H                     &
-                    + b_h/mu_hH*(1d0-ll_H)**alpha_H                                         &
-                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS)**2d0                 &
+                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0        &
                     + (b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L                     &
-                    + b_h/mu_hL*(1d0-ll_L)**alpha_L                                         &
-                    - (1d0+tau_hL)*rr+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS)**2d0
+                    - (1d0+tau_hL)*rr+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS+b_h*g_hL)**2d0
             elseif (SPP == 1) then 
-                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-w_H)**2d0                    &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-w_H)**2d0                    &
+                L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
                     + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H            &
                     - R/(1d0-p)-delta+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0        &
                     + (b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L                     &

@@ -29,7 +29,7 @@ Philippe Aghion, Ufuk Akcigit, and Peter Howitt.
 \newblock In {\em Handbook of economic growth}, volume~2, pages 515--563.
   Elsevier, 2014.
 
-\bibitem{Aghioenetal2021}
+\bibitem{Aghionetal2021}
 Philippe Aghion, C{\'e}line Antonin, Simon Bunel, and Xavier Jaravel.
 \newblock The direct and indirect effects of automation on employment: A survey
   of the recent literature.
@@ -52,11 +52,22 @@ Paul Beaudry, Mark~E Doms, and Ethan~G Lewis.
 \newblock Endogenous skill bias in technology adoption: City-level evidence
   from the it revolution, 2006.
 
+\bibitem{BeaudryVanWincoop1996}
+Paul Beaudry and Eric Van~Wincoop.
+\newblock The intertemporal elasticity of substitution: An exploration using a
+  us panel of state data.
+\newblock {\em Economica}, pages 495--512, 1996.
+
 \bibitem{Benhabibetal2017}
 Jess Benhabib, Jesse Perla, and Christopher Tonetti.
 \newblock Reconciling models of diffusion and innovation: a theory of the
   productivity distribution and technology frontier.
 \newblock Technical report, National Bureau of Economic Research, 2017.
+
+\bibitem{Bloometal2020}
+Nicholas Bloom, Charles~I Jones, John Van~Reenen, and Michael Webb.
+\newblock Are ideas getting harder to find?
+\newblock {\em American Economic Review}, 110(4):1104--44, 2020.
 
 \bibitem{BohacekKapicka2008}
 Radim Bohacek and Marek Kapicka.
@@ -73,12 +84,6 @@ Emin Dinlersoz, Zoltan Wolf, et~al.
 \newblock Automation, labor share, and productivity: Plant-level evidence from
   us manufacturing.
 \newblock Technical report, 2018.
-
-\bibitem{Feltenetal2019}
-Edward~W Felten, Manav Raj, and Robert Seamans.
-\newblock The occupational impact of artificial intelligence: Labor, skills,
-  and polarization.
-\newblock {\em NYU Stern School of Business}, 2019.
 
 \bibitem{Frazis2007}
 Harley Frazis, Mark~A Loewenstein, et~al.
@@ -149,5 +154,10 @@ Nancy~L Stokey et~al.
 Peter Thompson.
 \newblock Learning by doing.
 \newblock {\em Handbook of the Economics of Innovation}, 1:429--476, 2010.
+
+\bibitem{Webb2019}
+Michael Webb.
+\newblock The impact of artificial intelligence on the labor market.
+\newblock {\em Available at SSRN 3482150}, 2019.
 
 \end{thebibliography}

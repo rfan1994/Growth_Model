@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.9.16)  11 SEP 2022 20:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.9.16)  15 SEP 2022 22:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,39 +535,19 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-(/usr/local/texlive/2017/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
-Package: tikz-cd 2014/10/30 v0.9e Commutative diagrams with tikz
-
-(/usr/local/texlive/2017/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex
-(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibrarymatrix.code.tex
-File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.4)
-)
-(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibraryquotes.code.tex
-File: tikzlibraryquotes.code.tex 2014/03/21 v3.0.1a (rcs-revision 1.4)
-)
-(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
-meta.code.tex
-File: pgflibraryarrows.meta.code.tex 2015/05/13 v3.0.1a (rcs-revision 1.13)
-\pgfarrowinset=\dimen192
-\pgfarrowlength=\dimen193
-\pgfarrowwidth=\dimen194
-\pgfarrowlinewidth=\dimen195
-)))
 (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen196
-\captionmargin@=\dimen197
-\captionwidth=\dimen198
-\caption@tempdima=\dimen199
-\caption@indent=\dimen256
-\caption@parindent=\dimen257
-\caption@hangindent=\dimen258
+\captionmargin=\dimen192
+\captionmargin@=\dimen193
+\captionwidth=\dimen194
+\caption@tempdima=\dimen195
+\caption@indent=\dimen196
+\caption@parindent=\dimen197
+\caption@hangindent=\dimen198
 )
 \c@ContinuedFloat=\count136
 Package caption Info: longtable package is loaded.
@@ -575,8 +555,14 @@ Package caption Info: longtable package is loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 ))
-\c@assumption=\count137
-\c@proposition=\count138
+(/usr/local/texlive/2017/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count137
+\c@@ppsavesec=\count138
+\c@@ppsaveapp=\count139
+)
+\c@assumption=\count140
+\c@proposition=\count141
 
 (./Growth Model.aux
 
@@ -585,30 +571,30 @@ LaTeX Warning: Label `V_I' multiply defined.
 )
 \openout1 = `"Growth Model.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
  (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count139
-\scratchdimen=\dimen259
+\scratchcounter=\count142
+\scratchdimen=\dimen199
 \scratchbox=\box43
-\nofMPsegments=\count140
-\nofMParguments=\count141
+\nofMPsegments=\count143
+\nofMParguments=\count144
 \everyMPshowfont=\toks41
-\MPscratchCnt=\count142
-\MPscratchDim=\dimen260
-\MPnumerator=\count143
-\makeMPintoPDFobject=\count144
+\MPscratchCnt=\count145
+\MPscratchDim=\dimen256
+\MPnumerator=\count146
+\makeMPintoPDFobject=\count147
 \everyMPtoPDFconversion=\toks42
 ) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
@@ -693,156 +679,173 @@ e
 ABD: EveryShipout initializing macros
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (4.49239pt too wide) in paragraph at lines 30--31
-\OT1/cmr/m/n/10.95 hu-man cap-i-tal ac-cu-mu-la-tion en-doge-nously re-sponds t
-o tech-no-log-i-cal change?I
- []
+) [1
 
-[1
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+] [3]
 
-LaTeX Warning: Citation `Aghionetal2021' on page 2 undefined on input line 40.
+LaTeX Warning: Citation `Aghioenetal2021' undefined on input line 48.
 
-
-Overfull \hbox (42.16664pt too wide) in paragraph at lines 46--47
-\OT1/cmr/m/n/12 co-nomic im-pli-ca-tion, I adopt the task model frame-work of A
-ce-moglu and Restrepo(2018)[[]].
- []
-
-[2
-
-]
-
-LaTeX Warning: Citation `Feltenetal2021' on page 3 undefined on input line 52.
-
-[3] [4] [5
-
-] [6] <Model.png, id=31, 723.70375pt x 382.42876pt>
+[4] [5] <Model.png, id=28, 723.70375pt x 382.42876pt>
 File: Model.png Graphic file (type png)
  <use Model.png>
-Package pdftex.def Info: Model.png used on input line 74.
+Package pdftex.def Info: Model.png used on input line 64.
 (pdftex.def)             Requested size: 418.25368pt x 221.02104pt.
+ [6 <./Model.png>] [7] [8] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
-[7 <./Model.png>] [8]
-Overfull \hbox (11.54604pt too wide) in paragraph at lines 109--110
-[]\OT1/cmr/m/n/12 The law of mo-tion of hu-man cap-i-tal is a gen-er-al-ized fo
-rm of Gross-man et al.(2021)[[]].
  []
 
-[9] [10]
 
-LaTeX Warning: Citation `Bloometal2020' on page 11 undefined on input line 144.
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
 
+ []
 
-[11] [12] <allocation.png, id=63, 782.925pt x 160.6pt>
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+<allocation.png, id=60, 782.925pt x 160.6pt>
 File: allocation.png Graphic file (type png)
  <use allocation.png>
-Package pdftex.def Info: allocation.png used on input line 217.
+Package pdftex.def Info: allocation.png used on input line 207.
 (pdftex.def)             Requested size: 418.25368pt x 85.79639pt.
 
-[13] [14 <./allocation.png>] [15] [16] [17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+[12] [13 <./allocation.png>] [14] [15] [16] [17] [18]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ” in font cmr12!
- [20] [21] [22] [23]
-[24]
-
-LaTeX Warning: Citation `Sourse: CNBC' on page 25 undefined on input line 519.
-
-[25]
-Overfull \hbox (7.72662pt too wide) in paragraph at lines 546--546
+ [19] [20] [21] [22]
+[23] [24]
+Overfull \hbox (7.72662pt too wide) in paragraph at lines 538--538
 [] 
  []
 
+[25]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [26] [27]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[28] [29]
-Overfull \hbox (25.75583pt too wide) in paragraph at lines 628--629
-\OT1/cmr/m/n/12 tech-no-log-i-cal shock is con-sist of growth rates of the econ
--omy $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t
-\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/
-cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m
-/n/12 )\OML/cmm/m/it/12 ; g[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
+Overfull \hbox (55.7833pt too wide) in paragraph at lines 619--620
+\OT1/cmr/m/n/12 cal or tech-no-log-i-cal shock is con-sist of growth rates of t
+he econ-omy $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/
+it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
+ t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT
+1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Overfull \hbox (42.05196pt too wide) in paragraph at lines 666--682
+[28]
+Overfull \hbox (42.05196pt too wide) in paragraph at lines 656--671
  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[30] [31] [32]
-Overfull \hbox (50.41872pt too wide) in paragraph at lines 738--762
+[29] [30] [31]
+
+LaTeX Warning: Citation `Restrepo2015' undefined on input line 721.
+
+[32] <trend.png, id=132, 661.0296pt x 287.1528pt>
+File: trend.png Graphic file (type png)
+ <use trend.png>
+Package pdftex.def Info: trend.png used on input line 765.
+(pdftex.def)             Requested size: 418.25368pt x 181.69589pt.
+
+
+LaTeX Warning: Reference `LV_trend1' on page 33 undefined on input line 771.
+
+<LV_trend1.png, id=133, 816.1692pt x 451.4466pt>
+File: LV_trend1.png Graphic file (type png)
+ <use LV_trend1.png>
+Package pdftex.def Info: LV_trend1.png used on input line 774.
+(pdftex.def)             Requested size: 418.25368pt x 231.35065pt.
+ [33 <./trend.png (PNG copy)>]
+
+LaTeX Warning: Reference `LV_trend2' on page 34 undefined on input line 780.
+
+<LV_trend2.png, id=137, 807.4968pt x 451.4466pt>
+File: LV_trend2.png Graphic file (type png)
+ <use LV_trend2.png>
+Package pdftex.def Info: LV_trend2.png used on input line 783.
+(pdftex.def)             Requested size: 418.25368pt x 233.8374pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[34 <./LV_trend1.png (PNG copy)>] <train.png, id=141, 664.4022pt x 245.2362pt>
+File: train.png Graphic file (type png)
+
+<use train.png>
+Package pdftex.def Info: train.png used on input line 793.
+(pdftex.def)             Requested size: 418.25368pt x 154.3836pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[35 <./LV_trend2.png (PNG copy)>]
+Overfull \hbox (6.2582pt too wide) in paragraph at lines 808--810
+\OT1/cmr/m/n/12 I regress the out-come vari-able $^^A [] \OML/cmm/m/it/12 Y[]$ 
+\OT1/cmr/m/n/12 on the TFP growth rate $^^A [] \OML/cmm/m/it/12 TFP[]$
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[36 <./train.png (PNG copy)>] [37] <LP.png, id=152, 648.9846pt x 243.7908pt>
+File: LP.png Graphic file (type png)
+
+<use LP.png>
+Package pdftex.def Info: LP.png used on input line 887.
+(pdftex.def)             Requested size: 418.25368pt x 157.11923pt.
+ [38 <./LP.png (PNG copy)>]
+Overfull \hbox (20.42905pt too wide) in paragraph at lines 908--927
  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[33]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[34] <dH_shares1_LP.png, id=138, 301.125pt x 200.9106pt>
-File: dH_shares1_LP.png Graphic file (type png)
-
-<use dH_shares1_LP.png>
-Package pdftex.def Info: dH_shares1_LP.png used on input line 844.
-(pdftex.def)             Requested size: 209.12683pt x 139.53587pt.
- <VAConLC_LP.png, id=139, 301.125pt x 200.9106pt>
-File: VAConLC_LP.png Graphic file (type png)
-
-<use VAConLC_LP.png>
-Package pdftex.def Info: VAConLC_LP.png used on input line 845.
-(pdftex.def)             Requested size: 209.12683pt x 139.53587pt.
-
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 844--847
-[][] []
- []
-
-
-LaTeX Warning: Citation `Feltenetal2021' on page 35 undefined on input line 852
-.
-
-[35] [36 <./dH_shares1_LP.png (PNG copy)> <./VAConLC_LP.png (PNG copy)>]
-[37] [38] [39] (./Growth Model.bbl [40
+[39] [40] (./Growth Model.bbl [41
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 91.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
- [41]) [42]
-[43] [44]
-Overfull \hbox (67.96289pt too wide) in paragraph at lines 1061--1061
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
+ [42]) [43]
+[44
+
+] [45]
+Overfull \hbox (67.96289pt too wide) in paragraph at lines 1082--1082
 [] 
  []
 
-[45] [46]
-Overfull \hbox (18.65385pt too wide) in paragraph at lines 1136--1137
+[46] [47]
+Overfull \hbox (18.65385pt too wide) in paragraph at lines 1159--1160
 []\OT1/cmr/m/n/12 Start with the ini-tial guess of cap-i-tal stock $\OMS/cmsy/m
 /n/12 f\OML/cmm/m/it/12 k[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )
 \OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 , la-bor sup-ply $\OMS/cmsy/m/n/12 f\OML/cmm
@@ -851,32 +854,32 @@ Overfull \hbox (18.65385pt too wide) in paragraph at lines 1136--1137
 OT1/cmr/m/n/12 ,
  []
 
-[47]
-Overfull \hbox (23.17226pt too wide) in paragraph at lines 1153--1154
-[]\OT1/cmr/m/n/12 Given fac-tor prices $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 r\OT
-1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr
-/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr/m/n/
-12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 and 
-growth rates $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m
-/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
-2 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\O
-T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
- []
-
-
-Overfull \hbox (23.17226pt too wide) in paragraph at lines 1165--1166
-[]\OT1/cmr/m/n/12 Given fac-tor prices $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 r\OT
-1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr
-/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr/m/n/
-12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 and 
-growth rates $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m
-/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
-2 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\O
-T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
- []
-
 [48]
-Overfull \hbox (16.13907pt too wide) in paragraph at lines 1193--1194
+Overfull \hbox (23.17226pt too wide) in paragraph at lines 1176--1177
+[]\OT1/cmr/m/n/12 Given fac-tor prices $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 r\OT
+1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr/m/n/
+12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 and 
+growth rates $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m
+/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\O
+T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (23.17226pt too wide) in paragraph at lines 1188--1189
+[]\OT1/cmr/m/n/12 Given fac-tor prices $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 r\OT
+1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr/m/n/
+12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 and 
+growth rates $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m
+/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\O
+T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
+ []
+
+[49]
+Overfull \hbox (16.13907pt too wide) in paragraph at lines 1216--1217
 \OMS/cmsy/m/n/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cm
 sy/m/n/12 g$\OT1/cmr/m/n/12 , hu-man cap-i-tal gap $\OMS/cmsy/m/n/12 f\OML/cmm/
 m/it/12 h[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12
@@ -886,7 +889,7 @@ m/it/12 h[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12
 12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
  []
 
-[49] (./Growth Model.aux)
+[50] (./Growth Model.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -895,13 +898,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15678 strings out of 492995
- 314208 string characters out of 6132704
- 377314 words of memory out of 5000000
- 18911 multiletter control sequences out of 15000+600000
+ 14899 strings out of 492995
+ 286669 string characters out of 6132704
+ 346019 words of memory out of 5000000
+ 18144 multiletter control sequences out of 15000+600000
  14704 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,23n,84p,1357b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,23n,54p,1431b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -922,10 +925,10 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2017/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on "Growth Model.pdf" (49 pages, 453282 bytes).
+Output written on "Growth Model.pdf" (50 pages, 740410 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 175 compressed objects within 2 object streams
+ 260 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -153,4 +153,4 @@ fi
 
 
 
-  bash ~/Documents/$(date +%Y%m%d_%H%M)/Run_Job_RED
+  # bash ~/Documents/$(date +%Y%m%d_%H%M)/Run_Job_RED

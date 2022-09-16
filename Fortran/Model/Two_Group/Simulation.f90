@@ -98,7 +98,7 @@ real(8) :: x(5), fvec(5)
         if (SPP == 0) then
             k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
             k_L = k/(a_HL*epsilon_H+epsilon_L)            
-            Trans = rr*k+tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
+            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
                   + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
             c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
             c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
@@ -120,7 +120,7 @@ real(8) :: x(5), fvec(5)
         if (SPP == 0) then
             k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
             k_L = k/(a_HL*epsilon_H+epsilon_L)
-            Trans = rr*k+tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
+            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
                   + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
             c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
             c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
@@ -157,7 +157,7 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -207,7 +207,7 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -265,7 +265,7 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -358,7 +358,7 @@ real(8) :: x(6), fvec(6)
         if (SPP == 0) then
             k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
             k_L = k/(a_HL*epsilon_H+epsilon_L)            
-            Trans = rr*k+tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
+            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
                   + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
             c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
             c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
@@ -380,7 +380,7 @@ real(8) :: x(6), fvec(6)
         if (SPP == 0) then
             k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
             k_L = k/(a_HL*epsilon_H+epsilon_L)
-            Trans = rr*k+tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
+            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
                   + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
             c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
             c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
@@ -418,7 +418,7 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -470,7 +470,7 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -531,7 +531,7 @@ real(8), intent(out) :: fvec(n)
     mu_hH = (1d0-ll_H)**alpha_H/g_hH 
     h_HL = h_HL_mu(mu_hH)
     L_L = epsilon_L*ll_L
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     g = B_NH*g_N+b_h*g_hH
 
     if (I_tilde < 0d0 .or. I_tilde > 1d0 .or.           &
@@ -648,7 +648,7 @@ integer :: p0, p1
         ! Update k
         ts_k1(1) = k0
         do i = 2,iter_IR-1
-            g_dot = ts_a_dk(i-1)
+            g_dot = min(ts_a_dk(i-1),0d0)
             k = ts_k0(i-1)+g_dot*ts_dt(i-1)
             if (k .le. min(k0,k1)) then
                 ts_k1(i) = min(k0,k1)
@@ -709,6 +709,7 @@ integer :: p0, p1
         g_N = ts_g_N0(i)
         g_I = ts_g_I0(i)
         g_hH = ts_g_hH0(i)
+        g_hL = ts_g_hL0(i)
         g = B_NH*g_N+b_h*g_hH      
         c_H = c_H_IR(i)
         c_L = c_L_IR(i)
@@ -787,7 +788,7 @@ real(8) :: beta_NS
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_HL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -819,7 +820,7 @@ real(8) :: g_wN, g_wI, g_wS
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_HL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -870,7 +871,7 @@ real(8) :: g_wN, g_wI, g_wS
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    L_H = epsilon_H*ll_H
     mu_HL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -1002,7 +1003,7 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
-real(8), parameter :: rmin = 0.9d0, rmax = 1.2d0
+real(8), parameter :: rmin = 0.8d0, rmax = 1.2d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -1101,6 +1102,7 @@ real(8) :: V_H0, V_H1, V_L0, V_L1
         c_L = c_L_IR(i) 
         g_N = ts_g_N0(i)
         g_hH = ts_g_hH0(i)
+        g_hL = ts_g_hL0(i)
         g = B_NH*g_N+b_h*g_hH     
         V_H0 = (u(c_H)*dt+V_H1)/((rho-(1d0-theta)*g)*dt+1d0)
         V_L0 = (u(c_L)*dt+V_L1)/((rho-(1d0-theta)*g)*dt+1d0)
