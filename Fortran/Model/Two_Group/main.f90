@@ -88,37 +88,6 @@ elseif (calibration == 0) then
             end do
 
         case (2) ! BGP
-            do num = 1,num_total-1
-                iunit = num 
-                Model = 1
-                call Read_Param1 
-                mu_I = mu_I*shock
-                call BGP(0)
-                s_K0 = s_K; s_LH0 = s_LH; s_LL0 = s_LL
-                k0 = k; L0 = (s_LH*L_H+s_LL*L_L)/(s_LH+s_LL)
-                w0 = w; h_HL0 = h_HL
-                call Save_BGP1(1)
-
-                write(*,*) ''    
-                mu_I = shock*mu_I
-                call BGP(0)
-                s_K1 = s_K; s_LH1 = s_LH; s_LL1 = s_LL
-                k1 = k; L1 = (s_LH*L_H+s_LL*L_L)/(s_LH+s_LL)
-                w1 = w; h_HL1 = h_HL
-
-                open(2, file='Decompose.txt', status='old', position='append')
-                    FMT = '(3I10,7F10.4)'
-                    write(2,FMT) iunit, Model, flag,                                                &
-                    (B_NH-B_NL)/a_S*a_I,                                                            &            
-                    (B_NH-B_NL)/a_S*a_I*(log(S_LH1+S_LL1)-log(S_LH0+S_LL0)),                        & 
-                    (B_NH-B_NL)/a_S*a_I*(sigma-1d0)/sigma*s_K/(1d0-p),                              & 
-                    (B_NH-B_NL)/a_S*a_I*(sigma-1d0)/sigma*s_K/(1d0-p)*                              & 
-                    (log(k1/L1)-log(k0/L0)+s_LL1/(s_LH1+s_LL1)*h_HL1-s_LL0/(s_LH0+s_LL0)*h_HL0),    & 
-                    1d0-(B_NH-B_NL)/a_S/sigma,                                                      & 
-                    (1d0-(B_NH-B_NL)/a_S/sigma)*(h_HL1-h_HL0),                                      &
-                    log(w1/w0)
-                close(2)
-            end do
 
             do num = 1,num_total-1
                 iunit = num 

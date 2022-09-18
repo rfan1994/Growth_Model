@@ -429,7 +429,7 @@ The non-arbitrage condition needs to be satisfied between the production and R\&
 \frac{\lambda\epsilon_N(t)^{\lambda-1}}{\mu_N}P_N(t)= \frac{\lambda\epsilon_I(t)^{\lambda-1}}{\mu_I}P_I(t) = W_H(t)
 \end{align*}
 
-\subsubsection*{Market clear and Consistency}
+\subsubsection*{Market Clearing and Consistency}
 The human capital and technology growth rate chosen by the households and R\&D sector need to be consistent with the given aggregate growth rate:
 \begin{align*}
 g_{hH} = \frac{(1-l_H)^{\alpha_H}}{\mu_{hH}}, \quad g_{hL} = \frac{(1-l_L)^{\alpha_L}}{\mu_{hL}}, \quad g_N = \frac{\epsilon_N^{\lambda}}{\mu_N}, \quad g_I = \frac{\epsilon_I^{\lambda}}{\mu_I} 
@@ -637,16 +637,16 @@ Third, the R\&D sector automates too many tasks. The innovation patent value of 
 \section{Transition path}
 In this section, I use the data from 1980 to 2005 to calibrate the model parameters and the size of the automation cost reduction $z$. After the technology shock, the cost of automation decreases to $z\mu_I$. Then I solve the transition path between two BGP computationally and implement some counterfactual experiments. 
 
-The transition path between two balanced growth path before and after political or technological shock is consist of growth rates of the economy $\{g_N(t), g_I(t), g_{hH}(t),g_{hL(t)}\}$, capital stock $\{k(t)\}$, automation level $\{\tilde{I}(t)\}$, absolute advantage $\{\gamma_{HL}(t)\}$, price functions $\{r(t), \omega_H(t), \omega_L(t)\}$, policy functions $\{f_{Hk}(t), f_{Lk}(t), f_{Hc}(t), f_{Lc}(t)\}$ and $\{f_{Hl}(t), f_{Ll}(t)\}$ for households, $\{f_{K}(t), f_{LH}(t), f_{LL}(t)\}$ for firms, $\{f_{\epsilon_N}(t), f_{\epsilon_I}(t)\}$ for R\&D sector, and allocation $\{\tilde{S}(t)\}$, such that: 
+The transition path between two balanced growth path before and after political or technological shock is consist of state variables capital stock $\{k(t)\}$, automation level $\{\tilde{I}(t)\}$, absolute advantage $\{\gamma_{HL}(t)\}$; growth rates of the economy $\{g_N(t), g_I(t), g_{hH}(t),g_{hL(t)}\}$; price functions $\{r(t), \omega_H(t), \omega_L(t)\}$; policy functions $\{f_{Hk}(t), f_{Lk}(t), f_{Hc}(t), f_{Lc}(t)\}$ and $\{f_{Hl}(t), f_{Ll}(t)\}$ for households; $\{f_{K}(t), f_{H}(t), f_{L}(t)\}$ for firms; $\{f_{\epsilon_N}(t), f_{\epsilon_I}(t)\}$ for R\&D sector, and allocation $\{\tilde{S}(t)\}$, such that: 
 \begin{enumerate}
-\item Given the state variables and price function, household policy functions solve household's problem
-\item Given the state variables and price function, firm policy functions solve firm's problem
-\item Given the state variables and price function, R\&D sector policy functions solve  R\&D sector's problem
+\item Given the state variables, growth rates and price functions, household policy functions  $\{f_{Hk}(t), f_{Lk}(t), f_{Hc}(t), f_{Lc}(t)\}$ and $\{f_{Hl}(t), f_{Ll}(t)\}$ solve household's problem
+\item Given the state variables, growth rates and price functions, firm policy functions $\{f_{K}(t), f_{LH}(t), f_{LL}(t)\}$ solve firm's problem
+\item Given the state variables, growth rates and price functions, R\&D sector policy functions $\{f_{\epsilon_N}(t), f_{\epsilon_I}(t)\}$ solve  R\&D sector's problem
 \item Consistency and market clearing conditions are satisfied. 
 \end{enumerate}
 
 \subsection{Calibration}
-The parameters in Table \ref{calibration1} are calibrated externally. Intertemporal elasticity of substitution takes the value of 0.9.\footnote{Beaudry and Van Wincoop (1996)\nocite{BeaudryVanWincoop1996} provide evidence that IES is signiticanly different from zero and close to one.} Factor elasticity of substitution is set to be 2. The capital depreciates at rate 10\% annually. The comparative advantage of unskilled workers and return to human capital are normalized to 1. $\epsilon_H$ and $\epsilon_L$ are set to match the share of workers with a college degree or higher and workers with a high school diploma or lower.\footnote{Data source: FRED} 
+The parameters in Table \ref{calibration1} are calibrated externally. Intertemporal elasticity of substitution takes the value of 0.9.\footnote{Beaudry and Van Wincoop (1996)\nocite{BeaudryVanWincoop1996} provide evidence that IES is signiticanly different from zero and close to one.} Factor elasticity of substitution is set to be 2. The capital depreciates at rate 10\% annually. The comparative advantage of unskilled workers and return to human capital are normalized to 1. $\epsilon_H$ and $\epsilon_L$ are set to match the share of workers with a college degree or higher and workers with a high school diploma or lower.\footnote{Data source: FRED} $\lambda$ in the R\&D sector production function follows the calibration from Prettner and Strulik (2020)\nocite{PrettnerStrulik2020}.
 \begin{table}[h!]
 \begin{center}
 \scriptsize
@@ -660,6 +660,7 @@ $B_L$ & Comparative advantage of unskilled workers   &     1  \\
 $b$ & Return to human capital   &     1  \\
 $\epsilon_H$    & high-skill workers share   &  0.3    \\
 $\epsilon_L$     & Low skill workers share     &  0.7  \\
+$\lambda$ & R\&D production function & 0.5\\
 \hline
 \end{tabular}
 \end{center}
@@ -672,7 +673,7 @@ The remaining parameters in Table \ref{calibration2} are calibrated using the Si
 L(\theta) = -(\hat{m}_S(\theta)-\hat{m}_M)^T(\hat{m}_S(\theta)-\hat{m}_M)
 \end{align*}
 
-The share of profit paid to the patent holder ($\eta$) is set to match the R\&D investment and GDP ratio. The return to capital is, on average 4\% in the data, which pins down the capital productivity ($A$). The skill comparative advantage $B_H$ is calibrated to match the skill premium in 1980. The cost of innovation $\mu_N$ is set to match the long-run growth rate. The labor share is decreasing in the automation level, and the cost of automation determines the automation level. Thus, the cost of automation $\mu_I$ is set to match the labor share in 1980. Human capital investment cost $\mu_h$ is closely related to the human capital growth rate. The parameters in the human capital accumulation function $\alpha_H$ and $\alpha_L$ are picked to match the training time change for college and high school graduates. The size of technology shock $z$ is closely related to the change in labor share, after a reduction of automation cost, more tasks will be automated, and the labor share will decrease. 
+The share of profit paid to the patent holder $\eta$ is set to match the R\&D investment and GDP ratio. The return to capital is, on average 4\% in the data, which pins down the capital productivity $A$. The skill comparative advantage $B_H$ is calibrated to match the skill premium in 1980. The cost of innovation $\mu_N$ is set to match the long-run growth rate. The labor share is decreasing in the automation level, and the cost of automation determines the automation level. Thus, the cost of automation $\mu_I$ is set to match the labor share in 1980. Human capital investment cost $\mu_h$ is closely related to the human capital growth rate. The parameters in the human capital accumulation function $\alpha_H$ and $\alpha_L$ are picked to match the training time change for college and high school graduates. The size of technology shock $z$ is closely related to the change in labor share, after a reduction of automation cost, more tasks will be automated, and the labor share will decrease. 
 \begin{table}[h!]
 \scriptsize
 \begin{center}
@@ -697,7 +698,9 @@ $z$      & Technology shock       &   0.7853  &  Labor share (2005)        & 0.6
 {\scriptsize Data source: FRED and ATES. All the macroeconomic moments are from FRED. The change of training times are computed using ATES.}
 \end{table}
 
-The calibration result is presented in Table \ref{result}. A reduction of automation cost increases the automation level and decreases the labor share. 
+The calibration result is presented in Table \ref{result}. A reduction of automation cost increases automation, lowers labor share, and raises wage inequality.R\&D investment is directed more the automation since the automation department is more efficient. However, the higher automation level increases the allocation efficiency, driving up capital rental rate and pushing down wage level. This price effect increases the innovation patent value and the innovation rate. As a result, the economy converges to a higher growth rate. 
+
+I compare the tow scenarios with or without human capital. Higher innovation rate increases the wage growth rate, and complements the human capital investment. Workers accumulate the human capital at a higher rate, increasing the effective labor supply, pushing back the automation and increasing the labor share.  However, skilled and unskilled workers respond differently to the reduction of automation cost, the wage premium converges to a higher level. The technology growth rate is lower in the scenario with human capital, due the the higher opportunity cost of research. The skilled workers are more productive in the production sector, fewer skilled workers will become scientists and work in the R\&D sector. 
 \begin{table}
 \scriptsize
 \begin{center}
@@ -721,21 +724,17 @@ Welfare inequality  & 1.0717 & 1.3284 & 1.2621 \\ \hline
 
 \subsection{Transition path}
 
-\begin{figure}
+\begin{figure}[h!]
 \includegraphics[width=\textwidth]{Transition}
 \caption{Transition Path}
 \label{transition}
 \end{figure}
 
-A reduction of automation cost increases automation, lowers labor share, and raises wage inequality in the short run by direct productivity effect. R\&D investment is directed more the automation since the automation department is more efficient. However, the technology change increases the demand for capital but decrease the demand for both skilled and unskilled workers. As a result, capital rental rate will increase and wage will decrease. This price effect increases the innovation patent value while decreases the automation patent value. The innovation rate will start to raise and catch up with the automation rate. These two effects work in opposite directions, and the new equilibrium automation level depends on the magnificence of the price effect. 
-
-The presence of human capital amplifies the effect of the technology wave and accelerates the transition. Different skill groups respond to the technology wave differently. At the early stage of the transition, the human capital investment will drop since automation decreases the wage growth, and the unskilled workers will decrease it more since they are more affected by automation. Later on, automation slows down, and the technology wave benefits the workers. The human capital investment will increase, and the unskilled workers will increase it more since their acquisition is comparatively less costly. The technology wave is amplified mainly by the fluctuation of human capital and labor supply; unskilled workers respond to the wave more than skilled workers. The human capital investment increases the effective labor supply, brings down the automation patent value more quickly, and accelerates the transition. 
-
-
-\subsection{Role of human capital}
+Figure \label{transition} plots the simulation result of the transition path with calibrated model. A reduction of automation cost increases automation, lowers labor share, and raises wage inequality. R\&D investment is directed more the automation since the automation department is more efficient. However, the technology change increases the demand for capital but decrease the demand for both skilled and unskilled workers. As a result, capital rental rate will increase and wage will decrease. This price effect increases the innovation patent value while decreases the automation patent value. The innovation rate will start to raise and catch up with the automation rate. 
 
 
 \subsection{Optimal policy}
+In section 4, I solve social planner's problem and discuss the externalities in decentralized economy. In the decentralized economy, R\&D sector automates too many tasks and skilled workers invest too much in the human capital. Two taxes are appropriate to correct the externalities and increase the overall social welfare: automation tax ($\tau_I$) and training tax on skilled workers ($\tau_{hH}$). Automation tax decreases the value of automation patent and lowers the automation level; training tax on skilled workers favors the unskilled workers and decreases the human capital accumulation of skilled workers. I address the quantitative implications with the calibrated model and consider a redistributive policy. I consider the case in which where all the workers receive equal transfers, which are financed by either automation tax or training tax on skilled workers in a revenue-neutral way. 
 
 
 \section{Empirical Implications}

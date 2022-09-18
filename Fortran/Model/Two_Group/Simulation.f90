@@ -157,7 +157,11 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
+    if (calibration == 0 .and. Task == 2) then 
+        L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    else
+        L_H = epsilon_H*ll_H
+    endif 
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -207,7 +211,11 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
+    if (calibration == 0 .and. Task == 2) then 
+        L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    else
+        L_H = epsilon_H*ll_H
+    endif
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -446,8 +454,8 @@ integer :: p0, p1
         S_tilde = ts_S(i) 
         L_H = ts_L_H0(i)
         L_L = ts_L_L0(i)
-        epsilon_N = (g_N*mu_N/(1d0-tau_N))**(1d0/lambda) 
-        epsilon_I = (g_I*mu_I/(1d0-tau_I))**(1d0/lambda)
+        epsilon_N = (g_N*mu_N)**(1d0/lambda) 
+        epsilon_I = (g_I*mu_I)**(1d0/lambda)
         call Firm_Problem
         call RD_Problem          
         g_N = ts_g_N0(i)
@@ -532,7 +540,11 @@ real(8) :: beta_NS
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
+    if (calibration == 0 .and. Task == 2) then 
+        L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    else
+        L_H = epsilon_H*ll_H
+    endif
     mu_HL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -564,7 +576,11 @@ real(8) :: g_wN, g_wI, g_wS
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
+    if (calibration == 0 .and. Task == 2) then 
+        L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    else
+        L_H = epsilon_H*ll_H
+    endif
     mu_HL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -615,7 +631,11 @@ real(8) :: g_wN, g_wI, g_wS
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
+    if (calibration == 0 .and. Task == 2) then 
+        L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    else
+        L_H = epsilon_H*ll_H
+    endif
     mu_HL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -747,7 +767,6 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
-real(8), parameter :: rmin = 0.8d0, rmax = 1.5d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -769,23 +788,23 @@ real(8), parameter :: rmin = 0.8d0, rmax = 1.5d0
         select case (Model)
             case (1)       
                 allocate(x(2),x_range(2,2))   
-                x(1) = g_N0; x_range(1,1) = rmin*g_N0; x_range(2,1) = rmax*g_N1 
-                x(2) = g_I0; x_range(1,2) = rmin*g_I0; x_range(2,2) = rmax*g_I1 
+                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1 
                 Np = 2; flag = 1; call nlopt(6,x,x_range)
                 deallocate(x,x_range)
             case (2)
                 allocate(x(3),x_range(2,3))   
-                x(1) = g_N0; x_range(1,1) = rmin*g_N0; x_range(2,1) = rmax*g_N1 
-                x(2) = g_I0; x_range(1,2) = rmin*g_I0; x_range(2,2) = rmax*g_I1
-                x(3) = g_hH0; ; x_range(1,3) = rmin*g_hH0; x_range(2,3) = rmax*g_hH1
+                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1
+                x(3) = g_hH1; ; x_range(1,3) = g_hH0; x_range(2,3) = g_hH1
                 Np = 3; flag = 1; call nlopt(6,x,x_range)
                 deallocate(x,x_range)
             case (3)  
                 allocate(x(4),x_range(2,4))      
-                x(1) = g_N0; x_range(1,1) = rmin*g_N0; x_range(2,1) = rmax*g_N1 
-                x(2) = g_I0; x_range(1,2) = rmin*g_I0; x_range(2,2) = rmax*g_I1
-                x(3) = g_hH0; ; x_range(1,3) = rmin*g_hH0; x_range(2,3) = rmax*g_hH1
-                x(4) = g_hL0; ; x_range(1,4) = g_hL0; x_range(2,4) = g_hL1
+                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1
+                x(3) = g_hH1; ; x_range(1,3) = g_hH0; x_range(2,3) = 1.2d0*g_hH1
+                x(4) = g_hL1; ; x_range(1,4) = g_hL0; x_range(2,4) = 1.2d0*g_hL1
                 Np = 4; flag = 1; call nlopt(6,x,x_range)
                 deallocate(x,x_range)
         end select

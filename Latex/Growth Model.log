@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.9.16)  17 SEP 2022 20:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.9.16)  18 SEP 2022 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -579,6 +579,9 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 
 LaTeX Warning: Label `V_I' multiply defined.
 
+
+LaTeX Warning: Label `transition' multiply defined.
+
 )
 \openout1 = `"Growth Model.aux"'.
 
@@ -766,132 +769,148 @@ Overfull \hbox (7.72662pt too wide) in paragraph at lines 559--559
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [25] [26]
-Overfull \hbox (55.7833pt too wide) in paragraph at lines 640--641
-\OT1/cmr/m/n/12 cal or tech-no-log-i-cal shock is con-sist of growth rates of t
-he econ-omy $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 (\OML/cmm/m/
-it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
- t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT
-1/cmr/m/n/12 )\OML/cmm/m/it/12 ; g[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
+Overfull \hbox (14.88136pt too wide) in paragraph at lines 640--641
+\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/c
+mr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/
+n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 
+)\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS
+/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 and $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 f[]\OT1
+/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/
+m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 
+for house-holds; $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/c
+mm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/
+it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
+ t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (0.95169pt too wide) in paragraph at lines 670--671
+Overfull \hbox (0.95169pt too wide) in paragraph at lines 671--672
 []\OT1/cmr/m/n/12 The re-main-ing pa-ram-e-ters in Ta-ble 3[] are cal-i-brated 
 us-ing the Sim-u-lated Method
  []
 
 [27]
-Overfull \hbox (2.83337pt too wide) detected at line 712
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (2.83337pt too wide) detected at line 715
 $\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 7411%$ 
  []
 
 
-Overfull \hbox (2.83337pt too wide) detected at line 712
+Overfull \hbox (2.83337pt too wide) detected at line 715
 $\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 7733%$ 
  []
 
 
-Overfull \hbox (2.83337pt too wide) detected at line 713
+Overfull \hbox (2.83337pt too wide) detected at line 716
 $\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 1883%$ 
  []
 
 
-Overfull \hbox (2.83337pt too wide) detected at line 713
+Overfull \hbox (2.83337pt too wide) detected at line 716
 $\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 2384%$ 
  []
 
 
-Overfull \hbox (2.83337pt too wide) detected at line 713
+Overfull \hbox (2.83337pt too wide) detected at line 716
 $\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 2515%$ 
  []
 
 
-Overfull \hbox (2.83337pt too wide) detected at line 714
+Overfull \hbox (2.83337pt too wide) detected at line 717
 $\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 2384%$ 
  []
 
-<Transition.png, id=120, 656.2116pt x 228.3732pt>
+[28] <Transition.png, id=123, 811.3512pt x 271.2534pt>
 File: Transition.png Graphic file (type png)
  <use Transition.png>
-Package pdftex.def Info: Transition.png used on input line 725.
-(pdftex.def)             Requested size: 418.25368pt x 145.56245pt.
- [28]
-[29 <./Transition.png (PNG copy)>] [30]
+Package pdftex.def Info: Transition.png used on input line 728.
+(pdftex.def)             Requested size: 418.25368pt x 139.83157pt.
 
-LaTeX Warning: Citation `Restrepo2015' undefined on input line 753.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[29] [30 <./Transition.png (PNG copy)>]
+
+LaTeX Warning: Citation `Restrepo2015' undefined on input line 752.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [31] <trend.png, id=134, 661.0296pt x 287.1528pt>
 File: trend.png Graphic file (type png)
  <use trend.png>
-Package pdftex.def Info: trend.png used on input line 797.
+Package pdftex.def Info: trend.png used on input line 796.
 (pdftex.def)             Requested size: 418.25368pt x 181.69589pt.
 
 
-LaTeX Warning: Reference `LV_trend1' on page 32 undefined on input line 803.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[32 <./trend.png (PNG copy)>] <LV_trend1.png, id=138, 816.1692pt x 451.4466pt>
+
+LaTeX Warning: Reference `LV_trend1' on page 32 undefined on input line 802.
+
+<LV_trend1.png, id=135, 816.1692pt x 451.4466pt>
 File: LV_trend1.png Graphic file (type png)
-
-<use LV_trend1.png>
-Package pdftex.def Info: LV_trend1.png used on input line 806.
+ <use LV_trend1.png>
+Package pdftex.def Info: LV_trend1.png used on input line 805.
 (pdftex.def)             Requested size: 418.25368pt x 231.35065pt.
+ [32]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `LV_trend2' on page 33 undefined on input line 812.
+LaTeX Warning: Reference `LV_trend2' on page 33 undefined on input line 811.
 
 <LV_trend2.png, id=139, 807.4968pt x 451.4466pt>
 File: LV_trend2.png Graphic file (type png)
  <use LV_trend2.png>
-Package pdftex.def Info: LV_trend2.png used on input line 815.
+Package pdftex.def Info: LV_trend2.png used on input line 814.
 (pdftex.def)             Requested size: 418.25368pt x 233.8374pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[33 <./LV_trend1.png (PNG copy)>] <train.png, id=143, 664.4022pt x 245.2362pt>
+<train.png, id=140, 664.4022pt x 245.2362pt>
 File: train.png Graphic file (type png)
-
-<use train.png>
-Package pdftex.def Info: train.png used on input line 825.
+ <use train.png>
+Package pdftex.def Info: train.png used on input line 824.
 (pdftex.def)             Requested size: 418.25368pt x 154.3836pt.
-
+ [33 <./trend.png (PNG copy)>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[34 <./LV_trend2.png (PNG copy)>]
-Overfull \hbox (6.2582pt too wide) in paragraph at lines 840--842
+[34 <./LV_trend1.png (PNG copy)>]
+Overfull \vbox (32.61957pt too high) has occurred while \output is active []
+
+
+[35 <./LV_trend2.png (PNG copy)> <./train.png (PNG copy)>]
+Overfull \hbox (6.2582pt too wide) in paragraph at lines 839--841
 \OT1/cmr/m/n/12 I regress the out-come vari-able $^^A [] \OML/cmm/m/it/12 Y[]$ 
 \OT1/cmr/m/n/12 on the TFP growth rate $^^A [] \OML/cmm/m/it/12 TFP[]$
  []
 
-[35 <./train.png (PNG copy)>] [36] <LP.png, id=154, 648.9846pt x 243.7908pt>
+[36] <LP.png, id=154, 648.9846pt x 243.7908pt>
 File: LP.png Graphic file (type png)
-
-<use LP.png>
-Package pdftex.def Info: LP.png used on input line 919.
+ <use LP.png>
+Package pdftex.def Info: LP.png used on input line 918.
 (pdftex.def)             Requested size: 418.25368pt x 157.11923pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37]
+[37] [38 <./LP.png (PNG copy)>]
 
-LaTeX Warning: Citation `Acemogluetal2020' undefined on input line 937.
+LaTeX Warning: Citation `Acemogluetal2020' undefined on input line 936.
 
 
-Overfull \hbox (20.42905pt too wide) in paragraph at lines 941--960
+Overfull \hbox (20.42905pt too wide) in paragraph at lines 940--959
  [] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[38 <./LP.png (PNG copy)>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [39] [40] [41] (./Growth Model.bbl [42
 
@@ -903,12 +922,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
  [43]) [44] [45
 
 ] [46]
-Overfull \hbox (67.96289pt too wide) in paragraph at lines 1122--1122
+Overfull \hbox (67.96289pt too wide) in paragraph at lines 1121--1121
 [] 
  []
 
 [47] [48]
-Overfull \hbox (18.65385pt too wide) in paragraph at lines 1199--1200
+Overfull \hbox (18.65385pt too wide) in paragraph at lines 1198--1199
 []\OT1/cmr/m/n/12 Start with the ini-tial guess of cap-i-tal stock $\OMS/cmsy/m
 /n/12 f\OML/cmm/m/it/12 k[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )
 \OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 , la-bor sup-ply $\OMS/cmsy/m/n/12 f\OML/cmm
@@ -918,7 +937,7 @@ OT1/cmr/m/n/12 ,
  []
 
 [49]
-Overfull \hbox (23.17226pt too wide) in paragraph at lines 1216--1217
+Overfull \hbox (23.17226pt too wide) in paragraph at lines 1215--1216
 []\OT1/cmr/m/n/12 Given fac-tor prices $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 r\OT
 1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr
 /m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr/m/n/
@@ -930,7 +949,7 @@ T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (23.17226pt too wide) in paragraph at lines 1228--1229
+Overfull \hbox (23.17226pt too wide) in paragraph at lines 1227--1228
 []\OT1/cmr/m/n/12 Given fac-tor prices $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 r\OT
 1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr
 /m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ![]\OT1/cmr/m/n/
@@ -942,7 +961,7 @@ T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
  []
 
 [50]
-Overfull \hbox (16.13907pt too wide) in paragraph at lines 1256--1257
+Overfull \hbox (16.13907pt too wide) in paragraph at lines 1255--1256
 \OMS/cmsy/m/n/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cm
 sy/m/n/12 g$\OT1/cmr/m/n/12 , hu-man cap-i-tal gap $\OMS/cmsy/m/n/12 f\OML/cmm/
 m/it/12 h[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12
@@ -989,7 +1008,7 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on "Growth Model.pdf" (52 pages, 803303 bytes).
+Output written on "Growth Model.pdf" (52 pages, 820723 bytes).
 PDF statistics:
  271 PDF objects out of 1000 (max. 8388607)
  184 compressed objects within 2 object streams
