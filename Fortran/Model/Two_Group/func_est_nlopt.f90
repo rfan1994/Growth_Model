@@ -113,7 +113,11 @@ elseif (calibration == 0) then
         epsilon_I = (g_I*mu_I)**(1d0/lambda)
         mu_hH = mu_hH_h(h_HL)
         ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-        L_H = epsilon_H*ll_H
+        if (calibration == 0 .and. Task == 2) then 
+            L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+        else
+            L_H = epsilon_H*ll_H
+        endif
         mu_HL = mu_h
         ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
         L_L = epsilon_L*ll_L
