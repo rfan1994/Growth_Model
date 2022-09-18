@@ -12,7 +12,7 @@ integer, parameter :: iter_max = 1d4, iter_IR = 101
 real(8), parameter :: TOL = 1d-6, TOL1 = 1d-3, TOL2 = 1d-2
 
 ! Control
-integer, parameter :: calibration = 0, Task = 4
+integer, parameter :: calibration = 0, Task = 3
 integer :: Np, iunit
 character(100) :: Filename, FMT
 integer :: Model, SPP, flag
@@ -24,7 +24,7 @@ real(8) :: sup, t1, t2
 
 real(8), parameter :: theta = 0.9d0, sigma0 = 2d0               ! Preference and ES
 real(8), parameter :: delta = 0.1d0                             ! Depreciation
-real(8), parameter :: h_HL_star = 0d0, lambda = 0.9d0           ! RD and human capital
+real(8), parameter :: h_HL_star = 0d0, lambda = 0.5d0           ! RD and human capital
 real(8), parameter :: epsilon_H = 0.3d0, epsilon_L = 0.7d0      ! Population
 real(8) :: a_HL = 5d0
 real(8) :: rho
@@ -91,7 +91,7 @@ real(8) :: V_NH0, V_NH1, V_NL0, V_NL1, V_II0, V_II1
 ! ======================================================================
 
 ! Transition path
-real(8), parameter :: T = 200d0, lambda_T = 1d0, rho_ts = 0.01d0
+real(8), parameter :: T = 100d0, lambda_T = 1d0, rho_ts = 0.01d0
 real(8) :: dt
 real(8) :: I0, k0, h_HL0, S0
 real(8) :: I1, k1, h_HL1, S1

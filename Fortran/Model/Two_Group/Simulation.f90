@@ -265,7 +265,11 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
+    if (calibration == 0 .and. Task == 3) then 
+        L_H = epsilon_H*ll_H
+    else 
+        L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
+    endif 
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -310,271 +314,6 @@ end subroutine BGP_Equation3
 
 
 end subroutine BGP
-
-
-! ======================================================================
-! Policy
-! ======================================================================
-
-subroutine Policy(SPP0)
-    implicit none
-integer, intent(in) :: SPP0
-real(8) :: x(6), fvec(6)
-
-    SPP = SPP0
-    if (rho+delta > A) then 
-        select case (Model)
-            case (1)
-                do i = 1,9
-                    x(1) = 0.1d0*i; x(2) = 0.1d0*(i+10d0)/2d0        
-                    x(3) = moment_data(2)/B_NH
-                    x(4) = -tau_I
-                    call fsolve(Policy_Equation1,4,x,fvec,TOL,flag)
-                    if (flag == 1) exit
-                enddo 
-            case (2)
-                do i = 1,9
-                    x(1) = 0.1d0*i; x(2) = 0.1d0*(i+10d0)/2d0    
-                    x(3) = moment_data(2)/B_NH
-                    x(4) = h_HL_star
-                    x(5) = -tau_I
-                    call fsolve(Policy_Equation2,5,x,fvec,TOL,flag)
-                    if (flag == 1) exit
-                enddo 
-            case (3)   
-                do i = 1,9
-                    x(1) = 0.1d0*i; x(2) = 0.1d0*(i+10d0)/2d0       
-                    x(3) = moment_data(2)/B_NH; x(4) = moment_data(3)/b_h
-                    x(5) = h_HL_star
-                    x(6) = -tau_I
-                    call fsolve(Policy_Equation3,6,x,fvec,TOL,flag)
-                    if (flag == 1) exit
-                enddo 
-        end select
-
-        N = 1d0
-        k = w_H*L_H/R*s_K/S_LH 
-        call Firm_Problem     
-        if (SPP == 0) then
-            k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
-            k_L = k/(a_HL*epsilon_H+epsilon_L)            
-            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
-                  + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
-            c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
-            c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
-            c = epsilon_H*c_H+epsilon_L*c_L
-        elseif (SPP == 1) then 
-            c = y-(delta+g)*k
-            c_H = c 
-            c_L = c
-        endif 
-        V_H = u(c_H)/(rho-(1d0-theta)*g)
-        V_L = u(c_L)/(rho-(1d0-theta)*g)
-        V = (V_H/V_L)**(1d0/(1d0-theta))-1d0
-
-    elseif (rho+delta .le. A) then 
-        I_tilde = 1d0
-        N = 1d0 
-        k = 1d0 
-        call Firm_Problem
-        if (SPP == 0) then
-            k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
-            k_L = k/(a_HL*epsilon_H+epsilon_L)
-            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
-                  + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
-            c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
-            c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
-            c = epsilon_H*c_H+epsilon_L*c_L        
-        elseif (SPP == 1) then
-            g = (R/(1-p)-delta-rho)/theta
-            c = y-(delta+g)*k
-            c_H = c 
-            c_L = c
-        endif 
-        V_H = u(c_H)/(rho-(1d0-theta)*g)
-        V_L = u(c_L)/(rho-(1d0-theta)*g)
-        V = (V_H/V_L)**(1d0/(1d0-theta))-1d0
-    endif 
-    
-contains
-
-subroutine Policy_Equation1(n,x,fvec)
-    implicit none
-integer, intent(in) :: n
-real(8), intent(in) :: x(n)
-real(8), intent(out) :: fvec(n)
-
-    I_tilde = x(1)
-    S_tilde = x(2)
-    g_N = x(3)
-    g_I = g_N
-    g_hH = g_hH0
-    g_hL = g_hL0
-    h_HL = h_HL0
-    g = B_NH*g_N+b_h*g_hH
-    tau_N = x(4)
-
-    epsilon_N = (g_N*mu_N)**(1d0/lambda)
-    epsilon_I = (g_I*mu_I)**(1d0/lambda)
-    mu_hH = mu_hH_h(h_HL)
-    ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
-    mu_hL = mu_h
-    ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
-    L_L = epsilon_L*ll_L
-
-    if (I_tilde < 0d0 .or. I_tilde > 1d0 .or.           &
-        S_tilde < I_tilde .or. S_tilde > 1d0 .or.       &
-        epsilon_N < 0d0 .or. L_H < 0d0) then
-        fvec = -1d6 
-        return 
-    endif
-
-    if (SPP == 0) then
-        rr = rho+theta*g
-        R = rr+delta
-    elseif (SPP == 1) then
-        rr = rho+theta*g
-        R = (rr+delta)*(1-p)
-    endif 
-    call Firm_Problem_R
-    call RD_Problem
-
-    fvec(1) = lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H
-    fvec(2) = lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H
-    if (I_tilde < TOL) fvec(2) = max(fvec(2),0d0)
-    fvec(3) = w-exp((B_NH-B_NL)*S_tilde+b_h*h_HL)
-    if (I_tilde > 1d0-TOL) fvec(3) = max(fvec(3),0d0)
-    fvec(4) = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y 
-
-end subroutine Policy_Equation1
-
-
-subroutine Policy_Equation2(n,x,fvec)
-    implicit none
-integer, intent(in) :: n
-real(8), intent(in) :: x(n)
-real(8), intent(out) :: fvec(n)
-
-    I_tilde = x(1)
-    S_tilde = x(2)
-    g_N = x(3)
-    g_I = g_N
-    g_hH = g_hH0
-    g_hL = g_hL0
-    h_HL = x(4)
-    g = B_NH*g_N+b_h*g_hH
-    tau_N = x(5)
-
-    epsilon_N = (g_N*mu_N)**(1d0/lambda)
-    epsilon_I = (g_I*mu_I)**(1d0/lambda)
-    mu_hH = mu_hH_h(h_HL)
-    ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    L_H = epsilon_H*ll_H
-    mu_hL = mu_h
-    ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
-    L_L = epsilon_L*ll_L
-
-    if (I_tilde < 0d0 .or. I_tilde > 1d0 .or.           &
-        S_tilde < I_tilde .or. S_tilde > 1d0 .or.       &
-        ll_H < 0d0 .or. ll_H > 1d0 .or.                 &
-        epsilon_N < 0d0 .or. L_H < 0d0) then
-        fvec = -1d6 
-        return 
-    endif
-
-    if (SPP == 0) then
-        rr = rho+theta*g
-        R = rr+delta
-    elseif (SPP == 1) then
-        rr = rho+theta*g
-        R = (rr+delta)*(1-p)
-    endif 
-    call Firm_Problem_R
-    call RD_Problem
-
-    fvec(1) = lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H
-    fvec(2) = lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H
-    if (I_tilde < TOL) fvec(2) = max(fvec(2),0d0)
-    fvec(3) = w-exp((B_NH-B_NL)*S_tilde+b_h*h_HL)
-    if (I_tilde > 1d0-TOL) fvec(3) = max(fvec(3),0d0)
-    if (SPP == 0) then
-        fvec(4) = b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H      &
-                + b_h/mu_hH*(1d0-ll_H)**alpha_H                         &
-                - (1d0+tau_hH)*rr+B_NH*g_N   
-    elseif (SPP == 1) then 
-        fvec(4) = b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_H/epsilon_H-rr+g     
-    endif 
-    fvec(5) = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y 
-        
-end subroutine Policy_Equation2
-
-
-subroutine Policy_Equation3(n,x,fvec)
-    implicit none
-integer, intent(in) :: n
-real(8), intent(in) :: x(n)
-real(8), intent(out) :: fvec(n)
-
-    I_tilde = x(1)
-    S_tilde = x(2)
-    epsilon_N = x(3)
-    ll_H = 1d0-x(4)
-    ll_L = 1d0-x(5)
-    tau_N = x(6)
-
-    epsilon_I = (mu_I/mu_N)**(1d0/lambda)*epsilon_N
-    g_N = epsilon_N**lambda/mu_N
-    g_I = epsilon_I**lambda/mu_I
-    mu_hL = mu_h; g_h = (1d0-ll_L)**alpha_L/mu_hL
-    g_hH = g_h; g_hL = g_h
-    mu_hH = (1d0-ll_H)**alpha_H/g_hH 
-    h_HL = h_HL_mu(mu_hH)
-    L_L = epsilon_L*ll_L
-    L_H = epsilon_H*ll_H
-    g = B_NH*g_N+b_h*g_hH
-
-    if (I_tilde < 0d0 .or. I_tilde > 1d0 .or.           &
-        S_tilde < I_tilde .or. S_tilde > 1d0 .or.       &
-        ll_H < 0d0 .or. ll_H > 1d0 .or.                 &
-        ll_L < 0d0 .or. ll_L > 1d0 .or.                 &
-        epsilon_N < 0d0 .or. L_H < 0d0) then
-        fvec = -1d6 
-        return 
-    endif
-
-    if (SPP == 0) then
-        rr = rho+theta*g
-        R = rr+delta
-    elseif (SPP == 1) then
-        rr = rho+theta*g
-        R = (rr+delta)*(1-p)
-    endif 
-    call Firm_Problem_R
-    call RD_Problem
-
-    fvec(1) = lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H
-    fvec(2) = lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H
-    if (I_tilde < TOL) fvec(2) = max(fvec(2),0d0)
-    fvec(3) = w-exp((B_NH-B_NL)*S_tilde+b_h*h_HL)
-    if (I_tilde > 1d0-TOL) fvec(3) = max(fvec(3),0d0)
-    if (SPP == 0) then
-        fvec(4) = b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H      &
-                + b_h/mu_hH*(1d0-ll_H)**alpha_H                         &
-                - (1d0+tau_hH)*rr+B_NH*g_N                                                    
-        fvec(5) = b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L      &
-                + b_h/mu_hL*(1d0-ll_L)**alpha_L                         &
-                - (1d0+tau_hL)*rr+B_NH*g_N  
-    elseif (SPP == 1) then
-        fvec(4) = b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_H/epsilon_H-rr+g     
-        fvec(5) = b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*L_L/epsilon_L-rr+g     
-    endif
-    fvec(6) = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y 
-                                             
-end subroutine Policy_Equation3
-
-
-end subroutine Policy
 
 
 ! ======================================================================
@@ -633,7 +372,7 @@ integer :: p0, p1
         ! Update I
         ts_I1(1) = I0
         do i = 2,iter_IR-1
-            g_dot = ts_g_I1(i-1)-ts_g_N1(i-1)
+            g_dot = max(ts_g_I1(i-1)-ts_g_N1(i-1),0d0)
             I_tilde = ts_I0(i-1)+g_dot*ts_dt(i-1)
             ts_I1(i) = I_tilde
             if (I_tilde .le. min(I0,I1)) then
@@ -663,10 +402,15 @@ integer :: p0, p1
         ts_h_HL1(1) = h_HL0
         do i = 2,iter_IR-1
             g_dot = ts_g_hH1(i-1)-ts_g_hL1(i-1)
-            h_HL = ts_h_HL0(i-1)+g_dot*ts_dt(i-1)      
-            ts_h_HL1(i) = h_HL
+            h_HL = ts_h_HL0(i-1)+g_dot*ts_dt(i-1)  
+            if (h_HL .le. min(h_HL0,h_HL1)) then
+                ts_h_HL1(i) = min(h_HL0,h_HL1)
+            elseif (k .ge. max(h_HL0,h_HL1)) then
+                ts_h_HL1(i) = max(h_HL0,h_HL1)
+            else
+                ts_h_HL1(i) = h_HL
+            endif    
         enddo
-        ts_h_HL1(iter_IR) = h_HL1
 
         ! Check convergence
         sup = max(maxval(abs(ts_I1-ts_I0)),         &
@@ -1003,7 +747,7 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
-real(8), parameter :: rmin = 0.8d0, rmax = 1.2d0
+real(8), parameter :: rmin = 0.8d0, rmax = 1.5d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -1041,7 +785,7 @@ real(8), parameter :: rmin = 0.8d0, rmax = 1.2d0
                 x(1) = g_N0; x_range(1,1) = rmin*g_N0; x_range(2,1) = rmax*g_N1 
                 x(2) = g_I0; x_range(1,2) = rmin*g_I0; x_range(2,2) = rmax*g_I1
                 x(3) = g_hH0; ; x_range(1,3) = rmin*g_hH0; x_range(2,3) = rmax*g_hH1
-                x(4) = g_hL0; ; x_range(1,4) = rmin*g_hL0; x_range(2,4) = rmax*g_hL1
+                x(4) = g_hL0; ; x_range(1,4) = g_hL0; x_range(2,4) = g_hL1
                 Np = 4; flag = 1; call nlopt(6,x,x_range)
                 deallocate(x,x_range)
         end select

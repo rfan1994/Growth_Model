@@ -10,26 +10,47 @@
 \usepackage{tikz}
 \usepackage[font={small,bf}]{caption}
 \usepackage[title]{appendix}
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
 
+\linepenalty=10
+\captionsetup[table]{skip=5pt}
 \geometry{a4paper}
 
 \newtheorem{assumption}{Assumption}
 \newtheorem{proposition}{Proposition}
 
 
-\title{Growth Model with Automation and Endogenous Human Capital}
+
+
+
+
+
+
 \date{}
 \author{Rong Fan}
 
 \begin{document}
+
+\begin{titlepage}
+\title{Growth Model with Automation and Endogenous Human Capital}
+\author{Rong Fan\thanks{I thank Bulent Guler, Todd Walker and Rupla Kamdar for their thorough guidance with this project.}}
+\date{\today}
 \maketitle
 \begin{abstract}
-Human capital accumulation responds to technological changes. I study the effects of automation industrial revolution on labor share, wage premium, and inequality under the framework of task model with heterogeneous workers (skilled and unskilled) and endogenous human capital. First, human capital accumulation races with automation, increasing the labor share. Second, uneven responses of skilled and unskilled workers amplify the inequality effect explaining 60\% of the wage premium increase. I calibrate the model by fitting the transition path to the data and discuss the policy to optimize the transition. Empirical evidence is provided at both industry and occupation levels. Automation has a positive effect on labor composition and skill level. The responses of skilled and unskilled workers are significantly different.
+\noindent Human capital accumulation responds to technological changes. I study the effects of automation industrial revolution on labor share, wage premium, and inequality under the framework of task model with heterogeneous workers (skilled and unskilled) and endogenous human capital. First, human capital accumulation races with automation, increasing the labor share. Second, uneven responses of skilled and unskilled workers amplify the inequality effect explaining 60\% of the wage premium increase. I calibrate the model by fitting the transition path to the data and discuss the policy to optimize the transition. Empirical evidence is provided at both industry and occupation levels. Automation has a positive effect on labor composition and skill level. The responses of skilled and unskilled workers are significantly different. \\
+\vspace{0in}\\
+\noindent\textbf{Keywords:} growth, technology, automation, inequality\\
+\vspace{0in}\\
+\noindent\textbf{JEL Classification: } J24, J31, O11, O14\\
 
-{\bf Keyword: }growth, technology, automation, inequality
+\bigskip
 \end{abstract}
+\setcounter{page}{0}
+\thispagestyle{empty}
+\end{titlepage}
+\pagebreak \newpage
 
-\clearpage
 \section{Introduction}
 As has been argued in the literature, automation and artificial intelligence (AI) are essential in explaining the decrease in labor share (e.g., Autor and Salomons, 2018\cite{AutorSalomons2018}; Aghion et al., 2021\nocite{Aghionetal2021}) accompanied by the increase in college premium (e.g., Acemoglu and Autor, 2011\nocite{AcemogluAutor2011}; Acemoglu and Restrepo, 2020\nocite{AcemogluRestrepo2020}). Automation allows the machine to replace unskilled workers (high school graduates), decreasing the labor share while it complements skilled workers (college graduates), increasing the college premium.
 
@@ -420,8 +441,8 @@ The capital and labor market need to be clear:
 \int_{N-1}^N h(i) di &= L_H = \epsilon_H l_H-\epsilon_N-\epsilon_I
 \end{align*}
 
-\subsubsection*{BGP}
-After solving the dynamic problem of the households and R\&D sector, I can characterize the Balanced Growth Path (BGP). Define normalized variables $x$ as the original variables $X$ normalized by economic growth $e^{-\int_0^{t}g(\tau)d\tau}$ or technology frontier $\gamma_H(N,h_H)$. The economy's growth rate is defined as the total growth of technology and human capital $g = Bg_N+bg_{hH}$. A balanced growth path (BGP) is defined as a transition path on which the growth rates $\{g_N, g_I, g_{hH},g_{hL}\}$, the automation level and the labor allocation $\{\tilde{I},\tilde{S}\}$, the factor shares $\{s_K,s_L, s_H\}$, the rental rate of capital $\{r\}$ and the labor supply $\{L_H, L_L\}$ are constant over time. The normalized factor productivity $\{\tilde{\Gamma}_H, \tilde{\Gamma}_L, \gamma_{HL}\}$, capital, output and consumption $\{k, y, c_H, c_L\}$, labor wages $\{\omega_H, \omega_L\}$, expected patent profit $\{v_N,v_I,v_{NH},v_{NL}\}$ and patent value $\{p_N, p_I\}$ are also constant on BGP.
+\subsubsection*{Balanced Growth Path}
+After solving the dynamic problem of the households and R\&D sector, I can characterize the Balanced Growth Path (BGP). Define normalized variables $x$ as the original variables $X$ normalized by economic growth $e^{-\int_0^{t}g(\tau)d\tau}$ or technology frontier $\gamma_H(N,h_H)$. The economy's growth rate is defined as the total growth of technology and human capital $g = Bg_N+bg_{hH}$. A balanced growth path (BGP) is defined as a transition path on which the automation level and the labor allocation $\{\tilde{I},\tilde{S}\}$, the factor shares $\{s_K,s_L, s_H\}$, the rental rate of capital $\{r\}$, the labor supply $\{L_H, L_L\}$ and the growth rates $\{g_N, g_I, g_{hH},g_{hL}\}$ are constant over time. The normalized factor productivity $\{\tilde{\Gamma}_H, \tilde{\Gamma}_L, \gamma_{HL}\}$, capital, output and consumption $\{k, y, c_H, c_L\}$, labor wages $\{\omega_H, \omega_L\}$, expected patent profit $\{v_N,v_I,v_{NH},v_{NL}\}$ and patent value $\{p_N, p_I\}$ are also constant on BGP.
 
 The euler equation with normalized variables can be written as: 
 \begin{align*}
@@ -625,12 +646,13 @@ The transition path between two balanced growth path before and after political 
 \end{enumerate}
 
 \subsection{Calibration}
-The parameters in table \ref{calibration1} are calibrated externally. Intertemporal elasticity of substitution takes the value of 0.9.\footnote{Beaudry and Van Wincoop(1996)\nocite{BeaudryVanWincoop1996} provide evidence that IES is signiticanly different from zero and close to one.} Factor elasticity of substitution is set to be 2. The capital depreciates at rate 10\% annually. The comparative advantage of unskilled workers and return to human capital are normalized to 1. $\epsilon_H$ and $\epsilon_L$ are set to match the share of workers with a college degree or higher and workers with a high school diploma or lower.\footnote{Data source: FRED} 
+The parameters in Table \ref{calibration1} are calibrated externally. Intertemporal elasticity of substitution takes the value of 0.9.\footnote{Beaudry and Van Wincoop (1996)\nocite{BeaudryVanWincoop1996} provide evidence that IES is signiticanly different from zero and close to one.} Factor elasticity of substitution is set to be 2. The capital depreciates at rate 10\% annually. The comparative advantage of unskilled workers and return to human capital are normalized to 1. $\epsilon_H$ and $\epsilon_L$ are set to match the share of workers with a college degree or higher and workers with a high school diploma or lower.\footnote{Data source: FRED} 
 \begin{table}[h!]
-\center
-\begin{tabular}{clc}
+\begin{center}
+\scriptsize
+\begin{tabular}{c|ld{1.1}}
 \hline \hline
-Parameter & Description      & Value   \\ \hline 
+ \multicolumn{1}{c|}{Parameter} &\multicolumn{1}{l}{Description}     & \multicolumn{1}{c}{Value}   \\ \hline 
 $\theta$    & Intertemporal elasticity of substitution        &  0.9    \\
 $\sigma$    & Factor elasticity of substitution        &  2    \\
 $\delta$    & Depreciation rate       &  0.1    \\
@@ -640,60 +662,70 @@ $\epsilon_H$    & high-skill workers share   &  0.3    \\
 $\epsilon_L$     & Low skill workers share     &  0.7  \\
 \hline
 \end{tabular}
+\end{center}
 \caption{External Calibration}
 \label{calibration1}
 \end{table}
 
-The remaining parameters in table \ref{calibration2} are calibrated using the Simulated Method of Moments (SMM), which aims at finding a value $\theta^*$ maximizing the likelihood function. $\hat{m}_S(\theta)$ is the moment simulated by model given $\theta$ as the parameter of the model; $\hat{m}_M$ is the moment observed in the data.
+The remaining parameters in Table \ref{calibration2} are calibrated using the Simulated Method of Moments (SMM), which aims at finding a value $\theta^*$ maximizing the likelihood function. $\hat{m}_S(\theta)$ is the moment simulated by model given $\theta$ as the parameter of the model; $\hat{m}_M$ is the moment observed in the data.
 \begin{align*}
 L(\theta) = -(\hat{m}_S(\theta)-\hat{m}_M)^T(\hat{m}_S(\theta)-\hat{m}_M)
 \end{align*}
 
 The share of profit paid to the patent holder ($\eta$) is set to match the R\&D investment and GDP ratio. The return to capital is, on average 4\% in the data, which pins down the capital productivity ($A$). The skill comparative advantage $B_H$ is calibrated to match the skill premium in 1980. The cost of innovation $\mu_N$ is set to match the long-run growth rate. The labor share is decreasing in the automation level, and the cost of automation determines the automation level. Thus, the cost of automation $\mu_I$ is set to match the labor share in 1980. Human capital investment cost $\mu_h$ is closely related to the human capital growth rate. The parameters in the human capital accumulation function $\alpha_H$ and $\alpha_L$ are picked to match the training time change for college and high school graduates. The size of technology shock $z$ is closely related to the change in labor share, after a reduction of automation cost, more tasks will be automated, and the labor share will decrease. 
-
 \begin{table}[h!]
-\center
-\begin{tabular}{cll|ll}
+\scriptsize
+\begin{center}
+\begin{tabular}{cld{3.4}|ld{1.3}}
 \hline \hline
-Param & Description                      & Value & Targeted moment           & Value  \\ \hline
-$\rho$    & Discount rate         &  0.0121    &  Long run interest rate & 4\%   \\
-$\eta$    & Patent share                  &  0.1136    & RD and GDP ratio & 2.8\% \\
-$A$       & Capital productivity               &     0.1231   & Short run interest rate      & 4\%   \\
-$B_H$     & Skill comparative advantage  &  2.2381     & Wage premium (1980)      & 1.4    \\
-$\mu_N$ & Cost of innovation   &   1.1570    & RD growth rate  & 2.8\%   \\
-$\mu_I$ & Cost of automation   &  4.0816     & Labor share (1980)         & 0.625   \\
-$\mu_h$ & Cost of $h_L$ accumulation   &   180.6022     & Human capital growth rate & 0.3\% \\
-$\alpha_H$     & $h_H$ accumulation function   &   0.9115      & Change of training time  (H)  & 0.0339 \\
-$\alpha_L$     &  $h_L$ accumulation function   &   0.3342  & Change of training time  (L) & 0.0625 \\
-$\lambda$ & RD Decreasing return  &   	0.8873    & Wage premium (2005)   & 1.6 \\
-$z$      & Technology shock       &    0.7177   &  Labor share (2005)        & 0.605    \\\hline
+Parameter &  \multicolumn{1}{l}{Description}  & \multicolumn{1}{c|}{Value} &  \multicolumn{1}{l}{Targeted moment}  &  \multicolumn{1}{c}{Value}  \\ \hline
+$\rho$    & Discount rate         &  0.0121    &  Long run interest rate & 4.0\%   \\
+$\eta$    & Patent share                  & 0.1125     & RD and GDP ratio & 2.8\% \\
+$A$       & Capital productivity               &     0.1190  & Short run interest rate      & 4.0\%   \\
+$B_H$     & Skill comparative advantage  &  2.2651   & Wage premium (1980)      & 1.4    \\
+$\mu_N$ & Cost of innovation   &   2.3619    & RD growth rate  & 2.8\%   \\
+$\mu_I$ & Cost of automation   &   9.0135     & Labor share (1980)         & 0.625   \\
+$\mu_h$ & Cost of $h_L$ accumulation   &   193.5608     & Human capital growth rate & 0.3\% \\
+$\alpha_H$     & $h_H$ accumulation function   &   0.9026     & Change of training time  (H)  & 0.141 \\
+$\alpha_L$     &  $h_L$ accumulation function   &   0.2797  & Change of training time  (L) & 0.160 \\
+$\lambda$ & RD Decreasing return  &   	0.7675    & Wage premium (2005)   & 1.6 \\
+$z$      & Technology shock       &   0.7853  &  Labor share (2005)        & 0.605    \\\hline
 \end{tabular}
+\end{center}
 \caption{Internal Calibration}
 \label{calibration2}
-{\scriptsize Data source: FRED and NHES}
+{\scriptsize Data source: FRED and ATES. All the macroeconomic moments are from FRED. The change of training times are computed using ATES.}
 \end{table}
 
-The calibration result is presented in table \ref{result}. A reduction of automation cost increases the automation level and decreases the labor share. 
+The calibration result is presented in Table \ref{result}. A reduction of automation cost increases the automation level and decreases the labor share. 
 \begin{table}
-\center
-\begin{tabular}{l|c|cc}
+\scriptsize
+\begin{center}
+\begin{tabular}{l|d{1.5}|d{1.5}d{1.5}}
 \hline \hline
-Moment & 1980 &  \multicolumn{2}{c}{2005} \\ 
-&  & With $h$ &  Without $h$ \\ \hline
-Automation level & 0.5750 & 0.6791 & 0.7385 \\
+\multicolumn{1}{l|}{Moment} & \multicolumn{1}{c|}{1980} &  \multicolumn{2}{c}{2005} \\ 
+&  & \multicolumn{1}{c}{With human capital} &  \multicolumn{1}{c}{Without human capital} \\ \hline
+Automation level & 0.5750 & 0.7097 & 0.7385 \\
+Labor share & 0.6391 &0.5797 & 0.5719 \\
 Interest rate & 0.0389 & 0.0465 & 0.0519 \\
-Wage premium   & 1.4073 &1.5906  & 1.4781\\
-Technology growth rate  & 2.7411\% & 3.8138\% & 4.1883\%\\
-Human capital growth rate  & 0.2384\% & & 0.2384\%\\
-Change in social welfare  & & &\\
-Welfare inequality  & 1.0717 & 0.9343 & 1.2621 \\ \hline
+Wage premium   & 1.4073 & 1.5834  & 1.4781\\
+Technology growth rate  & 2.7411\% & 3.7733\% & 4.1883\%\\
+Human capital growth rate  & 0.2384\% & 0.2515\% & 0.2384\%\\
+Welfare inequality  & 1.0717 & 1.3284 & 1.2621 \\ \hline
 \end{tabular}
+\end{center}
 \caption{Calibration result}
 \label{result}
 \end{table}
 
 
 \subsection{Transition path}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{Transition}
+\caption{Transition Path}
+\label{transition}
+\end{figure}
 
 A reduction of automation cost increases automation, lowers labor share, and raises wage inequality in the short run by direct productivity effect. R\&D investment is directed more the automation since the automation department is more efficient. However, the technology change increases the demand for capital but decrease the demand for both skilled and unskilled workers. As a result, capital rental rate will increase and wage will decrease. This price effect increases the innovation patent value while decreases the automation patent value. The innovation rate will start to raise and catch up with the automation rate. These two effects work in opposite directions, and the new equilibrium automation level depends on the magnificence of the price effect. 
 
@@ -808,7 +840,7 @@ Based on the prediction of the model, after a reduction of automation cost, both
 \end{align}
 I regress the outcome variable $\Delta \ln Y_{i c, t-1}$ on the TFP growth rate $\Delta \ln TFP_{i, c \neq c(i), t-k}$ with time leg $k \in \{1,2,3,4,5\}$ while controlling the lagged values of both TFP growth $\Delta \ln TFP_{i, c \neq c(i), t-k-1}$ and of outcome variable growth $\Delta \ln Y_{ic, t-2}$. In order to interpret $\beta_{1}$ as the effect of automation on human capital, not a result relocation, I control for the change of employment $\Delta L_{i c, t-1}$. I also control for the fixed effect of country $\alpha_{c}$ and year $\gamma_{t}$. In order to overcome the endogeneity between TFP and labor composition, I follow Autor and Salomons (2018)\nocite{AutorSalomons2018}, and construct industry-level TFP growth for each industry-country pair as the leave-out mean of industry-level TFP growth in all other countries, then rescaled it to have a unit standard deviation. The coefficient $\beta_{1}$ measures the impact of TFP growth on outcome variable with different lags. 
 
-To measure human capital growth, I use two related variables: the change in the share of skilled workers (college graduates) and the growth rate contributed by labor composition change. The estimation result is reported in table \ref{estimation1} and \ref{estimation2}. The coefficient $\beta_{1}$ is not significant except when $k=4$. The TFP growth does not immediately impact the labor composition but has a positively effect with a four-year lag. 
+To measure human capital growth, I use two related variables: the change in the share of skilled workers (college graduates) and the growth rate contributed by labor composition change. The estimation result is reported in Table \ref{estimation1} and \ref{estimation2}. The coefficient $\beta_{1}$ is not significant except when $k=4$. The TFP growth does not immediately impact the labor composition but has a positively effect with a four-year lag. 
 
 \begin{table}[h!]
 \begin{center}
@@ -838,7 +870,7 @@ Observations & 2,301 & 2,657 & 2,325 & 1,993 & 1,661 & 1,330 \\
 \end{center}
 \caption{TFP Effect on High Educated Labor Share}
 \label{estimation1}
-{\scriptsize Date are from EU KLEMS. Coefficients are for observed TFP shocks in $t = 0,1,2,3,4,5$, rescaled to have a unit standard deviation. Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
+{\scriptsize Date are from EU KLEMS. The table presents estimates of the incidence of TFP growth on labor composition change. Coefficients are for observed TFP shocks in $t = \{0,-1,-2,-3,-4,-5\}$, rescaled to have a unit standard deviation. Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
 \end{table}
 
 \begin{table}
@@ -869,7 +901,7 @@ Observations & 2,597 & 2,300 & 2,003 & 1,706 & 1,409 & 1,113 \\
 \end{center}
 \caption{TFP Effect on Labor Composition Growth}
 \label{estimation2}
-{\scriptsize Data are from the EU KLEMS. Coefficients are for observed TFP shocks in $t = 0$, rescaled to have a unit standard deviation. Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
+{\scriptsize Data are from the EU KLEMS. The table presents estimates of the incidence of TFP growth on growth rate contributed by labor composition change. Coefficients are for observed TFP shocks in $t = \{0,-1,-2,-3,-4,-5\}$, rescaled to have a unit standard deviation. Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
 \end{table}
 
 To estimate the effect of automation on labor composition more structurally, I adopt simple local projection models in Autor and Salomons (2018)\nocite{AutorSalomons2018}. They documented well in their paper the impact of automation on employment, hours worked, wage bills, and labor share. I adopt their estimation method while the outcome of interest is the labor composition and the growth rate contributed by labor composition change. I estimate the equation: 
@@ -881,33 +913,34 @@ To estimate the effect of automation on labor composition more structurally, I a
 \end{align}
 where $\ln Y_{i c, t+K}-\ln Y_{i c, t-1}$ represents the log change in share of high educated labor in industry $i$ and country $c$, from year $t-1$ to year $t+K$. The impulse variable is the log change in other-country-industry TFP between years $t-2$ and $t-1$, $\Delta \ln TFP_{i, c \neq c(i), t-1}$. I estimate the effects while controlling for lagged values of both TFP growth $\Delta \ln TFP_{i, c \neq c(i), t-2}$ and of outcome variable growth $\Delta \ln Y_{ic, t-2}$, and subsequent TFP innovations occurring between $t=0$ and $t=K$. I also control the fixed effect of country $\alpha_{c}$ and year $\gamma_{t}$. 
 
-The estimation result is plotted in figure \ref{LP}. Coefficients plotted in the figure are the response of outcomes to the TFP shock in $t = 0$. The trend is consistent with the result above, the TFP shock does not affect the labor composition immediately, but has long run effect on the human capital growth. The effect of TFP on human capital peaks at five years after the shock. 
+The estimation result is plotted in Figure \ref{LP}. Coefficients plotted in the figure are the response of outcomes to the TFP shock in $t = 0$. The trend is consistent with the result above, the TFP shock does not affect the labor composition immediately, but has long run effect on the human capital growth. The effect of TFP on human capital peaks at five years after the shock. 
 
 \begin{figure}[h!]
 \includegraphics[width = \textwidth]{LP}
 \caption{Local Projection Estimates of the Relationship Between TFP Growth and Human Capital}
 \label{LP}
-{\scriptsize Notes: Coefficients are for observed TFP shocks in $t = 0$, rescaled to have a unit standard deviation. Bands are 95\% and 70\% CI.}
+{\scriptsize Notes: Data are from the EU KLEMS. The figure presents estimates of the incidence of TFP growth on labor composition or growth rate contributed by labor composition change. Coefficients are for responses of the outcome variables at $t = \{1,2,3,4,5,6\}$ to observed TFP shocks in $t = 0$. TFP shocks are rescaled to have a unit standard deviation. Bands are 95\% and 70\% CI.}
 \end{figure}
-
 
 \subsection{Heterogeneous response}
 The key empirical implication of my model is that, the skilled and unskilled workers respond differently to automation. First, automation benefit skilled workers more than unskilled workers. Second, skilled workers have better ability of learning. Using O*NET data, I estimate the equation: 
 \begin{align}
 \begin{split}
-y_{ijt} &= \beta_0 t +\beta_1 t \times AOE_{i} + \beta_2 t \times EDUC_{i} +\beta_3 t \times AOE_{i} \times EDUC_{i} \\
+\log(y_{ijt}) &= \beta_0 t +\beta_1 t \times AOE_{i} + \beta_2 t \times EDUC_{it} +\beta_3 t \times AOE_{i} \times EDUC_{it} \\
 &+ \alpha t \times 1\{t\ge 2001\} +\Gamma_j + \epsilon_{ijt}
 \end{split}
 \end{align}
-$y_{ijt}$ represents the level of a skill $j$ for occupation $i$ at time $t$. $AOE$ is the automation occupational exposure for occupation $i$. $EDUC$ is the ratio of skilled workers (college graduate or higher) at occupation $i$. $t$ captures the time trend and $t\times AOE_{i}$ and $t\times EDUC_{i}$ represent how automaton and education level affects the change of skill level. The effects is estimated while controlling the time trend and fixed effect for each skill $j$. I also use the term $t \times 1\{t\ge 2001\}$ to control the major change happened in 2001. 
+$y_{ijt}$ represents the level of a skill $j$ for occupation $i$ at time $t$. $AOE$ is the automation occupational exposure for occupation $i$. $EDUC$ is the ratio of skilled workers (college graduate or higher) at occupation $i$. $t$ is the time trend, $t\times AOE_{i}$, $t\times EDUC_{it}$ and $t\times AOE_{i}\times EDUC_{it}$ are interaction between time trend and automation or education level. The effect is estimated while controlling the time trend and fixed effect for each skill $j$. I also use the term $t \times 1\{t\ge 2001\}$ to control the major change happened in 2001. 
 
-The estimation result is reported in table \ref{estimation3}. The importance and level for all the skills except technical skill are increasing overtime. The exposure to automation 
+$\beta_1$ and $\beta_2$ are interpreted as the effects of automation and education on skill level growth. The key coefficient of the regression is $\beta_3$, it captures the different human capital responses of skilled and unskilled workers facing automation. The estimation result is reported in Table \ref{estimation3}. The level for all the skills except technical skill are increasing overtime. Consistent with the predictions of my model, when the workers are more exposed to automation, they have less incentive to invest in their human capital due to the displacement effect. Skilled and unskilled workers respond differently to the exposure of automation, skilled workers increase their human capital investment more than the unskilled workers. 
+
+The result is consistent with the empirical result of Acemoglu et al. (2020)\nocite{Acemogluetal2020}. Robots adopters experience a decline on the share of production workers, but increase the overall employment. When an occupation is exposed to automation, the skill levels of the occupation change differently depending on the labor composition. If the workers at this occupation is mainly unskilled workers, they get displaced and their human capital accumulation gets slow down. If the workers at the occupation is mainly skilled workers, they experience a productivity gain, and increase their human capital accumulation to adapt to the technology change. 
 \begin{table}[h!]
 \begin{center}
 \scriptsize
 \begin{tabular}{lccccccc} \hline \hline
  & (1) & (2) & (3) & (4) & (5) & (6) & (7) \\
-Skill & Content & Process & Social & Problem& Technical & Systems & Resource\\ 
+Skill group & Content & Process & Social & Problem& Technical & Systems & Resource\\ 
  & &  & & Solving &  & & Management \\ \hline
  &  &  &  &  &  &  &  \\
 t & 0.287*** & 0.345*** & 0.276*** & 0.0852*** & 0.152*** & -0.0570*** & 0.408*** \\
@@ -927,35 +960,42 @@ Observations & 216,494 & 147,206 & 220,769 & 36,802 & 324,869 & 110,293 & 144,77
 \end{center}
 \caption{Effect of Automation on Skill Level}
 \label{estimation3}
-{\scriptsize Notes: Data are from the O*NET (Occupational Information Network). Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
+{\scriptsize Notes: Data are from the O*NET (Occupational Information Network). The table presents estimates of the incidence of automation and education on the skill level of different skill groups. $t$ is the time trend, $t\times AOE_{i}$, $t\times EDUC_{i}$ and $t\times AOE_{i}\times EDUC_{i}$ are interaction between time trend and automation or education level.I control for the time trend and fixed effect for each skill. Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
 \end{table}
+
+Similar pattern can be found using the direct measure of human capital investment. Using ATES data, I estimate the equation: 
+\begin{align}
+\log (y) = \beta_0 t +\beta_1 t \times AOE + \beta_2 t \times SKILL +\beta_3 t \times AOE \times SKILL + \Gamma + \epsilon
+\end{align}
+$y$ represents total hour spent on training. $AOE$ is the automation occupational exposure for the worker's occupation. $SKILL$ is the skill group of the worker (1 if the skilled and 0 if unskilled). $t$ captures the time trend of the time spent on training, $t\times AOE$, $t\times EDUC$ and $t\times AOE\times EDUC$ are interaction between time trend and automation or skill level. $\Gamma$ is the vector of control variables, including age and sex. 
+
+The key coefficient of the regression is $\beta_3$, it captures the different training responses of skilled and unskilled workers facing automation. The estimation result is reported in Table \ref{estimation4}. The result is consistent with the occupational skill level change above, training time is decreasing in the automation level, skilled workers invest more in training than unskilled workers. With 1 percent increase of automation level, skilled workers increase their training time about 3.5\% more than unskilled workers. 
 
 \begin{table}[h!]
 \begin{center}
 \scriptsize
-\begin{tabular}{lcc} \hline
+\begin{tabular}{lcc} \hline \hline
  & (1) & (2) \\
-VARIABLES & l & l \\ \hline
+VARIABLES & \multicolumn{2}{c}{Training hours} \\ \hline
  &  &  \\
-t & 3.705*** & 3.890*** \\
- & (0.187) & (0.189) \\
-t $\times$ AOE & -0.0117*** & -0.0159*** \\
- & (0.00362) & (0.00369) \\
-t $\times$ AOE $\times$ SKILL & 0.0356*** & 0.0352*** \\
- & (0.00290) & (0.00291) \\
-Constant & -7,857*** & -8,193*** \\
- & (373.4) & (376.5) \\
+t  & 1.754*** & 1.843*** \\
+ & (0.00183) & (0.00183) \\
+t $\times$ AOE & -0.0145*** & -0.0240*** \\
+ & (5.61e-05) & (5.65e-05) \\
+t $\times$ SKILL & 0.00752*** & 0.00575*** \\
+ & (2.90e-05) & (2.89e-05) \\
+t $\times$ AOE $\times$ SKILL & 0.0341*** & 0.0352*** \\
+ & (7.96e-05) & (7.93e-05) \\
+Constant & -3,210*** & -3,336*** \\
+ & (3.661) & (3.649) \\
  &  &  \\
- Control variables & N & Y \\
-Observations & 14,295 & 14,295 \\
- R-squared & 0.038 & 0.041 \\ \hline
-\multicolumn{3}{c}{ Standard errors in parentheses} \\
-\multicolumn{3}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+Observations & 129,673,600 & 129,673,600 \\
+ R-squared & 0.032 & 0.042 \\ \hline
 \end{tabular}
 \end{center}
 \caption{Effect of Automation on Training}
 \label{estimation4}
-{\scriptsize Notes: Data are from the ATES (Adult Training and Education Survey). Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
+{\scriptsize Notes: Data are from the ATES (Adult Training and Education Survey). The table presents estimates of the incidence of automation and education on training hours (Weighted least squares). $t$ is the time trend, $t\times AOE_{i}$, $t\times SKILL_{i}$ and $t\times AOE_{i}\times SKILL_{i}$ are interaction between time trend and automation or skill level. In the second column, I control for the sex and age. Robust standard errors are in parenthesis. ***, **, * denotes statistical significance at 1, 5 and 10 percent levels.}
 \end{table}
 
 \section{Conclusion}

@@ -52,16 +52,16 @@ if (calibration == 1) then
         write(2,FMT) 0, 0, moment_data
     close(2)
 
-    param(1) = 0.1136d0; param_range(1,1) = 0.05d0; param_range(2,1) = 0.2d0            ! p
-    param(2) = 0.1231d0; param_range(1,2) = 0.05d0; param_range(2,2) = 0.2d0            ! A
-    param(3) = 2.2381d0; param_range(1,3) = 1d0; param_range(2,3) = 5d0                 ! B_NH
-    param(4) = 1.1570d0; param_range(1,4) = 1d0; param_range(2,4) = 5d0                 ! mu_N
-    param(5) = 4.0816d0; param_range(1,5) = 1d0; param_range(2,5) = 5d0                 ! mu_I
-    param(6) = 180.6022d0; param_range(1,6) = 100d0; param_range(2,6) = 200d0           ! mu_h
-    param(7) = 0.9115d0; param_range(1,7) = 0.8d0; param_range(2,7) = 0.95d0            ! alhpa_H
-    param(8) = 0.3342d0; param_range(1,8) = 0.1d0; param_range(2,8) = 0.6d0             ! alhpa_L
-    param(9) = 0.8873d0; param_range(1,9) = 0.1d0; param_range(2,9) = 0.95d0            ! lambda_h
-    param(10) = 0.7177d0; param_range(1,10) = 0.7d0; param_range(2,10) = 0.95d0         ! tech shock
+    param(1) = 0.1412d0; param_range(1,1) = 0.05d0; param_range(2,1) = 0.2d0            ! p
+    param(2) = 0.1207d0; param_range(1,2) = 0.05d0; param_range(2,2) = 0.2d0            ! A
+    param(3) = 2.0940d0; param_range(1,3) = 1d0; param_range(2,3) = 5d0                 ! B_NH
+    param(4) = 1.0259d0; param_range(1,4) = 1d0; param_range(2,4) = 10d0                ! mu_N
+    param(5) = 3.2523d0; param_range(1,5) = 1d0; param_range(2,5) = 10d0                ! mu_I
+    param(6) = 188.8590d0; param_range(1,6) = 150d0; param_range(2,6) = 200d0           ! mu_h
+    param(7) = 0.9076d0; param_range(1,7) = 0.8d0; param_range(2,7) = 0.95d0            ! alhpa_H
+    param(8) = 0.3859d0; param_range(1,8) = 0.1d0; param_range(2,8) = 0.6d0             ! alhpa_L
+    param(9) = 0.7605d0; param_range(1,9) = 0.1d0; param_range(2,9) = 0.95d0            ! lambda_h
+    param(10) = 0.8057d0; param_range(1,10) = 0.75d0; param_range(2,10) = 0.95d0        ! tech shock
 
     iunit = 1; L_N0 = 1d6
     Model = 3; Np = Nparam; call nlopt(6,param,param_range)
@@ -90,8 +90,9 @@ elseif (calibration == 0) then
         case (2) ! BGP
             do num = 1,num_total-1
                 iunit = num 
-                Model = 3
+                Model = 1
                 call Read_Param1 
+                mu_I = mu_I*shock
                 call BGP(0)
                 s_K0 = s_K; s_LH0 = s_LH; s_LL0 = s_LL
                 k0 = k; L0 = (s_LH*L_H+s_LL*L_L)/(s_LH+s_LL)
@@ -119,12 +120,12 @@ elseif (calibration == 0) then
                 close(2)
             end do
 
-        case (3) ! Policy           
             do num = 1,num_total-1
                 iunit = num 
                 Model = 3
                 call Read_Param1 
-                call Policy(0)
+                mu_I = mu_I*shock
+                call BGP(0)
                 s_K0 = s_K; s_LH0 = s_LH; s_LL0 = s_LL
                 k0 = k; L0 = (s_LH*L_H+s_LL*L_L)/(s_LH+s_LL)
                 w0 = w; h_HL0 = h_HL
@@ -132,7 +133,7 @@ elseif (calibration == 0) then
 
                 write(*,*) ''    
                 mu_I = shock*mu_I
-                call Policy(0)
+                call BGP(0)
                 s_K1 = s_K; s_LH1 = s_LH; s_LL1 = s_LL
                 k1 = k; L1 = (s_LH*L_H+s_LL*L_L)/(s_LH+s_LL)
                 w1 = w; h_HL1 = h_HL
@@ -151,7 +152,7 @@ elseif (calibration == 0) then
                 close(2)
             end do
 
-        case (4) ! BGP and Transition  
+        case (3) ! BGP and Transition  
             do num = 1,num_total-1
                 iunit = num
                 ! Get h_HL       

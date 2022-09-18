@@ -126,13 +126,12 @@ elseif (calibration == 0) then
 
         g_wN = B_NH*g_N+s_LL/(s_LL+s_LH)*d_I*b_h*(g_hH-g_hL)+d_I*(g_k-g_L)
         g_wI = (d_I*d_Eta_I+s_LL/(s_LL+s_LH)*(1d0-d_I)*d_Gamma_I)*(g_I-g_N)
-        ! g_wS = (B_NH-B_NL)/a_S*((g_LL-g_LH+b_h*(g_hL-g_hH))/sigma-(sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
-        g_wS = -(B_NH-B_NL)/a_S*((sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
+        g_wS = (B_NH-B_NL)/a_S*((g_LL-g_LH+b_h*(g_hL-g_hH))/sigma-(sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
 
         if (SPP == 0) then       
-            ! V_NH0 = (p*(w_H/A)**(1d0-sigma)*y*dt+V_NH1)/((rr-g+(sigma-1d0)*B_NH*g_N)*dt+1d0)
-            ! V_NL0 = (p*(w_L/A*gamma_HL)**(1d0-sigma)*y*dt+V_NL1)/((rr-g+(sigma-1d0)*B_NL*g_N)*dt+1d0)
-            ! V_II0 = (p*(R/A)**(1d0-sigma)*y*dt+V_II1)/((rr-g)*dt+1d0)
+            ! V_NH0 = (p*(w_H/A)**(1d0-sigma)*dt+V_NH1)/((rr-g+(sigma-1d0)*B_NH*g_N)*dt+1d0)
+            ! V_NL0 = (p*(w_L/A*gamma_HL)**(1d0-sigma)*dt+V_NL1)/((rr-g+(sigma-1d0)*B_NL*g_N)*dt+1d0)
+            ! V_II0 = (p*(R/A)**(1d0-sigma)*dt+V_II1)/((rr-g)*dt+1d0)
             V_NH0 = p*(w_H/A)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NH*g_N)
             V_NL0 = p*(w_L/A*gamma_HL)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NL*g_N)
             V_II0 = p*(R/A)**(1d0-sigma)/(rr-g)

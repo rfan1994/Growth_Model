@@ -1,6 +1,7 @@
 cd '/Users/rongfan/Desktop/Growth_Model/Matlab'
 clear; close all; clc;
-folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/Static';
+folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20220917_0900/Two_Group';
+folder2 = '/Users/rongfan/Desktop/Growth_Model/Latex';
 Color(1,:) = [0 0.4470 0.7410];
 Color(2,:) = [0.8500 0.3250 0.0980];
 Color(3,:) = [0.9290 0.6940 0.1250];
@@ -12,63 +13,55 @@ Color(7,:) = [0.6350 0.0780 0.1840];
 
 %%
 close all;
-cd '/Users/rongfan/Desktop/Growth_Model/Matlab/Static';
-dinfo = dir('BGP*');
+cd(folder1)
+dinfo = dir('IR*1.txt');
 names = [];
-data = [];
+data1 = [];
 for K = 1:length(dinfo)
     filename = dinfo(K).name;     %just the name
     table = readtable(filename);
     names = [names,table.Properties.VariableNames];
-    data = [data,table2array(table)];
+    data1 = [data1,table2array(table)];
 end
-data = data(data(:,3)==1,:);
 
-rho = 0.0152; theta = 0.8;
-
-figure;
-for n = [1,3]
-    rr = data(data(:,1)==n,22);
-    I_tilde = data(data(:,1)==n,16);
-    g = data(data(:,1)==n,32);
-    h(n) = plot(rr,I_tilde,'LineWidth',1);
-    hold on; 
-    [~,i] = min(abs(rho+theta*g-rr));
-    line([rr(i),rr(i)],[0,I_tilde(i)],'Color','k','LineWidth',1,'LineStyle','--')
-    hold on; 
-    line([rr(i),0],[I_tilde(i),I_tilde(i)],'Color','k','LineWidth',1,'LineStyle','--')
-    hold on; 
+dinfo = dir('IR*3.txt');
+data2 = [];
+for K = 1:length(dinfo)
+    filename = dinfo(K).name;     %just the name
+    table = readtable(filename);
+    data2 = [data2,table2array(table)];
 end
-legend([h(1),h(3)], {'Low ES, High CA','High ES, Low CA'},'Location','Northeast')
-xlabel('Interest rate'); ylabel('Automation')
-xlim([0.03,0.09]); ylim([0,1])
-xticks([])
 
-%%
-for n = [1,3]
-    figure;
-    rr = data(data(:,1)==n,22);
-    I_tilde = data(data(:,1)==n,16);
-    g = data(data(:,1)==n,32);
-    h(1) = plot(rr,I_tilde,'LineWidth',1); 
-    hold on; 
-    [~,i] = min(abs(rho+theta*g-rr));
-    line([rr(i),rr(i)],[0,I_tilde(i)],'Color','k','LineWidth',1,'LineStyle','--')
-    hold on; 
-    line([rr(i),0],[I_tilde(i),I_tilde(i)],'Color','k','LineWidth',1,'LineStyle','--')
-    xlim([0.03,0.055]); ylim([0,1])
-    hold on; 
-    rr = data(data(:,1)==n+3,22);
-    I_tilde = data(data(:,1)==n+3,16);
-    g = data(data(:,1)==n+3,32);
-    h(2) = plot(rr,I_tilde,'LineWidth',1);
-    hold on; 
-    [~,i] = min(abs(rho+theta*g-rr));
-    line([rr(i),rr(i)],[0,I_tilde(i)],'Color','k','LineWidth',1,'LineStyle','--')
-    hold on; 
-    line([rr(i),0],[I_tilde(i),I_tilde(i)],'Color','k','LineWidth',1,'LineStyle','--')
-    legend([h(1),h(2)],  {'Before wave','After wave'},'Location','Northeast')
-    xlabel('Interest rate'); ylabel('Automation')
-    xlim([0.03,0.09]); ylim([0,1])
-    xticks([])
-end 
+eta = 0.1136;
+
+variable = {'Automation','Labor share','Interest rate','Wage inequality',...
+            'Growth rate','Human capital gap'};
+
+y1 = data1(:,[3,37,33,36,18,5]);       
+y1(:,2) = data1(:,37)+data1(:,38)+eta;
+y1(:,5) = data1(:,18)+data1(:,20)+eta;
+
+y2 = data2(:,[3,37,33,36,18,5])       
+y2(:,2) = data2(:,37)+data2(:,38)+eta
+y2(:,5) = data2(:,18)+data2(:,20)+eta
+
+T = data1(:,1)
+
+figure('position',[0,0,800,250])
+for n = 1:6
+    subplot(2,3,n)
+    plot(T,y1(:,n),'linewidth',1)
+    hold on;
+    plot(T,y2(:,n),'linewidth',1)
+    title(variable(n))
+    if (n==1) 
+        legend('Without human capital','With human capital','Location','southeast')
+    end
+end
+filename = append(folder2,'/Transition.png');       
+exportgraphics(gcf,filename)
+
+
+
+
+
