@@ -409,11 +409,11 @@ integer :: p0, p1
         ! Update h_HL
         ts_h_HL1(1) = h_HL0
         do i = 2,iter_IR-1
-            g_dot = ts_g_hH1(i-1)-ts_g_hL1(i-1)
+            g_dot = max(ts_g_hH1(i-1)-ts_g_hL1(i-1),0d0)
             h_HL = ts_h_HL0(i-1)+g_dot*ts_dt(i-1)  
             if (h_HL .le. min(h_HL0,h_HL1)) then
                 ts_h_HL1(i) = min(h_HL0,h_HL1)
-            elseif (k .ge. max(h_HL0,h_HL1)) then
+            elseif (h_HL .ge. max(h_HL0,h_HL1)) then
                 ts_h_HL1(i) = max(h_HL0,h_HL1)
             else
                 ts_h_HL1(i) = h_HL
@@ -803,8 +803,8 @@ real(8), allocatable :: x(:), x_range(:,:)
                 allocate(x(4),x_range(2,4))      
                 x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
                 x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1
-                x(3) = g_hH1; ; x_range(1,3) = g_hH0; x_range(2,3) = 1.2d0*g_hH1
-                x(4) = g_hL1; ; x_range(1,4) = g_hL0; x_range(2,4) = 1.2d0*g_hL1
+                x(3) = g_hH1; ; x_range(1,3) = g_hH0; x_range(2,3) = 1.5d0*g_hH1
+                x(4) = g_hL1; ; x_range(1,4) = g_hL0; x_range(2,4) = g_hL1
                 Np = 4; flag = 1; call nlopt(6,x,x_range)
                 deallocate(x,x_range)
         end select

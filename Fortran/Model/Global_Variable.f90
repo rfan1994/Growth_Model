@@ -9,7 +9,7 @@ module Global_Variable
     implicit none
 ! Parameters
 integer, parameter :: iter_max = 1d4, iter_IR = 101
-real(8), parameter :: TOL = 1d-6, TOL1 = 0.002, TOL2 = 1d-2
+real(8), parameter :: TOL = 1d-6, TOL1 = 0.003, TOL2 = 1d-2
 
 ! Control
 integer, parameter :: calibration = 0, Task = 3

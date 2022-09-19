@@ -63,8 +63,8 @@ end interface
     fgoodenough = TOL
     ftolerabs = TOL
     ftolerrel = TOL              ! any negative value means no stopping
-    xtolerrel = -TOL
-    xtolerabs = -TOL
+    xtolerrel = TOL
+    xtolerabs = TOL
     maxeval = 1d5 
 
     ! Initialize nlopt
