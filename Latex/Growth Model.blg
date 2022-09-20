@@ -1,54 +1,50 @@
-This is BibTeX, Version 0.99d (TeX Live 2017)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Growth Model.aux
-White space in argument---line 83 of file Growth Model.aux
- : \citation{Sourse:
- :                   CNBC}
-I'm skipping whatever remains of this command
 The style file: plain.bst
 Database file #1: Growth.bib
 Warning--I didn't find a database entry for "Aghioenetal2021"
 Warning--there's a number but no volume in AthreyaEberly2015
 Warning--empty institution in Dinlersozetal2018
-You've used 29 entries,
+You've used 32 entries,
             2118 wiz_defined-function locations,
-            687 strings with 8823 characters,
-and the built_in function-call counts, 9250 in all, are:
-= -- 944
-> -- 421
-< -- 7
-+ -- 172
-- -- 136
-* -- 616
-:= -- 1573
-add.period$ -- 89
-call.type$ -- 29
-change.case$ -- 159
+            706 strings with 9266 characters,
+and the built_in function-call counts, 10311 in all, are:
+= -- 1056
+> -- 453
+< -- 10
++ -- 185
+- -- 146
+* -- 678
+:= -- 1735
+add.period$ -- 98
+call.type$ -- 32
+change.case$ -- 173
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 342
-empty$ -- 701
-format.name$ -- 136
-if$ -- 1915
+cite$ -- 34
+duplicate$ -- 392
+empty$ -- 790
+format.name$ -- 146
+if$ -- 2150
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 21
-newline$ -- 147
-num.names$ -- 58
-pop$ -- 136
+int.to.str$ -- 32
+missing$ -- 24
+newline$ -- 162
+num.names$ -- 64
+pop$ -- 150
 preamble$ -- 1
-purify$ -- 123
+purify$ -- 134
 quote$ -- 0
-skip$ -- 254
+skip$ -- 295
 stack$ -- 0
-substring$ -- 576
-swap$ -- 65
-text.length$ -- 7
+substring$ -- 652
+swap$ -- 84
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 116
+type$ -- 128
 warning$ -- 2
-while$ -- 94
-width$ -- 31
-write$ -- 319
-(There was 1 error message)
+while$ -- 108
+width$ -- 34
+write$ -- 353
+(There were 3 warnings)

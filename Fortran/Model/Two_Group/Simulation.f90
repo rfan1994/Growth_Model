@@ -380,7 +380,7 @@ integer :: p0, p1
         ! Update I
         ts_I1(1) = I0
         do i = 2,iter_IR-1
-            g_dot = max(ts_g_I1(i-1)-ts_g_N1(i-1),0d0)
+            g_dot = max(ts_g_I0(i-1)-ts_g_N0(i-1),0d0)
             I_tilde = ts_I0(i-1)+g_dot*ts_dt(i-1)
             ts_I1(i) = I_tilde
             if (I_tilde .le. min(I0,I1)) then
@@ -409,7 +409,7 @@ integer :: p0, p1
         ! Update h_HL
         ts_h_HL1(1) = h_HL0
         do i = 2,iter_IR-1
-            g_dot = max(ts_g_hH1(i-1)-ts_g_hL1(i-1),0d0)
+            g_dot = max(ts_g_hH0(i-1)-ts_g_hL0(i-1),0d0)
             h_HL = ts_h_HL0(i-1)+g_dot*ts_dt(i-1)  
             if (h_HL .le. min(h_HL0,h_HL1)) then
                 ts_h_HL1(i) = min(h_HL0,h_HL1)
@@ -767,6 +767,7 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
+real(8), parameter :: rmin = 0.8d0, rmax = 1.2d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -787,33 +788,51 @@ real(8), allocatable :: x(:), x_range(:,:)
         
         select case (Model)
             case (1)       
-                allocate(x(2),x_range(2,2))   
+                allocate(x(2),x_range(2,2))  
+                g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
                 x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
                 x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1 
-                Np = 2; flag = 1; call nlopt(6,x,x_range)
+                Np = 2; Step = 1; call nlopt(6,x,x_range)
+                ts_g_N1(i) = x(1)
+                ts_g_I1(i) = x(2)
                 deallocate(x,x_range)
             case (2)
-                allocate(x(3),x_range(2,3))   
+                allocate(x(2),x_range(2,2))  
+                g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
                 x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
                 x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1
-                x(3) = g_hH1; ; x_range(1,3) = g_hH0; x_range(2,3) = g_hH1
-                Np = 3; flag = 1; call nlopt(6,x,x_range)
+                Np = 2; Step = 1; call nlopt(6,x,x_range)
+                ts_g_N1(i) = x(1)
+                ts_g_I1(i) = x(2)
+                deallocate(x,x_range)
+
+                allocate(x(1),x_range(2,1))  
+                g_N = ts_g_N0(i); g_I = ts_g_I0(i) 
+                x(1) = g_hH1; ; x_range(1,1) = rmin*g_hH0; x_range(2,1) = rmax*g_hH1
+                Np = 1; Step = 2; call nlopt(6,x,x_range)
+                ts_g_hH1(i) = x(1)
                 deallocate(x,x_range)
             case (3)  
-                allocate(x(4),x_range(2,4))      
+                allocate(x(2),x_range(2,2))  
+                g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)    
                 x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
                 x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1
-                x(3) = g_hH1; ; x_range(1,3) = g_hH0; x_range(2,3) = 1.5d0*g_hH1
-                x(4) = g_hL1; ; x_range(1,4) = g_hL0; x_range(2,4) = g_hL1
-                Np = 4; flag = 1; call nlopt(6,x,x_range)
+                Np = 2; Step = 1; call nlopt(6,x,x_range)
+                ts_g_N1(i) = x(1)
+                ts_g_I1(i) = x(2)
                 deallocate(x,x_range)
-        end select
+
+                allocate(x(2),x_range(2,2))      
+                g_N = ts_g_N0(i); g_I = ts_g_I0(i) 
+                x(1) = g_hH0; ; x_range(1,1) = rmin*g_hH0; x_range(2,1) = rmax*g_hH1
+                x(2) = g_hL0; ; x_range(1,2) = rmin*g_hL0; x_range(2,2) = rmax*g_hL1
+                Np = 2; Step = 2; call nlopt(6,x,x_range)
+                ts_g_hH1(i) = x(1)
+                ts_g_hL1(i) = x(2)
+                deallocate(x,x_range)
+        end select            
 
         ! Updata
-        ts_g_N1(i) = g_N
-        ts_g_I1(i) = g_I
-        ts_g_hH1(i) = g_hH
-        ts_g_hL1(i) = g_hL
         ts_L_H1(i) = L_H
         ts_L_L1(i) = L_L
 

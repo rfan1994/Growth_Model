@@ -88,7 +88,6 @@ elseif (calibration == 0) then
             end do
 
         case (2) ! BGP
-
             do num = 1,num_total-1
                 iunit = num 
                 Model = 3

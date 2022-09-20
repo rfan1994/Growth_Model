@@ -96,17 +96,23 @@ elseif (calibration == 0) then
             g_hL = g_hL0
             g = B_NH*g_N+b_h*g_hH 
         case (2)
-            g_N = x(1)
-            g_I = x(2)
-            g_hH = x(3)
-            g_hL = g_hL0
-            g = B_NH*g_N+b_h*g_hH 
+            if (Step == 1) then 
+                g_N = x(1)
+                g_I = x(2)
+                g = B_NH*g_N+b_h*g_hH 
+            elseif (Step == 2) then 
+                g_hH = x(1)
+                g_hL = g_hL0
+            endif           
         case (3) 
-            g_N = x(1)
-            g_I = x(2)
-            g_hH = x(3)
-            g_hL = x(4)
-            g = B_NH*g_N+b_h*g_hH  
+            if (Step == 1) then 
+                g_N = x(1)
+                g_I = x(2)
+                g = B_NH*g_N+b_h*g_hH 
+            elseif (Step == 2) then 
+                g_hH = x(1)
+                g_hL = x(2)
+            endif    
     end select 
 
         epsilon_N = (g_N*mu_N)**(1d0/lambda)
@@ -128,14 +134,18 @@ elseif (calibration == 0) then
         d_I = s_K/(1-p)/sigma
         a_S = 1d0/((sigma-1d0)/sigma*(s_LL+s_LH)/s_LH*d_Gamma_S+B_NH-B_NL)
 
+        ! With interection between human capital 
         g_wN = B_NH*g_N+s_LL/(s_LL+s_LH)*d_I*b_h*(g_hH-g_hL)+d_I*(g_k-g_L)
         g_wI = (d_I*d_Eta_I+s_LL/(s_LL+s_LH)*(1d0-d_I)*d_Gamma_I)*(g_I-g_N)
         g_wS = (B_NH-B_NL)/a_S*((g_LL-g_LH+b_h*(g_hL-g_hH))/sigma-(sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
 
-        if (SPP == 0) then       
+        if (SPP == 0) then  
+            ! Solve patent value sequentially      
             ! V_NH0 = (p*(w_H/A)**(1d0-sigma)*dt+V_NH1)/((rr-g+(sigma-1d0)*B_NH*g_N)*dt+1d0)
             ! V_NL0 = (p*(w_L/A*gamma_HL)**(1d0-sigma)*dt+V_NL1)/((rr-g+(sigma-1d0)*B_NL*g_N)*dt+1d0)
             ! V_II0 = (p*(R/A)**(1d0-sigma)*dt+V_II1)/((rr-g)*dt+1d0)
+
+            ! Solve current patent value
             V_NH0 = p*(w_H/A)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NH*g_N)
             V_NL0 = p*(w_L/A*gamma_HL)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NL*g_N)
             V_II0 = p*(R/A)**(1d0-sigma)/(rr-g)
@@ -167,32 +177,36 @@ elseif (calibration == 0) then
             L_N = (lambda*p_N*epsilon_N**(lambda-1d0)/mu_N-s_LH/L_H)**2d0                   &
                 + (lambda*p_I*epsilon_I**(lambda-1d0)/mu_I-s_LH/L_H)**2d0
         case (2)
-            if (SPP == 0) then
+            if (SPP == 0 .and. Step == 1) then
                 L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H                     &
-                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0 
-            elseif (SPP == 1) then 
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0 
+            elseif (SPP == 0 .and. Step == 2) then
+                L_N = (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H+b_h*g_hH            &
+                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS)**2d0  
+            elseif (SPP == 1 .and. Step == 1) then 
                 L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H            &
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0          
+            elseif (SPP == 1 .and. Step == 2) then 
+                L_N = (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H            &
                     - R/(1d0-p)-delta+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0 
             endif 
         case (3) 
-            if (SPP == 0) then
+            if (SPP == 0 .and. Step == 1) then
                 L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H                     &
-                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0        &
-                    + (b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L                     &
-                    - (1d0+tau_hL)*rr+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS+b_h*g_hL)**2d0
-            elseif (SPP == 1) then 
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0              
+            elseif (SPP == 0 .and. Step == 2) then
+                L_N = abs(b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H+b_h*g_hH         &
+                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS)                      &
+                    + abs(b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L+b_h*g_hL         &
+                    - (1d0+tau_hL)*rr+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS)
+            elseif (SPP == 1 .and. Step == 1) then 
                 L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0               &
-                    + (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H            &
-                    - R/(1d0-p)-delta+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0        &
-                    + (b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L                     &
-                    - R/(1d0-p)-delta+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS+b_h*g_hL)**2d0
+                    + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0    
+            elseif (SPP == 1 .and. Step == 2) then 
+                L_N = abs(b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H         &
+                    - R/(1d0-p)-delta+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)             &
+                    + abs(b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L                  &
+                    - R/(1d0-p)-delta+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS+b_h*g_hL)
             endif 
     end select 
 endif 
