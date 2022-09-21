@@ -135,7 +135,8 @@ elseif (calibration == 0) then
         a_S = 1d0/((sigma-1d0)/sigma*(s_LL+s_LH)/s_LH*d_Gamma_S+B_NH-B_NL)
 
         ! With interection between human capital 
-        g_wN = B_NH*g_N+s_LL/(s_LL+s_LH)*d_I*b_h*(g_hH-g_hL)+d_I*(g_k-g_L)
+        ! g_wN = B_NH*g_N+s_LL/(s_LL+s_LH)*d_I*b_h*(g_hH-g_hL)+d_I*(g_k-g_L)
+        g_wN = B_NH*g_N+s_LL/(s_LL+s_LH)*d_I*b_h*(g_hH-g_hL)
         g_wI = (d_I*d_Eta_I+s_LL/(s_LL+s_LH)*(1d0-d_I)*d_Gamma_I)*(g_I-g_N)
         g_wS = (B_NH-B_NL)/a_S*((g_LL-g_LH+b_h*(g_hL-g_hH))/sigma-(sigma-1d0)/sigma*d_Gamma_I*(g_I-g_N))
 
@@ -195,18 +196,18 @@ elseif (calibration == 0) then
                 L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
                     + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0              
             elseif (SPP == 0 .and. Step == 2) then
-                L_N = abs(b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H+b_h*g_hH         &
-                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS)                      &
-                    + abs(b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L+b_h*g_hL         &
-                    - (1d0+tau_hL)*rr+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS)
+                L_N = (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*ll_H+b_h*g_hH            &
+                    - (1d0+tau_hH)*rr+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS)**2d0                 &
+                    + (b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L+b_h*g_hL            &
+                    - (1d0+tau_hL)*rr+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS)**2d0  
             elseif (SPP == 1 .and. Step == 1) then 
                 L_N = (lambda/mu_N*p_N*epsilon_N**(lambda-1d0)-s_LH/L_H)**2d0               &
                     + (lambda/mu_I*p_I*epsilon_I**(lambda-1d0)-s_LH/L_H)**2d0    
             elseif (SPP == 1 .and. Step == 2) then 
-                L_N = abs(b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H         &
-                    - R/(1d0-p)-delta+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)             &
-                    + abs(b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L                  &
-                    - R/(1d0-p)-delta+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS+b_h*g_hL)
+                L_N = (b_h/mu_hH*alpha_H*(1d0-ll_H)**(alpha_H-1d0)*L_L/epsilon_H            &
+                    - R/(1d0-p)-delta+g_wN+g_wI-s_LH/(s_LH+s_LL)*g_wS+b_h*g_hH)**2d0        &
+                    + (b_h/mu_hL*alpha_L*(1d0-ll_L)**(alpha_L-1d0)*ll_L                     &
+                    - R/(1d0-p)-delta+g_wN+g_wI+s_LL/(s_LH+s_LL)*g_wS+b_h*g_hL)**2d0    
             endif 
     end select 
 endif 

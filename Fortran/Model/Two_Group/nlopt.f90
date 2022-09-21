@@ -65,7 +65,7 @@ end interface
     ftolerrel = TOL              ! any negative value means no stopping
     xtolerrel = TOL
     xtolerabs = TOL
-    maxeval = 3000 
+    maxeval = 5000 
 
     ! Initialize nlopt
     ptr = 0
@@ -99,6 +99,7 @@ end interface
         ! write(*,'(A)') 'NL: success, xtolerabs or xtolerrel reached'
     case (NLOPT_MAXEVAL_REACHED)
         ! write(*,'(A)') 'NL: failure, maxeval reached'
+        flag = 0
     case (NLOPT_MAXTIME_REACHED)
         write(*,'(A)') 'NL: failure, maxtime reached'
     case (NLOPT_FAILURE)

@@ -1,0 +1,65 @@
+#!/bin/bash
+# bash ~/Documents/$(date +%Y%m%d_%H%M)/Run_Job_RED
+
+export model=4
+
+
+if [ $model -eq 1 ]
+then
+    # ===============================================================================================
+    # No_Automation
+
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents/$(date +%Y%m%d_%H%M)/No_Automation
+    ~/Documents/Growth/No_Automation/No_Automation
+
+
+
+
+
+
+
+
+elif [ $model -eq 2 ]
+then
+    # ===============================================================================================
+    # No_HumanCapital
+    
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents/$(date +%Y%m%d_%H%M)/No_HumanCapital
+    ~/Documents/Growth/No_HumanCapital/No_HumanCapital
+
+
+
+
+
+
+
+
+elif [ $model -eq 3 ]
+then
+    # ===============================================================================================
+    # One_Group
+
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents/$(date +%Y%m%d_%H%M)/One_Group
+    ~/Documents/Growth/One_Group/One_Group
+
+
+
+
+
+
+
+
+elif [ $model -eq 4 ]
+then
+    # ===============================================================================================
+    # Two_Group
+    
+    echo -e "\e[1;94m $(date +%Y%m%d_%H%M) \e[0m"
+    cd ~/Documents/$(date +%Y%m%d_%H%M)/Two_Group
+    module load nlopt
+    ~/Documents/Growth/Two_Group/Two_Group
+    
+fi
