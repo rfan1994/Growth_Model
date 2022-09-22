@@ -1,1 +1,0 @@
-    number     Model      flag        RD         g       g_N       g_I      g_hH      g_hL       p_N       p_I     eps_N     eps_I

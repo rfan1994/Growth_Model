@@ -98,7 +98,7 @@ real(8) :: x(5), fvec(5)
         if (SPP == 0) then
             k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
             k_L = k/(a_HL*epsilon_H+epsilon_L)            
-            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
+            Trans = tau_N*eta*(s_LH+s_LL)*y+tau_I*eta*s_K*y                      &
                   + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
             c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
             c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
@@ -120,7 +120,7 @@ real(8) :: x(5), fvec(5)
         if (SPP == 0) then
             k_H = a_HL*k/(a_HL*epsilon_H+epsilon_L)
             k_L = k/(a_HL*epsilon_H+epsilon_L)
-            Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
+            Trans = tau_N*eta*(s_LH+s_LL)*y+tau_I*eta*s_K*y                      &
                   + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
             c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
             c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 
@@ -732,7 +732,7 @@ real(8) :: c_H0, c_H1, c_L0, c_L1
 
         ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
         ll_L = L_L/epsilon_L
-        Trans = rr*k+tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                          &
+        Trans = rr*k+tau_N*eta*(s_LH+s_LL)*y+tau_I*s_K*eta*y                          &
               + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
         ts_aH_dk(i) = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans-c_H
         ts_aL_dk(i) = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans-c_L
@@ -767,7 +767,7 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
-real(8), parameter :: rmin = 0.9d0, rmax = 1.5d0
+real(8), parameter :: rmin = 0.5d0, rmax = 1.5d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -791,7 +791,7 @@ real(8), parameter :: rmin = 0.9d0, rmax = 1.5d0
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
                 x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1 
+                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1 
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -800,7 +800,7 @@ real(8), parameter :: rmin = 0.9d0, rmax = 1.5d0
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
                 x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1
+                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -816,7 +816,7 @@ real(8), parameter :: rmin = 0.9d0, rmax = 1.5d0
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)    
                 x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = g_I1
+                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -868,7 +868,7 @@ real(8) :: V_H0, V_H1, V_L0, V_L1
     g = B_NH*g_N+b_h*g_hH 
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
     ll_L = L_L/epsilon_L
-    Trans = tau_N*(s_LH+s_LL)*y+tau_I*s_K*y                      &
+    Trans = tau_N*eta*(s_LH+s_LL)*y+tau_I*eta*s_K*y                      &
           + tau_hH*w_H*(1d0-ll_H)*epsilon_H+tau_hL*w_L*(1d0-ll_L)*epsilon_L
     c_H = (rr-g)*k_H+(w_H*L_H+pi)/epsilon_H-tau_hH*w_H*(1d0-ll_H)+Trans
     c_L = (rr-g)*k_L+w_L*L_L/epsilon_L-tau_hL*w_L*(1d0-ll_L)+Trans 

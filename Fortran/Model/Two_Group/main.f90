@@ -126,15 +126,22 @@ elseif (calibration == 0) then
                 ! Get h_HL       
                 Model = 3 
                 call Read_Param1
+                tau_k = 0d0; tau_N = 0d0; tau_I = 0d0
+                tau_hH = 0d0; tau_hL = 0d0
                 call BGP(0)
+
                 g_hH0 = g_hH; g_hL0 = g_hL; h_HL0 = h_HL
 
                 do j = 1,3,2
                     Model = j  
                     call Read_Param1
+                    tau_k = 0d0; tau_N = 0d0; tau_I = 0d0
+                    tau_hH = 0d0; tau_hL = 0d0
                     call BGP(0)
                     call Save_BGP1(1)
-                    write(*,*) '=============================================================================='    
+                    write(*,*) '==============================================================================' 
+                    
+                    call Read_Param1   
                     mu_I = shock*mu_I
                     call BGP(0)
                     call Save_BGP1(iter_IR)

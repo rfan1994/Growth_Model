@@ -1,1 +1,0 @@
-    number     Model      flag   I_tilde   S_tilde      h_HL       Eta   Gamma_H   Gamma_L         r       w_H       w_L      w_HL      s_LH      s_LL       s_L
