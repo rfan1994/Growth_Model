@@ -767,7 +767,7 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
-real(8), parameter :: rmin = 0.5d0, rmax = 1.5d0
+real(8), parameter :: rmin = 0.8d0, rmax = 1.4d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -790,7 +790,7 @@ real(8), parameter :: rmin = 0.5d0, rmax = 1.5d0
             case (1)       
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
-                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
+                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = rmax*g_N1 
                 x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1 
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
@@ -799,7 +799,7 @@ real(8), parameter :: rmin = 0.5d0, rmax = 1.5d0
             case (2)
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
-                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
+                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = rmax*g_N1 
                 x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
@@ -815,7 +815,7 @@ real(8), parameter :: rmin = 0.5d0, rmax = 1.5d0
             case (3)  
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)    
-                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
+                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = rmax*g_N1 
                 x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)

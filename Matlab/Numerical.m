@@ -62,7 +62,7 @@ exportgraphics(gcf,filename)
 %% Transition
 cd '/Users/rongfan/Desktop/Growth_Model/Matlab'
 clear; close all; clc;
-folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20220921_1410/Two_Group';
+folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20220922_1150/Two_Group';
 folder2 = '/Users/rongfan/Desktop/Growth_Model/Latex';
 Color(1,:) = [0 0.4470 0.7410];
 Color(2,:) = [0.8500 0.3250 0.0980];
