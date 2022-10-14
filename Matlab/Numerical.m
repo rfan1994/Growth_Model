@@ -49,6 +49,9 @@ for n = 1:8
     plot(tau_I(t),y_I(t,n),'linewidth',1)
     hold on;
     plot(tau_hH(t),y_hH(t,n),'linewidth',1)
+    if (n>4) 
+        xlabel('Tax rate')
+    end
     title(variable(n))
     if (n==1) 
         legend('Automation tax','Traning tax','Location','northwest')
@@ -62,7 +65,7 @@ exportgraphics(gcf,filename)
 %% Transition
 cd '/Users/rongfan/Desktop/Growth_Model/Matlab'
 clear; close all; clc;
-folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20220922_1150/Two_Group';
+folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20221014_1327/Two_Group';
 folder2 = '/Users/rongfan/Desktop/Growth_Model/Latex';
 Color(1,:) = [0 0.4470 0.7410];
 Color(2,:) = [0.8500 0.3250 0.0980];
@@ -145,16 +148,17 @@ y3_1(:,2) = data3_1(:,37)+data3_1(:,38)+eta;
 y3_3 = data3_3(:,[3,37,33,36,19,18,20,5]);   
 y3_3(:,2) = data3_3(:,37)+data3_3(:,38)+eta;
 
-t = 1:41;
+t = 1:81;
 T = data1_1(t,1);
 
 figure('position',[0,0,1000,300])
 for n = 1:8
     subplot(2,4,n)
-    plot(T,y1_1(t,n),'linewidth',1)
+    plot(T,sgolayfilt(y1_1(t,n),3,11),'linewidth',1)
     hold on;
-    plot(T,y1_3(t,n),'linewidth',1)
+    plot(T,sgolayfilt(y1_3(t,n),3,11),'linewidth',1)
     title(variable(n))
+    xlim([T(1),T(end)])
     if (n==5||n==6)
         ylim([4,8])
     elseif (n==7)
@@ -175,6 +179,7 @@ for n = 1:8
     hold on;
     plot(T,y2_1(t,n),'linewidth',1)
     title(variable(n))
+    xlim([T(1),T(end)])
     if (n==5||n==6)
         ylim([4,8])
     elseif (n==7)
@@ -191,12 +196,13 @@ exportgraphics(gcf,filename)
 figure('position',[0,0,1000,300])
 for n = 1:8
     subplot(2,4,n)
-    plot(T,y1_3(t,n),'linewidth',1)
+    plot(T,sgolayfilt(y1_3(t,n),3,11),'linewidth',1)
     hold on;
-    plot(T,y2_3(t,n),'linewidth',1)
+    plot(T,sgolayfilt(y2_3(t,n),3,11),'linewidth',1)
     hold on;
-    plot(T,y3_3(t,n),'linewidth',1)
+    plot(T,sgolayfilt(y3_3(t,n),3,11),'linewidth',1)
     title(variable(n))
+    xlim([T(1),T(end)])
     if (n==5||n==6)
         ylim([4,8])
     elseif (n==7)

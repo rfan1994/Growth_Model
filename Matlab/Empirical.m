@@ -23,11 +23,12 @@ for n = 1:2
     coef = str2double(coef(:,:));
 
     subplot(1,2,n)
+    patch([T fliplr(T)],[coef(1,:)-1.036*coef(2,:) fliplr(coef(1,:)+1.036*coef(2,:))],'k','FaceAlpha',0.1,'EdgeColor','w');
+    patch([T fliplr(T)],[coef(1,:)-1.96*coef(2,:) fliplr(coef(1,:)+1.96*coef(2,:))],'k','FaceAlpha',0.05,'EdgeColor','w');
+    hold on;
     plot(T,coef(1,:),'linewidth',1);
     hold on;
     yline(0,'linewidth',1)
-    patch([T fliplr(T)],[coef(1,:)-1.036*coef(2,:) fliplr(coef(1,:)+1.036*coef(2,:))],'k','FaceAlpha',0.1,'EdgeColor','w');
-    patch([T fliplr(T)],[coef(1,:)-1.96*coef(2,:) fliplr(coef(1,:)+1.96*coef(2,:))],'k','FaceAlpha',0.05,'EdgeColor','w');
     xticks(1:6) 
     xlabel('Year')
     switch n
@@ -106,7 +107,7 @@ for n = 1:2
     table = readcell(filename);
     T = cell2mat(table(1,3:end));
     T = str2double(regexp(T,'\d+','match'));
-    y = cell2mat(table(2:22,2:end));
+    y = cell2mat(table(2:end,2:end));
     names = table(2:8,1);
 
     figure('position',[0,0,1000,500])
@@ -147,6 +148,7 @@ for n = 1:2
     
     exportgraphics(gcf,filename); 
 end
+
 
 
 %%
@@ -207,6 +209,8 @@ for n = 1:2
     exportgraphics(gcf,filename); 
 end
 
+
+
 %%
 clear; close all; clc;
 folder1 =  '/Users/rongfan/Desktop/Growth_Model/STATA/ATES';
@@ -237,8 +241,100 @@ ylabel('Percentage')
 title('Training parcitipation rate')
 filename = append(folder2,'/train.png');       
 exportgraphics(gcf,filename)
-close all;
 
 
+%%
+clear; close all; clc;
+folder1 =  '/Users/rongfan/Desktop/Growth_Model/STATA/ONET';
+folder2 = '/Users/rongfan/Desktop/Growth_Model/Latex';
+
+filename = append(folder1,'/LV_trend1.csv');
+table = readcell(filename);
+T = cell2mat(table(1,2:end));
+T = str2double(regexp(T,'\d+','match'));
+
+filename = append(folder1,'/LV.txt');
+table = readcell(filename);
+coef = table(3:96,2:8);
+coef = string(coef);
+names = table(2,2:8);
+
+for i = 1:7
+    for j = 1:94
+        coef(j,i) = regexp(coef(j,i),'[-]?\d+(\.)?(\d+)?','match');
+        coef(j,i) = regexp(coef(j,i),'[-]?\d+(\.)?(\d+)?','match');
+    end
+end
+coef = str2double(coef(:,:));
+beta = coef(1:2:end,:);
+st = coef(2:2:end,:);
+
+figure('position',[0,0,800,300])
+for i = 1:7
+    subplot(2,4,i)
+    patch([T fliplr(T)],[beta(:,i)-1.036*st(:,i); flipud(beta(:,i)+1.036*st(:,i))]','k','FaceAlpha',0.1,'EdgeColor','w');
+    hold on;
+    plot(T,beta(:,i),'linewidth',1);
+    title(names(i))
+    xlim([519 751])
+    xticks([540 600 660 720])
+    xticklabels({'2005','2010','2015','2020'})
+    xlabel('Year')  
+end
+filename = append(folder2,'/LV.png');    
+exportgraphics(gcf,filename)
+
+filename = append(folder1,'/LV_group.txt');
+table = readcell(filename);
+coef = table(3:284,2:8);
+coef = string(coef);
+names = table(2,2:8);
+
+for i = 1:7
+    for j = 1:282
+        coef(j,i) = regexp(coef(j,i),'[-]?\d+(\.)?(\d+)?','match');
+        coef(j,i) = regexp(coef(j,i),'[-]?\d+(\.)?(\d+)?','match');
+    end
+end
+l = length(coef);
+coef = str2double(coef(:,:));
+beta1 = coef(1:2:l/3,:);
+st1 = coef(2:2:l/3,:);
+beta2 = coef(l/3+1:2:2*l/3,:);
+st2 = coef(l/3+2:2:2*l/3,:);
+beta3 = coef(2*l/3+1:2:end,:);
+st3 = coef(2*l/3+2:2:end,:);
+
+figure('position',[0,0,800,300])
+for i = 1:7
+    subplot(2,4,i)
+    patch([T fliplr(T)],[beta1(:,i)-1.036*st1(:,i); flipud(beta1(:,i)+1.036*st1(:,i))]','k','FaceAlpha',0.1,'EdgeColor','w');
+    hold on;
+    plot(T,beta1(:,i),'linewidth',1);
+    title(names(i))
+    xlim([519 751])
+    xticks([540 600 660 720])
+    xticklabels({'2005','2010','2015','2020'})
+    xlabel('Year')  
+    sgtitle('Skill Responses to Automation')
+end
+filename = append(folder2,'/LV_group1.png');    
+exportgraphics(gcf,filename)
+
+figure('position',[0,0,800,300])
+for i = 1:7
+    subplot(2,4,i)
+    patch([T fliplr(T)],[beta3(:,i)-1.036*st3(:,i); flipud(beta3(:,i)+1.036*st3(:,i))]','k','FaceAlpha',0.1,'EdgeColor','w');
+    hold on;
+    plot(T,beta3(:,i),'linewidth',1);
+    title(names(i))
+    xlim([519 751])
+    xticks([540 600 660 720])
+    xticklabels({'2005','2010','2015','2020'})
+    xlabel('Year')  
+    sgtitle('Differences in Skill Responses to Automation')
+end
+filename = append(folder2,'/LV_group3.png');    
+exportgraphics(gcf,filename)
 
 

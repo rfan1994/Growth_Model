@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{Acemoglu2012}
+Daron Acemoglu.
+\newblock Introduction to economic growth.
+\newblock {\em Journal of economic theory}, 147(2):545--550, 2012.
+
 \bibitem{Acemogluetal2013}
 Daron Acemoglu, Ufuk Akcigit, Harun Alp, Nicholas Bloom, and William~R Kerr.
 \newblock Innovation, reallocation and growth.
@@ -40,11 +45,22 @@ Philippe Aghion, C{\'e}line Antonin, Simon Bunel, and Xavier Jaravel.
   of the recent literature.
 \newblock {\em Unpublished manuscript}, 2021.
 
+\bibitem{AghionHowitt2008}
+Philippe Aghion and Peter~W Howitt.
+\newblock {\em The economics of growth}.
+\newblock MIT press, 2008.
+
 \bibitem{AthreyaEberly2015}
 Kartik Athreya and Janice~C Eberly.
 \newblock The college premium, college noncompletion, and human capital
   investment.
 \newblock {\em Federal Reserve Bank of Richmond Working Paper}, (13-02R), 2015.
+
+\bibitem{AtkesonKehoe2007}
+Andrew Atkeson and Patrick~J Kehoe.
+\newblock Modeling the transition to a new economy: lessons from two
+  technological revolutions.
+\newblock {\em American Economic Review}, 97(1):64--88, 2007.
 
 \bibitem{AutorSalomons2018}
 David Autor and Anna Salomons.
@@ -101,6 +117,11 @@ Gene~M Grossman, Elhanan Helpman, Ezra Oberfield, and Thomas Sampson.
 \newblock Endogenous education and long-run factor shares.
 \newblock {\em American Economic Review: Insights}, 3(2):215--32, 2021.
 
+\bibitem{HallKhan2003}
+Bronwyn~H Hall and Beethika Khan.
+\newblock Adoption of new technology.
+\newblock Technical report, National bureau of economic research, 2003.
+
 \bibitem{Imaietal2004}
 Susumu Imai and Michael~P Keane.
 \newblock Intertemporal labor supply and human capital accumulation.
@@ -135,10 +156,21 @@ Pascual Restrepo.
 \newblock {\em Massachusetts Institute of Technology Job Market Paper}, pages
   1--94, 2015.
 
+\bibitem{Romer1990}
+Paul~M Romer.
+\newblock Endogenous technological change.
+\newblock {\em Journal of political Economy}, 98(5, Part 2):S71--S102, 1990.
+
 \bibitem{SachsKotlikoff2012}
 Jeffrey~D Sachs and Laurence~J Kotlikoff.
 \newblock Smart machines and long-term misery.
 \newblock Technical report, National Bureau of Economic Research, 2012.
+
+\bibitem{SandersTerWeel2000}
+Mark Sanders and Bas Ter~Weel.
+\newblock Skill-biased technical change: theoretical concepts, empirical
+  problems and a survey of the evidence.
+\newblock 2000.
 
 \bibitem{Schultz2003}
 T~Paul Schultz.
