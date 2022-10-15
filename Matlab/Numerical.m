@@ -65,7 +65,7 @@ exportgraphics(gcf,filename)
 %% Transition
 cd '/Users/rongfan/Desktop/Growth_Model/Matlab'
 clear; close all; clc;
-folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20221014_1327/Two_Group';
+folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20221015_1803/Two_Group';
 folder2 = '/Users/rongfan/Desktop/Growth_Model/Latex';
 Color(1,:) = [0 0.4470 0.7410];
 Color(2,:) = [0.8500 0.3250 0.0980];
@@ -148,7 +148,7 @@ y3_1(:,2) = data3_1(:,37)+data3_1(:,38)+eta;
 y3_3 = data3_3(:,[3,37,33,36,19,18,20,5]);   
 y3_3(:,2) = data3_3(:,37)+data3_3(:,38)+eta;
 
-t = 1:81;
+t = 1:51;
 T = data1_1(t,1);
 
 figure('position',[0,0,1000,300])
@@ -160,7 +160,7 @@ for n = 1:8
     title(variable(n))
     xlim([T(1),T(end)])
     if (n==5||n==6)
-        ylim([4,8])
+        ylim([3,8])
     elseif (n==7)
         ylim([0.25,0.5])
     end 
@@ -181,7 +181,7 @@ for n = 1:8
     title(variable(n))
     xlim([T(1),T(end)])
     if (n==5||n==6)
-        ylim([4,8])
+        ylim([3,8])
     elseif (n==7)
         ylim([0.25,0.5])
     end 
@@ -204,7 +204,7 @@ for n = 1:8
     title(variable(n))
     xlim([T(1),T(end)])
     if (n==5||n==6)
-        ylim([4,8])
+        ylim([3,8])
     elseif (n==7)
         ylim([0.25,0.5])
     end 

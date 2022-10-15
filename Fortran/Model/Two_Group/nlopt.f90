@@ -65,7 +65,7 @@ end interface
     ftolerrel = TOL              ! any negative value means no stopping
     xtolerrel = TOL
     xtolerabs = TOL
-    maxeval = 5000 
+    maxeval = 10000 
 
     ! Initialize nlopt
     ptr = 0

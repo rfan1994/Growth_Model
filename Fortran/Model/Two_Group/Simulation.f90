@@ -380,7 +380,7 @@ integer :: p0, p1
         ! Update I
         ts_I1(1) = I0
         do i = 2,iter_IR-1
-            g_dot = ts_g_I0(i-1)-ts_g_N0(i-1)
+            g_dot = max(ts_g_I0(i-1)-ts_g_N0(i-1),0d0)
             I_tilde = ts_I0(i-1)+g_dot*ts_dt(i-1)
             ts_I1(i) = I_tilde
             if (I_tilde .le. min(I0,I1)) then
@@ -399,8 +399,8 @@ integer :: p0, p1
             k = ts_k0(i-1)+g_dot*ts_dt(i-1)
             if (k .le. min(k0,k1)) then
                 ts_k1(i) = min(k0,k1)
-            elseif (k .ge. max(k0,k1)) then
-                ts_k1(i) = max(k0,k1)
+            elseif (k .ge. ts_k1(i-1)) then
+                ts_k1(i) = ts_k1(i-1)
             else
                 ts_k1(i) = k
             endif
@@ -767,7 +767,7 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
-real(8), parameter :: rmin = 1d0, rmax = 1.4d0
+real(8), parameter :: rmin = 0.8d0, rmax = 1.6d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -790,8 +790,8 @@ real(8), parameter :: rmin = 1d0, rmax = 1.4d0
             case (1)       
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
-                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1 
+                x(1) = g_N1; x_range(1,1) = rmin*g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = rmin*g_I1; x_range(2,2) = rmax*g_I1 
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -799,8 +799,8 @@ real(8), parameter :: rmin = 1d0, rmax = 1.4d0
             case (2)
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
-                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1
+                x(1) = g_N1; x_range(1,1) = rmin*g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = rmin*g_I1; x_range(2,2) = rmax*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -815,8 +815,8 @@ real(8), parameter :: rmin = 1d0, rmax = 1.4d0
             case (3)  
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)    
-                x(1) = g_N1; x_range(1,1) = g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = g_I0; x_range(2,2) = rmax*g_I1
+                x(1) = g_N1; x_range(1,1) = rmin*g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = rmin*g_I1; x_range(2,2) = rmax*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)

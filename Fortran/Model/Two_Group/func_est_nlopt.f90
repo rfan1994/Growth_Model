@@ -142,14 +142,15 @@ elseif (calibration == 0) then
 
         if (SPP == 0) then  
             ! Solve patent value sequentially      
-            ! V_NH0 = (p*(w_H/A)**(1d0-sigma)*dt+V_NH1)/((rr-g+(sigma-1d0)*B_NH*g_N)*dt+1d0)
-            ! V_NL0 = (p*(w_L/A*gamma_HL)**(1d0-sigma)*dt+V_NL1)/((rr-g+(sigma-1d0)*B_NL*g_N)*dt+1d0)
-            ! V_II0 = (p*(R/A)**(1d0-sigma)*dt+V_II1)/((rr-g)*dt+1d0)
+            V_NH0 = (p*(w_H/A)**(1d0-sigma)*dt+V_NH1)/((rr-g+(sigma-1d0)*B_NH*g_N)*dt+1d0)
+            V_NL0 = (p*(w_L/A*gamma_HL)**(1d0-sigma)*dt+V_NL1)/((rr-g+(sigma-1d0)*B_NL*g_N)*dt+1d0)
+            V_II0 = (p*(R/A)**(1d0-sigma)*dt+V_II1)/((rr-g)*dt+1d0)
 
             ! Solve current patent value
-            V_NH0 = p*(w_H/A)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NH*g_N)
-            V_NL0 = p*(w_L/A*gamma_HL)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NL*g_N)
-            V_II0 = p*(R/A)**(1d0-sigma)/(rr-g)
+            ! V_NH0 = p*(w_H/A)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NH*g_N)
+            ! V_NL0 = p*(w_L/A*gamma_HL)**(1d0-sigma)/(rr-g+(sigma-1d0)*B_NL*g_N)
+            ! V_II0 = p*(R/A)**(1d0-sigma)/(rr-g)
+
             gamma_IL = exp(B_NL*(1d0-I_tilde)*(1d0-sigma))
             gamma_SH = exp(B_NH*(1d0-S_tilde)*(1d0-sigma))
             gamma_SL = exp(B_NL*(1d0-S_tilde)*(1d0-sigma))

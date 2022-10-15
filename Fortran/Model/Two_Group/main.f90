@@ -52,16 +52,16 @@ if (calibration == 1) then
         write(2,FMT) 0, 0, moment_data
     close(2)
 
-    param(1) = 0.1412d0; param_range(1,1) = 0.05d0; param_range(2,1) = 0.2d0            ! p
-    param(2) = 0.1207d0; param_range(1,2) = 0.05d0; param_range(2,2) = 0.2d0            ! A
-    param(3) = 2.0940d0; param_range(1,3) = 1d0; param_range(2,3) = 5d0                 ! B_NH
-    param(4) = 1.0259d0; param_range(1,4) = 1d0; param_range(2,4) = 10d0                ! mu_N
-    param(5) = 3.2523d0; param_range(1,5) = 1d0; param_range(2,5) = 10d0                ! mu_I
-    param(6) = 188.8590d0; param_range(1,6) = 150d0; param_range(2,6) = 200d0           ! mu_h
-    param(7) = 0.9076d0; param_range(1,7) = 0.8d0; param_range(2,7) = 0.95d0            ! alhpa_H
-    param(8) = 0.3859d0; param_range(1,8) = 0.1d0; param_range(2,8) = 0.6d0             ! alhpa_L
-    param(9) = 0.7605d0; param_range(1,9) = 0.1d0; param_range(2,9) = 0.95d0            ! lambda_h
-    param(10) = 0.8057d0; param_range(1,10) = 0.75d0; param_range(2,10) = 0.95d0        ! tech shock
+    param(1) = 0.1125d0; param_range(1,1) = 0.1d0; param_range(2,1) = 0.15d0            ! p
+    param(2) = 0.119d0; param_range(1,2) = 0.1d0; param_range(2,2) = 0.15d0             ! A
+    param(3) = 2.2651d0; param_range(1,3) = 2d0; param_range(2,3) = 3d0                 ! B_NH
+    param(4) = 2.3619d0; param_range(1,4) = 1d0; param_range(2,4) = 10d0                ! mu_N
+    param(5) = 9.0135d0; param_range(1,5) = 1d0; param_range(2,5) = 10d0                ! mu_I
+    param(6) = 193.5608d0; param_range(1,6) = 150d0; param_range(2,6) = 200d0           ! mu_h
+    param(7) = 0.9026d0; param_range(1,7) = 0.8d0; param_range(2,7) = 0.95d0            ! alhpa_H
+    param(8) = 0.2797d0; param_range(1,8) = 0.1d0; param_range(2,8) = 0.4d0             ! alhpa_L
+    param(9) = 0.7675d0; param_range(1,9) = 0.7d0; param_range(2,9) = 0.95d0            ! lambda_h
+    param(10) = 0.7853d0; param_range(1,10) = 0.75d0; param_range(2,10) = 0.95d0        ! tech shock
 
     iunit = 1; L_N0 = 1d6
     Model = 3; Np = Nparam; call nlopt(6,param,param_range)
