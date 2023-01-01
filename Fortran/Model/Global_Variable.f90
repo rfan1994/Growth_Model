@@ -9,10 +9,10 @@ module Global_Variable
     implicit none
 ! Parameters
 integer, parameter :: iter_max = 1d4, iter_IR = 201
-real(8), parameter :: TOL = 1d-6, TOL1 = 8.5d-3, TOL2 = 1d-2
+real(8), parameter :: TOL = 1d-6, TOL1 = 8d-3, TOL2 = 1d-2
 
 ! Control
-integer, parameter :: calibration = 0, Task = 3
+integer, parameter :: Calibration = 0, Task = 3
 integer :: Np, iunit
 character(100) :: Filename, FMT
 integer :: Model, Step, SPP, flag

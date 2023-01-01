@@ -65,7 +65,7 @@ exportgraphics(gcf,filename)
 %% Transition
 cd '/Users/rongfan/Desktop/Growth_Model/Matlab'
 clear; close all; clc;
-folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20221015_1803/Two_Group';
+folder1 = '/Users/rongfan/Desktop/Growth_Model/Matlab/20221213_1905/Two_Group';
 folder2 = '/Users/rongfan/Desktop/Growth_Model/Latex';
 Color(1,:) = [0 0.4470 0.7410];
 Color(2,:) = [0.8500 0.3250 0.0980];
@@ -159,37 +159,22 @@ for n = 1:8
     plot(T,sgolayfilt(y1_3(t,n),3,11),'linewidth',1)
     title(variable(n))
     xlim([T(1),T(end)])
-    if (n==5||n==6)
-        ylim([3,8])
+    if (n==1) 
+        ylim([0.65,0.8])
+    elseif (n==2)
+        ylim([0.5,0.65])
+    elseif (n==3)
+        ylim([0.02,0.07])
+    elseif (n==5||n==6)
+        ylim([0.5,8])
     elseif (n==7)
-        ylim([0.25,0.5])
+        ylim([0.25,0.65])
     end 
     if (n==1) 
         legend('Without human capital','With human capital','Location','southeast')
     end
 end
 filename = append(folder2,'/Transition.png');       
-exportgraphics(gcf,filename)
-
-
-figure('position',[0,0,1000,300])
-for n = 1:8
-    subplot(2,4,n)
-    plot(T,y1_1(t,n),'linewidth',1)
-    hold on;
-    plot(T,y2_1(t,n),'linewidth',1)
-    title(variable(n))
-    xlim([T(1),T(end)])
-    if (n==5||n==6)
-        ylim([3,8])
-    elseif (n==7)
-        ylim([0.25,0.5])
-    end 
-    if (n==1) 
-        legend('Benchmark','Automation tax','Location','southeast')
-    end
-end
-filename = append(folder2,'/Transition2.png');       
 exportgraphics(gcf,filename)
 
 
@@ -203,10 +188,16 @@ for n = 1:8
     plot(T,sgolayfilt(y3_3(t,n),3,11),'linewidth',1)
     title(variable(n))
     xlim([T(1),T(end)])
-    if (n==5||n==6)
-        ylim([3,8])
+    if (n==1) 
+        ylim([0.65,0.8])
+    elseif (n==2)
+        ylim([0.5,0.65])
+    elseif (n==3)
+        ylim([0.02,0.07])
+    elseif (n==5||n==6)
+        ylim([0.5,8])
     elseif (n==7)
-        ylim([0.25,0.5])
+        ylim([0.25,0.65])
     end 
     if (n==1) 
         legend('Benchmark','Automation tax','Training tax','Location','southeast')

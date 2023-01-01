@@ -59,8 +59,8 @@ if (calibration == 1) then
     param(5) = 9.0135d0; param_range(1,5) = 1d0; param_range(2,5) = 10d0                ! mu_I
     param(6) = 193.5608d0; param_range(1,6) = 150d0; param_range(2,6) = 200d0           ! mu_h
     param(7) = 0.9026d0; param_range(1,7) = 0.8d0; param_range(2,7) = 0.95d0            ! alhpa_H
-    param(8) = 0.2797d0; param_range(1,8) = 0.1d0; param_range(2,8) = 0.4d0             ! alhpa_L
-    param(9) = 0.7675d0; param_range(1,9) = 0.7d0; param_range(2,9) = 0.95d0            ! lambda_h
+    param(8) = 0.6d0; param_range(1,8) = 0.5d0; param_range(2,8) = 0.8d0                ! alhpa_L
+    param(9) = 0.4d0; param_range(1,9) = 0.1d0; param_range(2,9) = 0.8d0                ! lambda_h
     param(10) = 0.7853d0; param_range(1,10) = 0.75d0; param_range(2,10) = 0.95d0        ! tech shock
 
     iunit = 1; L_N0 = 1d6

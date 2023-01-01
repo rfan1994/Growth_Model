@@ -161,7 +161,7 @@ real(8), intent(out) :: fvec(n)
         L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
     else
         L_H = epsilon_H*ll_H
-    endif 
+    endif
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -273,11 +273,11 @@ real(8), intent(out) :: fvec(n)
     epsilon_I = (g_I*mu_I)**(1d0/lambda)
     mu_hH = mu_hH_h(h_HL)
     ll_H = 1d0-(g_hH*mu_hH)**(1d0/alpha_H)
-    if (calibration == 0 .and. Task == 3) then 
-        L_H = epsilon_H*ll_H
-    else 
+    if (calibration == 0 .and. Task == 2) then 
         L_H = epsilon_H*ll_H-epsilon_N-epsilon_I
-    endif 
+    else
+        L_H = epsilon_H*ll_H
+    endif
     mu_hL = mu_h
     ll_L = 1d0-(g_hL*mu_hL)**(1d0/alpha_L)
     L_L = epsilon_L*ll_L
@@ -385,8 +385,8 @@ integer :: p0, p1
             ts_I1(i) = I_tilde
             if (I_tilde .le. min(I0,I1)) then
                 ts_I1(i) = min(I0,I1)
-            elseif (I_tilde .ge. max(I0,I1)) then
-                ts_I1(i) = max(I0,I1)
+            elseif (I_tilde .ge. max(I0,I1)+0.1) then
+                ts_I1(i) = max(I0,I1)+0.1
             else
                 ts_I1(i) = I_tilde
             endif
@@ -395,12 +395,12 @@ integer :: p0, p1
         ! Update k
         ts_k1(1) = k0
         do i = 2,iter_IR-1
-            g_dot = min(ts_a_dk(i-1),0d0)
+            g_dot = ts_a_dk(i-1)
             k = ts_k0(i-1)+g_dot*ts_dt(i-1)
             if (k .le. min(k0,k1)) then
                 ts_k1(i) = min(k0,k1)
-            elseif (k .ge. ts_k1(i-1)) then
-                ts_k1(i) = ts_k1(i-1)
+            elseif (k .ge. ts_k1(i-1)+0.1d0) then
+                ts_k1(i) = ts_k1(i-1)+0.1d0
             else
                 ts_k1(i) = k
             endif
@@ -767,7 +767,8 @@ end subroutine Policy_Function
 subroutine Growth_Rate
     implicit none
 real(8), allocatable :: x(:), x_range(:,:)
-real(8), parameter :: rmin = 0.8d0, rmax = 1.6d0
+real(8), parameter :: rmin0 = 0.1d0, rmin1 = 0.9d0
+real(8), parameter :: rmax0 = 1.8d0, rmax1 = 2.4d0
 
     do i = iter_IR-1,1,-1
         I_tilde = ts_I0(i)
@@ -790,8 +791,8 @@ real(8), parameter :: rmin = 0.8d0, rmax = 1.6d0
             case (1)       
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
-                x(1) = g_N1; x_range(1,1) = rmin*g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = rmin*g_I1; x_range(2,2) = rmax*g_I1 
+                x(1) = g_N1; x_range(1,1) = rmin0*g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = rmin0*g_I1; x_range(2,2) = rmax0*g_I1 
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -799,8 +800,8 @@ real(8), parameter :: rmin = 0.8d0, rmax = 1.6d0
             case (2)
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)
-                x(1) = g_N1; x_range(1,1) = rmin*g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = rmin*g_I1; x_range(2,2) = rmax*g_I1
+                x(1) = g_N1; x_range(1,1) = rmin0*g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = rmin0*g_I1; x_range(2,2) = rmax0*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -808,15 +809,15 @@ real(8), parameter :: rmin = 0.8d0, rmax = 1.6d0
 
                 allocate(x(1),x_range(2,1))  
                 g_N = ts_g_N0(i); g_I = ts_g_I0(i) 
-                x(1) = g_hH1; ; x_range(1,1) = rmin*g_hH0; x_range(2,1) = rmax*g_hH1
+                x(1) = g_hH1; ; x_range(1,1) = rmin1*g_hH0; x_range(2,1) = rmax1*g_hH1
                 Np = 1; Step = 2; call nlopt(6,x,x_range)
                 ts_g_hH1(i) = x(1)
                 deallocate(x,x_range)
             case (3)  
                 allocate(x(2),x_range(2,2))  
                 g_hH = ts_g_hH0(i); g_hL = ts_g_hL0(i)    
-                x(1) = g_N1; x_range(1,1) = rmin*g_N0; x_range(2,1) = g_N1 
-                x(2) = g_I1; x_range(1,2) = rmin*g_I1; x_range(2,2) = rmax*g_I1
+                x(1) = g_N1; x_range(1,1) = rmin0*g_N0; x_range(2,1) = g_N1 
+                x(2) = g_I1; x_range(1,2) = rmin0*g_I1; x_range(2,2) = rmax0*g_I1
                 Np = 2; Step = 1; call nlopt(6,x,x_range)
                 ts_g_N1(i) = x(1)
                 ts_g_I1(i) = x(2)
@@ -824,8 +825,8 @@ real(8), parameter :: rmin = 0.8d0, rmax = 1.6d0
 
                 allocate(x(2),x_range(2,2))      
                 g_N = ts_g_N0(i); g_I = ts_g_I0(i) 
-                x(1) = g_hH1; ; x_range(1,1) = rmin*g_hH0; x_range(2,1) = rmax*g_hH1
-                x(2) = g_hL1; ; x_range(1,2) = rmin*g_hL0; x_range(2,2) = rmax*g_hL1
+                x(1) = g_hH1; ; x_range(1,1) = rmin1*g_hH0; x_range(2,1) = rmax1*g_hH1
+                x(2) = g_hL1; ; x_range(1,2) = rmin1*g_hL0; x_range(2,2) = rmax1*g_hL1
                 Np = 2; Step = 2; call nlopt(6,x,x_range)
                 ts_g_hH1(i) = x(1)
                 ts_g_hL1(i) = x(2)
